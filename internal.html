@@ -538,6 +538,37 @@ body.ops-modal-open{overflow:hidden}
 #app .mail-empty{padding:45px 20px;text-align:center;color:#9badbe;font-size:12px;line-height:1.8}
 @media(max-width:780px){#app .mail-layout{grid-template-columns:1fr;min-height:0}#app .mail-folders{border-right:0;border-bottom:1px solid #4d5c6b;padding:12px}#app .mail-folder-title{margin:6px 5px 10px}#app .mail-folder-list{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}#app .mail-folder{width:auto;white-space:nowrap;flex:0 0 auto;gap:10px;margin:0;padding:11px}#app .mail-detail{padding:15px}#app .mail-meta{grid-template-columns:1fr}#app .mail-toolbar{padding:16px}#app .mail-search{width:100%}#app .mail-item{grid-template-columns:18px minmax(0,1fr);gap:9px;padding:15px 12px}#app .mail-item.unread{padding-left:10px}#app .mail-item time{grid-column:2;text-align:left}#app .mail-body-ko{padding:14px}}
 
+
+/* v4.70 — focused thumb scan, followed by an independent welcome screen. */
+.nx-thumb-gate{background:radial-gradient(ellipse at 50% 46%,#172434 0%,#080e17 46%,#02050b 100%)}
+.nx-thumb-core{width:min(540px,100%);min-height:410px;justify-content:center;gap:0}
+.nx-thumb-mark{font:400 clamp(20px,4vw,30px) Georgia,serif;letter-spacing:.28em;margin-bottom:10px}
+.nx-thumb-strap{margin-bottom:30px;font-size:10px}
+.nx-thumb-sensor{width:clamp(170px,25vmin,224px);height:auto;aspect-ratio:1;margin:0 auto 0;border:1px solid #91bbd6;border-radius:50%;background:radial-gradient(circle at 45% 38%,#244256 0%,#132538 48%,#07121d 100%);box-shadow:inset 0 1px 2px #d1eeff35,inset 0 0 44px #0007,0 0 0 12px #7ea6c00d,0 0 0 30px #85b3d209,0 0 45px #7fc8f420}
+.nx-thumb-sensor::before,.nx-thumb-sensor::after{display:block;content:"";position:absolute;border-radius:50%;pointer-events:none}
+.nx-thumb-sensor::before{inset:13px;border:1px dashed #b6dff549}
+.nx-thumb-sensor::after{inset:29px;border:1px solid #a5d1e32b}
+.nx-thumb-ring{inset:-7px!important;opacity:1}
+.nx-thumb-icon{width:clamp(77px,13vmin,110px);height:clamp(77px,13vmin,110px);color:#b8e2f6;filter:drop-shadow(0 0 18px #7ecdf56b)}
+.nx-thumb-success-icon{inset:24px;font-size:clamp(60px,9vmin,94px);border-width:1px}
+.nx-thumb-status{margin:43px 0 9px;font-size:13px;letter-spacing:.19em}
+.nx-thumb-instruction{font-size:12px}
+.nx-thumb-progress-label{margin-top:16px}
+.nx-thumb-gate[data-state="holding"] .nx-thumb-sensor{box-shadow:inset 0 0 44px #0007,0 0 0 13px #98d2f51a,0 0 50px #9bdafa4b}
+.nx-thumb-gate[data-state="success"] .nx-thumb-sensor{box-shadow:0 0 0 1px #9effd5,0 0 0 16px #9effd51a,0 0 68px #77ffd65c}
+.nx-thumb-welcome{display:none;text-align:center;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:330px;opacity:0}
+.nx-thumb-gate[data-state="welcome"] .nx-thumb-welcome{display:flex;opacity:1;animation:nx-welcome-in .55s ease both}
+.nx-thumb-gate[data-state="welcome"] .nx-thumb-kicker,.nx-thumb-gate[data-state="welcome"] .nx-thumb-mark,.nx-thumb-gate[data-state="welcome"] .nx-thumb-strap,.nx-thumb-gate[data-state="welcome"] .nx-thumb-sensor,.nx-thumb-gate[data-state="welcome"] .nx-thumb-status,.nx-thumb-gate[data-state="welcome"] .nx-thumb-instruction,.nx-thumb-gate[data-state="welcome"] .nx-thumb-progress-label{display:none}
+.nx-thumb-welcome-tick{display:grid;place-items:center;width:88px;height:88px;margin-bottom:27px;border-radius:50%;border:1px solid #7cd8bc;background:radial-gradient(circle,#183b34,#0d211f);color:#bfffe4;font-size:50px;box-shadow:0 0 0 11px #75d8b50c,0 0 65px #64deb636}
+.nx-thumb-welcome-eyebrow{color:#91cab7;letter-spacing:.24em;font-size:10px;margin-bottom:17px}
+.nx-thumb-welcome h2{margin:0;font:400 clamp(36px,7vw,59px) Georgia,serif;letter-spacing:.14em;color:#f0f6f9;line-height:1.15}
+.nx-thumb-welcome-ko{margin:18px 0 0;color:#d8e9f1;font-size:clamp(17px,3.4vw,22px);letter-spacing:.09em}
+.nx-thumb-welcome-desc{margin:22px 0 0;font-size:10px;letter-spacing:.2em;color:#829cad}
+@keyframes nx-welcome-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.nx-thumb-core{min-height:360px}.nx-thumb-strap{margin-bottom:29px}.nx-thumb-sensor{width:min(49vw,200px)}.nx-thumb-icon{width:85px;height:85px}.nx-thumb-status{margin-top:40px}.nx-thumb-welcome h2{font-size:38px}.nx-thumb-welcome-eyebrow{font-size:9px}}
+@media(max-height:610px){.nx-thumb-core{min-height:0}.nx-thumb-strap{margin-bottom:18px}.nx-thumb-sensor{width:min(32vh,155px)}.nx-thumb-icon{width:68px;height:68px}.nx-thumb-status{margin-top:21px}.nx-thumb-welcome{min-height:240px}}
+@media(prefers-reduced-motion:reduce){.nx-thumb-gate[data-state="welcome"] .nx-thumb-welcome{animation:none}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -549,9 +580,6 @@ body.ops-modal-open{overflow:hidden}
     <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
     <div class="nx-thumb-mark">NEXUS</div>
     <div class="nx-thumb-strap">AGENT ACCESS · VERIFICATION 02</div>
-    <div class="nx-thumb-emblem" aria-label="NEXUS 원형 엠블럼">
-      <img class="nx-thumb-seal" src="images/branding/nexus-agent-seal-hd.png" draggable="false" alt="NEXUS 원형 엠블럼">
-    </div>
     <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 아래 지문 센서를 약 2.2초 동안 길게 눌러 모의 인증 완료">
       <span class="nx-thumb-ring" aria-hidden="true"></span>
       <svg class="nx-thumb-icon" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -562,6 +590,13 @@ body.ops-modal-open{overflow:hidden}
     <div class="nx-thumb-status" id="nxThumbStatus" role="status" aria-live="polite">THUMB VERIFICATION</div>
     <p class="nx-thumb-instruction" id="nxThumbInstruction">아래 지문 센서를 엄지손가락으로 길게 누르세요</p>
     <div class="nx-thumb-progress-label" id="nxThumbPct">AWAITING INPUT</div>
+    <div class="nx-thumb-welcome" aria-live="polite" aria-atomic="true" aria-label="인증 완료 환영 화면">
+      <div class="nx-thumb-welcome-tick" aria-hidden="true">✓</div>
+      <div class="nx-thumb-welcome-eyebrow">IDENTITY VERIFIED · ACCESS GRANTED</div>
+      <h2>WELCOME BACK</h2>
+      <p class="nx-thumb-welcome-ko">반갑습니다.</p>
+      <p class="nx-thumb-welcome-desc">NEXUS INTERNAL NETWORK</p>
+    </div>
   </div>
 </div>
 
@@ -916,7 +951,7 @@ function thumbVibrate(pattern){if(!navigator.vibrate)return;try{navigator.vibrat
 function thumbReset(){
   if(thumbRaf)cancelAnimationFrame(thumbRaf);
   thumbRaf=0;thumbHolding=false;thumbPointer=null;thumbKeyboard=false;
-  if(thumbState==='success')return;
+  if(thumbState==='success'||thumbState==='welcome')return;
   thumbState='idle';thumbGate.dataset.state='idle';thumbSensor.style.setProperty('--thumb-progress','0%');
   thumbStatus.textContent='THUMB VERIFICATION';
   thumbInstruction.textContent='아래 지문 센서를 엄지손가락으로 길게 누르세요';
@@ -938,11 +973,21 @@ function thumbComplete(){
   thumbInstruction.textContent='AGENT IDENTITY VERIFIED';
   thumbPct.textContent='AUTHORIZATION // 100%';
   thumbVibrate([65,55,110]);
+  // Show the welcome message after a brief success confirmation.
   thumbTimer=setTimeout(()=>{
-    enter(thumbPendingName);
-    thumbGate.classList.add('nx-thumb-exit');
-    thumbTimer=setTimeout(()=>{thumbGate.hidden=true;thumbGate.classList.remove('nx-thumb-exit');document.body.classList.remove('nx-thumb-locked');thumbReset();},thumbReduce?0:480);
-  },thumbReduce?460:960);
+    thumbState='welcome';
+    thumbGate.dataset.state='welcome';
+    thumbTimer=setTimeout(()=>{
+      enter(thumbPendingName);
+      thumbGate.classList.add('nx-thumb-exit');
+      thumbTimer=setTimeout(()=>{
+        thumbGate.hidden=true;
+        thumbGate.classList.remove('nx-thumb-exit');
+        document.body.classList.remove('nx-thumb-locked');
+        thumbState='idle';thumbReset();
+      },thumbReduce?0:480);
+    },thumbReduce?1000:1700);
+  },thumbReduce?200:650);
 }
 function thumbFrame(t){
   if(!thumbHolding||thumbState!=='holding')return;
