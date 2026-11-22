@@ -445,7 +445,7 @@ body.nx-thumb-locked{overflow:hidden}
 
 
 /* v4.61 — operation report overlay, mirrors community's focused document view */
-.ops-overlay[hidden],.ops-preview[hidden]{display:none!important}
+.ops-overlay[hidden]{display:none!important}
 .ops-overlay{position:fixed;inset:0;z-index:5000;background:rgba(2,5,10,.88);backdrop-filter:blur(10px);display:grid;place-items:center;padding:clamp(8px,2vw,24px)}
 .ops-dialog{width:min(930px,100%);max-height:calc(100dvh - 24px);display:flex;flex-direction:column;min-height:0;overflow:hidden;border:1px solid #78899a;background:linear-gradient(145deg,#1b222d 0%,#0b1018 55%,#090d13 100%);box-shadow:0 28px 100px #000c,inset 0 1px 0 #d9eaff1a;color:#deeaf5;outline:none}
 .ops-dialog-bar{flex:none;min-height:66px;display:flex;justify-content:space-between;align-items:center;gap:14px;background:linear-gradient(180deg,#28323e,#151c26);border-bottom:1px solid #637488;padding:12px clamp(16px,3vw,29px);color:#d0deea;font-size:10px;font-weight:600;letter-spacing:.18em}
@@ -461,6 +461,18 @@ body.ops-modal-open{overflow:hidden}
 @media(max-width:700px){.ops-overlay{padding:8px}.ops-dialog{max-height:calc(100dvh - 16px)}.ops-dialog-bar{min-height:58px;gap:7px;padding:11px 14px;font-size:9px;letter-spacing:.05em}.ops-dialog-bar em{display:none}.ops-dialog .ops-close{min-width:0;padding:9px;font-size:9px}.ops-dialog-scroll{padding:19px 16px}.ops-doc-stamp{display:none}.ops-attachment-grid{grid-template-columns:1fr}.ops-attachment{padding:12px}.ops-dialog .ops-file-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-preview-head{align-items:flex-start}.ops-preview-head button{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.ops-attachment{transition:none}}
 
+
+/* v4.63 — academic promotion and evaluation registry */
+.eval-protocol{margin-bottom:14px;background:linear-gradient(145deg,#222832,#10141b)!important;border-color:#586674!important}
+.eval-year-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.eval-year-grid>div{display:grid;gap:9px;min-height:83px;padding:15px 12px;border:1px solid #556270;background:linear-gradient(145deg,#1c2835,#0d141e)}
+.eval-year-grid b{font:600 10px ui-monospace,monospace;color:#dce9f4;letter-spacing:.04em}
+.eval-year-grid span{font-size:10px;color:#9db3c6;line-height:1.5}
+.eval-caution{margin:18px 0 0;font-size:10px;color:#a8c6dc;letter-spacing:.08em;line-height:1.9}.eval-caution span{color:#a7b7c5;letter-spacing:0}
+.eval-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}.eval-filters .search{margin:0;flex:1 1 220px}.eval-filters select{max-width:100%;flex:1 1 180px}
+.eval-registry .ops-row{grid-template-columns:105px minmax(0,1.4fr) minmax(92px,.68fr) 98px 105px}
+@media(max-width:970px){.eval-year-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.eval-registry .ops-row{grid-template-columns:80px 1fr 90px}.eval-registry .ops-row .ops-division,.eval-registry .ops-row .ops-date{display:none}}
+@media(max-width:580px){.eval-year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.eval-registry .ops-row{grid-template-columns:75px 1fr}.eval-registry .ops-row .ops-state{grid-column:2;justify-self:start}}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -567,13 +579,17 @@ body.ops-modal-open{overflow:hidden}
     </section>
     <section class="section-view" id="view-evaluations">
       <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
-      <div class="dashboard-header"><div><div class="eyebrow">ACADEMIC ASSESSMENT / PROMOTION REVIEW</div><h1>EVALUATION RECORDS</h1><div class="view-note">5년제 교육과정의 종합평가, 전문분야별 평가, 승급 심사를 관리하는 기록 화면.</div></div><div class="status">● REVIEW SYSTEM</div></div>
-      <div class="nx-three-grid">
-        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 01</div><h3 class="nx-module-title">SEMESTER REVIEW</h3><p>학기별 종합평가 · Semester evaluation</p><span class="nx-module-state">RECORDS PENDING</span></section>
-        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 02</div><h3 class="nx-module-title">SPECIALTY ASSESSMENT</h3><p>전공 분야별 능력 평가 · Division assessment</p><span class="nx-module-state">RECORDS PENDING</span></section>
-        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 03</div><h3 class="nx-module-title">PROMOTION BOARD</h3><p>승급 심사 및 평가위원회 · Advancement review</p><span class="nx-module-state">RECORDS PENDING</span></section>
-      </div>
-      <section class="panel nx-block-gap"><div class="panel-header"><div class="panel-title">ACADEMIC RECORD FRAMEWORK</div><div class="panel-tag">ACADEMY / 05 YEARS</div></div><div class="nx-year-track"><span>YEAR 01</span><span>YEAR 02</span><span>YEAR 03</span><span>YEAR 04</span><span>YEAR 05</span></div><p class="nx-table-note">실제 성적이나 평가 결과는 저장하지 않는다. 차후 캐릭터별 기록을 연결할 수 있는 기본 구조만 구성했다.</p></section>
+      <div class="dashboard-header"><div><div class="eyebrow">NEXUS / ACADEMIC REVIEW DIVISION</div><h1>EVALUATION RECORDS</h1><div class="view-note">5년제 교육과정의 학기별 평가, 여섯 전공 평가와 승급 심사 기록을 열람한다. 항목을 선택하면 심사 문서가 별도 화면으로 열린다.</div></div><div class="status">● REGISTRY ONLINE</div></div>
+      <div class="ops-stats"><div><span>ASSESSMENT FILES</span><strong id="evalCount">18</strong></div><div><span>PROMOTION BOARDS</span><strong id="evalPromotion">05</strong></div><div><span>SPECIALTY REVIEWS</span><strong id="evalSpecialty">06</strong></div><div><span>IN REVIEW</span><strong id="evalReview">00</strong></div></div>
+      <section class="panel eval-protocol"><div class="panel-header"><div class="panel-title">ADVANCEMENT FRAMEWORK <span class="ops-subtag">/ 승급 평가 절차</span></div><div class="panel-tag">ACADEMY / 05 YEARS</div></div>
+        <div class="eval-year-grid"><div><b>YEAR 01 → 02</b><span>FOUNDATION / 기초 역량 확인</span></div><div><b>YEAR 02 → 03</b><span>APPLICATION / 응용 역량 검토</span></div><div><b>YEAR 03 → 04</b><span>ADVANCED / 상급 과정 적격성</span></div><div><b>YEAR 04 → 05</b><span>SENIOR / 시니어 승급 심사</span></div><div><b>YEAR 05 → EXIT</b><span>QUALIFICATION / 최종 자격 심사</span></div></div>
+        <p class="eval-caution">PROMOTION PROCESS / <span>학기별 기록 취합 → 전공 역량 검토 → 평가위원회 심사 → 승인·보완 결정. 세부 합격 기준 및 캐릭터 개인 기록은 추후 정식 설정에 따라 확정한다.</span></p>
+      </section>
+      <section class="panel ops-registry eval-registry"><div class="panel-header"><div class="panel-title">ASSESSMENT REGISTRY <span class="ops-subtag">/ 학사 평가 및 승급 심사 색인</span></div><div class="panel-tag">ACADEMY / 2026</div></div>
+        <div class="nx-filter-bar eval-filters"><input class="search" id="evalSearch" type="search" placeholder="평가명 · 기록번호 · 전공 검색" aria-label="평가 기록 검색"><select class="nx-filter-select" id="evalKind" aria-label="평가 유형"><option value="all">ALL TYPES / 전체 평가</option><option value="PROMOTION">PROMOTION / 승급 심사</option><option value="SEMESTER">SEMESTER / 학기 평가</option><option value="SPECIALTY">SPECIALTY / 전공 평가</option><option value="REASSESSMENT">REASSESSMENT / 보완 평가</option><option value="BOARD REVIEW">BOARD REVIEW / 위원회 점검</option></select><select class="nx-filter-select" id="evalYear" aria-label="학년"><option value="all">ALL YEARS / 전체 학년</option><option value="YEAR 01">YEAR 01</option><option value="YEAR 02">YEAR 02</option><option value="YEAR 03">YEAR 03</option><option value="YEAR 04">YEAR 04</option><option value="YEAR 05">YEAR 05</option></select></div>
+        <div class="ops-results" id="evalResults" aria-live="polite"></div><div class="empty hidden" id="evalEmpty">조건에 맞는 평가 기록이 없습니다.</div>
+      </section>
+      <p class="nx-internal-footnote">※ 세계관용 가상 학사 기록이다. 실제 교육생 성적·합격 판정은 포함하지 않으며, 심사 세부 규칙은 정식 설정 전까지 확정하지 않는다.</p>
     </section>
     <section class="section-view" id="view-archives">
       <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
@@ -613,9 +629,23 @@ body.ops-modal-open{overflow:hidden}
       <section class="ops-attachments" aria-labelledby="opAttachmentHeading">
         <div class="ops-attachment-head"><div><span class="ops-kicker">03 / ASSOCIATED MATERIALS</span><h3 id="opAttachmentHeading">ATTACHED FILES <span>첨부 자료</span></h3></div><span class="ops-attachment-count" id="opAttachmentCount">00 FILES</span></div>
         <div class="ops-attachment-grid" id="opAttachmentGrid"></div>
-        <section class="ops-preview" id="opAttachmentPreview" hidden aria-live="polite"><div class="ops-preview-head"><div><span>DOCUMENT PREVIEW / 가상 문서 미리보기</span><strong id="opPreviewName"></strong></div><button type="button" id="opPreviewClose" aria-label="첨부 문서 미리보기 닫기">✕ CLOSE PREVIEW</button></div><div id="opPreviewBody" class="ops-preview-body"></div></section>
       </section>
       <p class="ops-file-foot">NEXUS ARCHIVE · FICTIONAL FILE SIMULATION / 첨부 목록과 미리보기는 세계관 연출이며 실제 업로드된 파일이 아님</p>
+    </div>
+  </article>
+</div>
+
+<!-- Evaluation registry detail: simulated records, no real exam scores or uploads. -->
+<div class="ops-overlay" id="evalOverlay" hidden>
+  <article class="ops-dialog" role="dialog" aria-modal="true" aria-labelledby="evalDetailTitle" tabindex="-1">
+    <div class="ops-dialog-bar"><span><span class="ops-dialog-light" aria-hidden="true"></span>NEXUS / ACADEMIC RECORD VIEWER <em>· 평가 기록 열람</em></span><button type="button" id="evalDetailClose" class="ops-close">✕ &nbsp; CLOSE FILE</button></div>
+    <div class="ops-dialog-scroll">
+      <div class="ops-file-top"><div><span class="ops-kicker">DOCUMENT / ACADEMIC ASSESSMENT</span><h2 id="evalDetailTitle"></h2><p id="evalDetailKo"></p></div><span class="ops-doc-stamp">NEXUS<br>REVIEW COPY</span></div>
+      <div class="ops-file-meta" id="evalDetailMeta"></div>
+      <div class="ops-report"><span>01 / REVIEW SCOPE</span><h3>Assessment Overview</h3><p id="evalBriefEn"></p><div class="ops-translation" id="evalBriefKo"></div></div>
+      <div class="ops-report"><span>02 / REVIEW STATUS &amp; DISPOSITION</span><h3>Board Notes</h3><p id="evalReviewEn"></p><div class="ops-translation" id="evalReviewKo"></div></div>
+      <section class="ops-attachments"><div class="ops-attachment-head"><div><span class="ops-kicker">03 / ASSOCIATED MATERIALS</span><h3>ATTACHED FILES <span>첨부 자료</span></h3></div><span class="ops-attachment-count">02 FILES</span></div><div class="ops-attachment-grid" id="evalAttachmentGrid"></div></section>
+      <p class="ops-file-foot">NEXUS / ACADEMIC REGISTRY · FICTIONAL RECORD SIMULATION. 첨부 파일은 시각적 연출이며 클릭해도 열리지 않는다.</p>
     </div>
   </article>
 </div>
@@ -674,23 +704,6 @@ function opAttachmentList(op){
    {type:'ZIP',name:op.id+'_ARCHIVE.zip',description:'Supporting materials / 관련 자료',kind:'archive'}
  ];
 }
-function addOpPreviewText(target,tag,title,en,ko){
- const label=document.createElement('div');label.className='ops-sim-tag';label.textContent=tag;
- const heading=document.createElement('h4');heading.textContent=title;
- const eng=document.createElement('p');eng.textContent=en;
- const kor=document.createElement('p');kor.className='ko';kor.textContent=ko;
- target.replaceChildren(label,heading,eng,kor);
-}
-function showOpAttachment(op, attachment, activeButton){
- const panel=document.getElementById('opAttachmentPreview');const body=document.getElementById('opPreviewBody');
- document.getElementById('opPreviewName').textContent=attachment.name;
- document.querySelectorAll('#opAttachmentGrid .ops-attachment').forEach(b=>b.setAttribute('aria-pressed',String(b===activeButton)));
- if(attachment.kind==='sealed')addOpPreviewText(body,'ACCESS / SEALED','RESTRICTED ARCHIVE',op.briefEn,op.briefKo);
- if(attachment.kind==='report')addOpPreviewText(body,'ARCHIVED DOCUMENT / SUMMARY','Operational Report',op.briefEn,op.briefKo);
- if(attachment.kind==='review')addOpPreviewText(body,'ARCHIVED DOCUMENT / REVIEW','Review & Outcome',op.outEn,op.outKo);
- if(attachment.kind==='archive')addOpPreviewText(body,'ATTACHMENT REGISTER / INDEX','Supporting Material Index','Associated training materials are catalogued under '+op.id+'. Individual source files are not available in this demonstration archive.',''+op.id+'의 관련 훈련 자료가 보관 목록에 등록되어 있다. 이 체험용 아카이브에서는 개별 원본 파일을 제공하지 않는다.');
- panel.hidden=false;
-}
 function openOperation(id){
  const op=operations.find(r=>r.id===id);if(!op)return;
  opPreviousFocus=document.activeElement;
@@ -704,15 +717,15 @@ function openOperation(id){
  const attachments=opAttachmentList(op);document.getElementById('opAttachmentCount').textContent=String(attachments.length).padStart(2,'0')+' FILE'+(attachments.length===1?'':'S');
  const grid=document.getElementById('opAttachmentGrid');grid.replaceChildren();
  for(const file of attachments){
-   const b=document.createElement('button');b.type='button';b.className='ops-attachment';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',file.name+' 미리보기');
+   const b=document.createElement('button');b.type='button';b.className='ops-attachment';b.setAttribute('aria-label',file.name);
    const mark=document.createElement('span');mark.className='ops-attachment-icon';mark.textContent=file.type;
    const copy=document.createElement('span');copy.className='ops-attachment-copy';
    const title=document.createElement('strong');title.textContent=file.name;
    const desc=document.createElement('small');desc.textContent=file.description;
-   const hint=document.createElement('em');hint.textContent=file.kind==='sealed'?'SEALED':'PREVIEW ↗';copy.append(title,desc,hint);b.append(mark,copy);
-   b.addEventListener('click',()=>showOpAttachment(op,file,b));grid.append(b);
+   const hint=document.createElement('em');hint.textContent=file.kind==='sealed'?'SEALED':'OPEN FILE ↗';copy.append(title,desc,hint);b.append(mark,copy);
+   // Visual-only attachment: retain the button styling, but do not open or modify files.
+   grid.append(b);
  }
- document.getElementById('opAttachmentPreview').hidden=true;
  const overlay=document.getElementById('operationOverlay');overlay.hidden=false;
  document.body.classList.add('ops-modal-open');
  document.querySelector('.ops-dialog-scroll').scrollTop=0;
@@ -723,7 +736,52 @@ function closeOperation(){
  overlay.hidden=true;document.body.classList.remove('ops-modal-open');opOpenRecord=null;
  if(opPreviousFocus&&opPreviousFocus.isConnected)opPreviousFocus.focus();opPreviousFocus=null;
 }
-function showView(name){if(!views[name])return;if(name!=='operations')closeOperation();document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.getElementById('breadView').textContent=views[name]}
+
+/* v4.63: fictional institution-only evaluation records, with isolated viewer. */
+const evaluations=[{"id":"NX-EV-P01","title":"FIRST TRANSITION","titleKo":"1학년 → 2학년 승급 심사","date":"2026-11-15","year":"YEAR 01","kind":"PROMOTION","status":"ARCHIVED","division":"BOARD","briefEn":"The first-year advancement board reviews foundational readiness, training attendance, documented safety compliance, and the completed semester assessment packet. A board review is required before the second-year assignment can be recorded.","briefKo":"1학년 승급 심사에서는 기초 준비태세, 훈련 이수 현황, 안전 규정 준수 기록 및 학기별 평가 자료를 검토한다. 2학년 배정 기록을 확정하기 전에 평가위원회의 심사가 필요하다.","reviewEn":"The review file records the procedure and status of the board cycle. Individual identities, numerical scores, decisions, and sealed deliberations are outside this general index.","reviewKo":"본 문서는 심사 절차와 진행 상태만 정리한다. 개인 신원, 세부 점수, 최종 판정 및 비공개 심의 내용은 일반 색인에 포함하지 않는다."},{"id":"NX-EV-P02","title":"INTERMEDIATE GATE","titleKo":"2학년 → 3학년 승급 심사","date":"2026-11-13","year":"YEAR 02","kind":"PROMOTION","status":"REVIEW","division":"BOARD","briefEn":"The intermediate board checks interdisciplinary exercises, decision-making documentation, and instructor-submitted readiness summaries. Outstanding administrative corrections remain in review.","briefKo":"중급 승급 심사에서는 전공 간 협동 훈련, 판단 과정 기록 및 교관이 제출한 준비태세 요약을 확인한다. 일부 행정 보완 자료는 아직 검토 중이다.","reviewEn":"The review file records the procedure and status of the board cycle. Individual identities, numerical scores, decisions, and sealed deliberations are outside this general index.","reviewKo":"본 문서는 심사 절차와 진행 상태만 정리한다. 개인 신원, 세부 점수, 최종 판정 및 비공개 심의 내용은 일반 색인에 포함하지 않는다."},{"id":"NX-EV-P03","title":"ADVANCED ELIGIBILITY","titleKo":"3학년 → 4학년 승급 심사","date":"2026-11-21","year":"YEAR 03","kind":"PROMOTION","status":"REVIEW","division":"BOARD","briefEn":"The board assesses readiness to enter the advanced training track. Tactical judgment, field safety, team coordination, and specialty competency reports are reviewed together; an access upgrade is not issued automatically.","briefKo":"상급 교육과정 진입 적격성을 심사한다. 전술적 판단, 현장 안전, 협동 및 전공 능력 보고서를 함께 검토하며, 내부망 접근 등급의 자동 상향을 의미하지는 않는다.","reviewEn":"The review file records the procedure and status of the board cycle. Individual identities, numerical scores, decisions, and sealed deliberations are outside this general index.","reviewKo":"본 문서는 심사 절차와 진행 상태만 정리한다. 개인 신원, 세부 점수, 최종 판정 및 비공개 심의 내용은 일반 색인에 포함하지 않는다."},{"id":"NX-EV-P04","title":"SENIOR ADVANCEMENT","titleKo":"4학년 → 5학년 승급 심사","date":"2026-12-03","year":"YEAR 04","kind":"PROMOTION","status":"SCHEDULED","division":"BOARD","briefEn":"The senior-track board is scheduled to review advanced training portfolios, leadership under simulation, written planning records, and instructor recommendations. No candidate decision is entered in this index.","briefKo":"시니어 교육과정 승급 심사는 상급 훈련 포트폴리오, 모의 상황 지휘 역량, 서면 작전 계획 및 교관 추천서를 검토할 예정이다. 본 색인에는 개별 교육생의 심사 결과를 기록하지 않는다.","reviewEn":"The review file records the procedure and status of the board cycle. Individual identities, numerical scores, decisions, and sealed deliberations are outside this general index.","reviewKo":"본 문서는 심사 절차와 진행 상태만 정리한다. 개인 신원, 세부 점수, 최종 판정 및 비공개 심의 내용은 일반 색인에 포함하지 않는다."},{"id":"NX-EV-P05","title":"FINAL QUALIFICATION","titleKo":"5학년 최종 자격 심사","date":"2026-12-17","year":"YEAR 05","kind":"PROMOTION","status":"SCHEDULED","division":"BOARD","briefEn":"The final qualification review assembles the full training portfolio, specialty assessment records, multidisciplinary performance review, and formal board determination. Graduation or agent qualification is not presumed.","briefKo":"최종 자격 심사에서는 전체 교육 기록, 전공 평가 결과, 종합 수행 검토 및 평가위원회의 최종 결정을 취합한다. 졸업이나 요원 자격 취득 여부는 미리 확정하지 않는다.","reviewEn":"The review file records the procedure and status of the board cycle. Individual identities, numerical scores, decisions, and sealed deliberations are outside this general index.","reviewKo":"본 문서는 심사 절차와 진행 상태만 정리한다. 개인 신원, 세부 점수, 최종 판정 및 비공개 심의 내용은 일반 색인에 포함하지 않는다."},{"id":"NX-EV-S01","title":"FOUNDATION SEMESTER REVIEW","titleKo":"1학년 학기 종합평가","date":"2026-10-30","year":"YEAR 01","kind":"SEMESTER","status":"ARCHIVED","division":"ACADEMY","briefEn":"Basic academic participation, physical readiness, safety modules, and team exercises were checked through a standardized evidence packet.","briefKo":"기초 교육 참여, 체력 준비태세, 안전 교육 및 팀 훈련의 이수 기록을 표준 평가 자료로 점검했다.","reviewEn":"The academic registry contains a consolidated cycle summary. It does not assign any named character a score, rank, or outcome.","reviewKo":"학사 색인에는 평가 주기별 요약만 담는다. 특정 캐릭터의 점수·석차·합격 여부를 임의로 부여하지 않는다."},{"id":"NX-EV-S02","title":"APPLIED SKILLS REVIEW","titleKo":"2학년 응용 역량 종합평가","date":"2026-11-05","year":"YEAR 02","kind":"SEMESTER","status":"ARCHIVED","division":"ACADEMY","briefEn":"The second-year record consolidates application exercises and specialty orientation observations without publishing candidate-level grades.","briefKo":"2학년 기록은 응용 훈련과 전공 적응 관찰 자료를 취합하되 개인별 성적을 공개하지 않는다.","reviewEn":"The academic registry contains a consolidated cycle summary. It does not assign any named character a score, rank, or outcome.","reviewKo":"학사 색인에는 평가 주기별 요약만 담는다. 특정 캐릭터의 점수·석차·합격 여부를 임의로 부여하지 않는다."},{"id":"NX-EV-S03","title":"INTEGRATED RESPONSE REVIEW","titleKo":"3학년 통합 대응 종합평가","date":"2026-11-11","year":"YEAR 03","kind":"SEMESTER","status":"REVIEW","division":"ACADEMY","briefEn":"The assessment checks coordinated decisions across multiple disciplines and the quality of after-action explanations.","briefKo":"다분야 협동 상황에서의 의사결정과 사후 판단 근거 정리 수준을 점검한다.","reviewEn":"The academic registry contains a consolidated cycle summary. It does not assign any named character a score, rank, or outcome.","reviewKo":"학사 색인에는 평가 주기별 요약만 담는다. 특정 캐릭터의 점수·석차·합격 여부를 임의로 부여하지 않는다."},{"id":"NX-EV-S04","title":"ADVANCED FIELD REVIEW","titleKo":"4학년 상급 현장 종합평가","date":"2026-11-22","year":"YEAR 04","kind":"SEMESTER","status":"REVIEW","division":"ACADEMY","briefEn":"The advanced review combines supervised field simulations, planning evidence, and safety audit notes for the promotion board.","briefKo":"상급 평가는 감독하의 현장 모의훈련, 계획 수립 자료 및 안전 점검 결과를 승급 심사에 반영하기 위해 취합한다.","reviewEn":"The academic registry contains a consolidated cycle summary. It does not assign any named character a score, rank, or outcome.","reviewKo":"학사 색인에는 평가 주기별 요약만 담는다. 특정 캐릭터의 점수·석차·합격 여부를 임의로 부여하지 않는다."},{"id":"NX-EV-S05","title":"SENIOR CAPSTONE REVIEW","titleKo":"5학년 최종 종합평가","date":"2026-12-12","year":"YEAR 05","kind":"SEMESTER","status":"SCHEDULED","division":"ACADEMY","briefEn":"The capstone review is scheduled to assess comprehensive readiness and documentation before the final qualification board convenes.","briefKo":"최종 종합평가는 자격 심사위원회 개최에 앞서 전반적인 준비태세와 증빙 문서를 검토할 예정이다.","reviewEn":"The academic registry contains a consolidated cycle summary. It does not assign any named character a score, rank, or outcome.","reviewKo":"학사 색인에는 평가 주기별 요약만 담는다. 특정 캐릭터의 점수·석차·합격 여부를 임의로 부여하지 않는다."},{"id":"NX-EV-D01","title":"CONTROLLED FIELD RESPONSE","titleKo":"전투 분야 현장 대응 평가","date":"2026-11-17","year":"MULTI-YEAR","kind":"SPECIALTY","status":"REVIEW","division":"COMBAT","briefEn":"Simulated movement, situational recognition, safe equipment handling, and disciplined team response are examined.","briefKo":"모의 이동, 상황 인지, 안전한 장비 운용 및 규율 있는 팀 대응을 평가한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-D02","title":"SOURCE RELIABILITY AUDIT","titleKo":"정보 분야 출처 신뢰도 평가","date":"2026-11-09","year":"MULTI-YEAR","kind":"SPECIALTY","status":"ARCHIVED","division":"INTELLIGENCE","briefEn":"Analysts practice evidence verification, confidence labeling, and clear separation of observation from inference.","briefKo":"정보 분석 교육생은 근거 검증, 신뢰도 표시 및 관측과 추론의 명확한 구분을 수행한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-D03","title":"CLOSED NETWORK RECOVERY","titleKo":"기술 분야 폐쇄망 복구 평가","date":"2026-11-18","year":"MULTI-YEAR","kind":"SPECIALTY","status":"REVIEW","division":"TECH","briefEn":"A closed test network is used to observe incident reporting, defensive restoration, and documentation quality.","briefKo":"폐쇄 시험망에서 장애 보고, 방어적 복구 및 문서화의 적절성을 관찰한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-D04","title":"NEGOTIATION & OBSERVATION","titleKo":"심리 분야 협상·관찰 평가","date":"2026-11-12","year":"MULTI-YEAR","kind":"SPECIALTY","status":"ARCHIVED","division":"PSYCHOLOGY","briefEn":"Structured role-play sessions examine listening accuracy, negotiation conduct, and behavioral analysis notes.","briefKo":"구조화된 역할극을 통해 경청의 정확성, 협상 태도 및 행동분석 기록을 점검한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-D05","title":"CONSTRAINT PLANNING BOARD","titleKo":"전략 분야 제한 조건 작전계획 평가","date":"2026-11-20","year":"MULTI-YEAR","kind":"SPECIALTY","status":"REVIEW","division":"STRATEGY","briefEn":"Planning teams document alternative decisions, resource constraints, risk assumptions, and justification of priorities.","briefKo":"계획 수립 팀은 대안별 판단, 자원 제약, 위험 가정 및 우선순위의 근거를 기록한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-D06","title":"CASUALTY SUPPORT COORDINATION","titleKo":"지원 분야 의료·구조 협동 평가","date":"2026-11-14","year":"MULTI-YEAR","kind":"SPECIALTY","status":"ARCHIVED","division":"SUPPORT","briefEn":"A simulated response tests triage communication, rescue handoff, logistics awareness, and safe coordination.","briefKo":"모의 상황에서 의료 분류 전달, 구조 인계, 보급 상황 인지 및 안전한 협동 절차를 확인한다.","reviewEn":"The division report is filed as an assessment framework and consolidated exercise record. No cadet-specific assessment outcomes are included.","reviewKo":"전공별 평가 체계 및 통합 훈련 기록으로 보관한다. 특정 교육생의 개별 평가 결과는 포함하지 않는다."},{"id":"NX-EV-R01","title":"SUPPLEMENTAL ASSESSMENT WINDOW","titleKo":"보완 평가 접수 및 일정 검토","date":"2026-11-23","year":"ALL YEARS","kind":"REASSESSMENT","status":"SCHEDULED","division":"BOARD","briefEn":"A supplemental assessment window has been prepared for incomplete or review-pending evaluation packets. Eligibility and scheduling depend on board instructions, not an automatic retake rule.","briefKo":"자료 미비 또는 추가 검토가 필요한 평가 기록을 대상으로 보완 평가 기간을 준비하고 있다. 대상과 일정은 자동 재시험 규칙이 아닌 심사 지침에 따라 결정된다.","reviewEn":"The registrar has not published individual applications or outcomes.","reviewKo":"학사 담당 부서는 개인별 신청 및 판정 내용을 공개하지 않았다."},{"id":"NX-EV-B01","title":"BOARD PROCEDURE AUDIT","titleKo":"평가위원회 심사 절차 점검","date":"2026-11-08","year":"ALL YEARS","kind":"BOARD REVIEW","status":"ARCHIVED","division":"BOARD","briefEn":"An internal audit reviewed documentation routing, reviewer independence, and version tracking across advancement decisions.","briefKo":"내부 심사 점검을 통해 승급 판정 문서 전달, 심사자 독립성 및 기록 변경 이력 관리를 확인했다.","reviewEn":"The procedural checklist was updated. No personal decision or disciplinary history is reproduced here.","reviewKo":"심사 절차 점검표를 갱신했다. 개인별 결정이나 징계 이력은 이 문서에 수록하지 않는다."}];
+function renderEvaluations(){
+ const q=document.getElementById('evalSearch').value.trim().toLocaleLowerCase(), kind=document.getElementById('evalKind').value, year=document.getElementById('evalYear').value;
+ const rows=evaluations.filter(r=>(kind==='all'||r.kind===kind)&&(year==='all'||r.year===year||r.year==='ALL YEARS'||r.year==='MULTI-YEAR')&&[r.id,r.title,r.titleKo,r.division,r.kind,r.year].join(' ').toLocaleLowerCase().includes(q));
+ const holder=document.getElementById('evalResults');holder.replaceChildren();
+ for(const r of rows){
+   const button=document.createElement('button');button.type='button';button.className='ops-row';button.setAttribute('aria-label',r.title+' 평가 보고서 열기');
+   const id=document.createElement('span');id.className='ops-id';id.textContent=r.id;
+   const label=document.createElement('span');
+   const en=document.createElement('span');en.className='ops-name';en.textContent=r.title;
+   const ko=document.createElement('span');ko.className='ops-ko';ko.textContent=r.titleKo;label.append(en,ko);
+   const div=document.createElement('span');div.className='ops-division';div.textContent=r.kind;
+   const date=document.createElement('span');date.className='ops-date';date.textContent=r.date;
+   const state=document.createElement('span');state.className='ops-state '+r.status;state.textContent=r.status;
+   button.append(id,label,div,date,state);button.addEventListener('click',()=>openEvaluation(r.id));holder.append(button);
+ }
+ document.getElementById('evalEmpty').classList.toggle('hidden',rows.length>0);
+ document.getElementById('evalCount').textContent=String(evaluations.length).padStart(2,'0');
+ document.getElementById('evalPromotion').textContent=String(evaluations.filter(x=>x.kind==='PROMOTION').length).padStart(2,'0');
+ document.getElementById('evalSpecialty').textContent=String(evaluations.filter(x=>x.kind==='SPECIALTY').length).padStart(2,'0');
+ document.getElementById('evalReview').textContent=String(evaluations.filter(x=>x.status==='REVIEW').length).padStart(2,'0');
+}
+let evalPreviousFocus=null;
+function openEvaluation(id){
+ const r=evaluations.find(x=>x.id===id);if(!r)return;evalPreviousFocus=document.activeElement;
+ for(const [element,value] of Object.entries({evalDetailTitle:r.title,evalDetailKo:r.titleKo,evalBriefEn:r.briefEn,evalBriefKo:r.briefKo,evalReviewEn:r.reviewEn,evalReviewKo:r.reviewKo}))document.getElementById(element).textContent=value;
+ const meta=document.getElementById('evalDetailMeta');meta.replaceChildren();
+ for(const [k,v] of [['FILE ID',r.id],['DATE',r.date],['YEAR',r.year],['CATEGORY',r.kind],['DIVISION',r.division],['STATUS',r.status]]){
+  const cell=document.createElement('div'),b=document.createElement('b'),span=document.createElement('span');b.textContent=k;span.textContent=v;cell.append(b,span);meta.append(cell);
+ }
+ const grid=document.getElementById('evalAttachmentGrid');grid.replaceChildren();
+ for(const file of [{type:'PDF',name:r.id+'_ASSESSMENT.pdf',desc:'Review packet / 평가 자료'},{type:'TXT',name:r.id+'_BOARD_NOTES.txt',desc:'Committee notes / 심사 기록'}]){
+  const b=document.createElement('button');b.type='button';b.className='ops-attachment';b.setAttribute('aria-label',file.name);
+  const icon=document.createElement('span');icon.className='ops-attachment-icon';icon.textContent=file.type;
+  const copy=document.createElement('span');copy.className='ops-attachment-copy';
+  const title=document.createElement('strong');title.textContent=file.name;const desc=document.createElement('small');desc.textContent=file.desc;
+  const hint=document.createElement('em');hint.textContent='OPEN FILE ↗';copy.append(title,desc,hint);b.append(icon,copy);grid.append(b);
+  // Deliberately no click handler: file is only a visual prop.
+ }
+ const overlay=document.getElementById('evalOverlay');overlay.hidden=false;document.body.classList.add('ops-modal-open');overlay.querySelector('.ops-dialog-scroll').scrollTop=0;overlay.querySelector('.ops-dialog').focus();
+}
+function closeEvaluation(){const overlay=document.getElementById('evalOverlay');if(overlay.hidden)return;overlay.hidden=true;document.body.classList.remove('ops-modal-open');if(evalPreviousFocus&&evalPreviousFocus.isConnected)evalPreviousFocus.focus();evalPreviousFocus=null;}
+
+function showView(name){if(!views[name])return;if(name!=='operations')closeOperation();if(name!=='evaluations')closeEvaluation();document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.getElementById('breadView').textContent=views[name]}
 
 // The second verification stage is a visual interaction only; no biometric data is collected.
 const thumbGate=document.getElementById('nxThumbGate');
@@ -800,10 +858,24 @@ document.getElementById('personSearch').addEventListener('input',renderPersonnel
 
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
 document.getElementById('personType').addEventListener('change',renderPersonnel);
+
+document.getElementById('evalSearch').addEventListener('input',renderEvaluations);
+document.getElementById('evalKind').addEventListener('change',renderEvaluations);
+document.getElementById('evalYear').addEventListener('change',renderEvaluations);
+document.getElementById('evalDetailClose').addEventListener('click',closeEvaluation);
+document.getElementById('evalOverlay').addEventListener('click',e=>{if(e.target.id==='evalOverlay')closeEvaluation()});
+document.addEventListener('keydown',e=>{
+ const overlay=document.getElementById('evalOverlay');if(overlay.hidden)return;
+ if(e.key==='Escape'){e.preventDefault();closeEvaluation();return;}
+ if(e.key!=='Tab')return;
+ const nodes=[...overlay.querySelectorAll('button:not([disabled]):not([hidden])')].filter(el=>el.offsetParent!==null);
+ if(!nodes.length)return;const first=nodes[0],last=nodes[nodes.length-1];
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+});
+
 document.getElementById('operationSearch').addEventListener('input',renderOperations);
 document.getElementById('operationStatus').addEventListener('change',renderOperations);
 document.getElementById('opDetailClose').addEventListener('click',closeOperation);
-document.getElementById('opPreviewClose').addEventListener('click',()=>{document.getElementById('opAttachmentPreview').hidden=true;document.querySelectorAll('#opAttachmentGrid .ops-attachment').forEach(b=>b.setAttribute('aria-pressed','false'))});
 document.getElementById('operationOverlay').addEventListener('click',e=>{if(e.target.id==='operationOverlay')closeOperation()});
 document.addEventListener('keydown',e=>{
  const overlay=document.getElementById('operationOverlay');if(overlay.hidden)return;
@@ -816,7 +888,7 @@ document.addEventListener('keydown',e=>{
  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
 });
 
-document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();
+document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();renderEvaluations();
 })();
 </script>
 <script src="image-protection.js" defer></script>
