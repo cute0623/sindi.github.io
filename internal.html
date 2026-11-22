@@ -443,6 +443,24 @@ body.nx-thumb-locked{overflow:hidden}
 @media(max-width:850px){.ops-row{grid-template-columns:85px 1fr 96px;gap:11px}.ops-row .ops-division,.ops-row .ops-date{display:none}.ops-file-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:530px){.ops-stats{grid-template-columns:repeat(2,1fr);gap:8px}.ops-stats>div{padding:13px}.ops-stats strong{font-size:23px}.ops-row{grid-template-columns:74px 1fr;gap:9px;padding:13px 11px}.ops-state{grid-column:2;justify-self:start;padding:5px 9px}.ops-row .ops-id{font-size:10px}.ops-row .ops-name{font-size:11px;overflow-wrap:anywhere}.ops-file-top{flex-direction:column;gap:12px}.ops-close{align-self:flex-start}.ops-report{padding:19px 0}}
 
+
+/* v4.61 — operation report overlay, mirrors community's focused document view */
+.ops-overlay[hidden],.ops-preview[hidden]{display:none!important}
+.ops-overlay{position:fixed;inset:0;z-index:5000;background:rgba(2,5,10,.88);backdrop-filter:blur(10px);display:grid;place-items:center;padding:clamp(8px,2vw,24px)}
+.ops-dialog{width:min(930px,100%);max-height:calc(100dvh - 24px);display:flex;flex-direction:column;min-height:0;overflow:hidden;border:1px solid #78899a;background:linear-gradient(145deg,#1b222d 0%,#0b1018 55%,#090d13 100%);box-shadow:0 28px 100px #000c,inset 0 1px 0 #d9eaff1a;color:#deeaf5;outline:none}
+.ops-dialog-bar{flex:none;min-height:66px;display:flex;justify-content:space-between;align-items:center;gap:14px;background:linear-gradient(180deg,#28323e,#151c26);border-bottom:1px solid #637488;padding:12px clamp(16px,3vw,29px);color:#d0deea;font-size:10px;font-weight:600;letter-spacing:.18em}
+.ops-dialog-bar em{font-style:normal;letter-spacing:0;color:#849eb4;font-weight:400}.ops-dialog-light{display:inline-block;width:7px;height:7px;margin-right:11px;border-radius:50%;background:#adcbd6;box-shadow:0 0 10px #9bcee0}
+.ops-dialog-scroll{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:clamp(20px,4vw,40px)}
+.ops-dialog .ops-file-top{align-items:center}.ops-dialog .ops-file-top h2{font:normal clamp(26px,4vw,43px) Georgia,serif;letter-spacing:.09em;color:#f5f8fb;margin:12px 0 6px}.ops-dialog .ops-file-top p{color:#a4bfd0;font-size:13px;margin:0}
+.ops-doc-stamp{font-size:10px;text-align:center;line-height:1.9;letter-spacing:.16em;color:#a0b5c7;border:1px solid #607283;padding:12px 16px;transform:rotate(-3deg);opacity:.85;flex:none}
+.ops-dialog .ops-file-meta{padding:23px 0}.ops-dialog .ops-report{padding:24px 0}.ops-dialog .ops-close{font-size:10px;min-width:124px;white-space:nowrap}
+.ops-attachments{padding-top:28px}.ops-attachment-head{display:flex;justify-content:space-between;align-items:end;gap:10px}.ops-attachment-head h3{font:normal 22px Georgia,serif;color:#eff4f8;margin:11px 0 0;letter-spacing:.05em}.ops-attachment-head h3 span{font:normal 11px system-ui,sans-serif;letter-spacing:0;color:#9db1c3}.ops-attachment-count{border:1px solid #627688;padding:8px 10px;color:#acc2d4;font-size:10px;letter-spacing:.1em;white-space:nowrap}
+.ops-attachment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 0}.ops-attachment{display:flex;align-items:center;text-align:left;gap:13px;min-width:0;padding:17px 13px;color:#e4eef5;background:linear-gradient(140deg,#222c38,#101923);border:1px solid #526579;transition:background .2s,border-color .2s;cursor:pointer}.ops-attachment:hover,.ops-attachment:focus-visible,.ops-attachment[aria-pressed=true]{background:#2a3b4c;border-color:#adccde;outline-offset:2px}.ops-attachment-icon{flex:none;width:44px;height:51px;display:grid;place-items:center;position:relative;border:1px solid #8096a7;background:#111c29;color:#dbe8f4;font:700 10px ui-monospace,monospace;letter-spacing:.03em}.ops-attachment-copy{min-width:0;display:grid;gap:6px}.ops-attachment-copy strong{font-size:11px;overflow-wrap:anywhere;color:#f3f7fc}.ops-attachment-copy small{font-size:10px;color:#9fb7ca;line-height:1.5}.ops-attachment-copy em{font-style:normal;font-size:9px;letter-spacing:.07em;color:#7e9eb6}
+.ops-preview{border:1px solid #8193a3;margin-top:17px;background:#0c1420}.ops-preview-head{display:flex;gap:15px;align-items:center;justify-content:space-between;padding:14px 17px;border-bottom:1px solid #445b70;background:#1b2939}.ops-preview-head>div{display:grid;gap:7px;min-width:0}.ops-preview-head span{font-size:9px;letter-spacing:.12em;color:#95b4ca}.ops-preview-head strong{font-size:12px;color:#eef5fb;overflow-wrap:anywhere}.ops-preview-head button{border:1px solid #6e8ca6;background:#122336;color:#dfebf4;padding:9px 10px;white-space:nowrap;font-size:9px}.ops-preview-body{padding:23px 21px;color:#cbdce8;font-size:12px;line-height:1.95}.ops-preview-body h4{font:normal 20px Georgia,serif;color:#f3f6f9;margin:4px 0 13px}.ops-preview-body p{margin:10px 0}.ops-preview-body .ko{border-left:2px solid #8bacc1;background:#1b2c3b;padding:12px 16px;color:#b3c8d8}.ops-preview-body .ops-sim-tag{font-size:9px;letter-spacing:.2em;color:#8cbbd5}.ops-preview-body .ops-redacted{display:inline-block;background:#070b0f;color:#8892a0;border:1px solid #3e4c58;padding:5px 11px;font-size:10px;letter-spacing:.13em}
+body.ops-modal-open{overflow:hidden}
+@media(max-width:700px){.ops-overlay{padding:8px}.ops-dialog{max-height:calc(100dvh - 16px)}.ops-dialog-bar{min-height:58px;gap:7px;padding:11px 14px;font-size:9px;letter-spacing:.05em}.ops-dialog-bar em{display:none}.ops-dialog .ops-close{min-width:0;padding:9px;font-size:9px}.ops-dialog-scroll{padding:19px 16px}.ops-doc-stamp{display:none}.ops-attachment-grid{grid-template-columns:1fr}.ops-attachment{padding:12px}.ops-dialog .ops-file-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-preview-head{align-items:flex-start}.ops-preview-head button{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.ops-attachment{transition:none}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -544,13 +562,7 @@ body.nx-thumb-locked{overflow:hidden}
         <div class="nx-filter-bar"><input class="search" id="operationSearch" type="search" placeholder="작전명 · 기록번호 · 담당 분야 검색" aria-label="작전 기록 검색"><select class="nx-filter-select" id="operationStatus" aria-label="작전 상태 필터"><option value="all">ALL STATUS / 전체</option><option value="ACTIVE">ACTIVE / 진행 중</option><option value="REVIEW">REVIEW / 검토 중</option><option value="ARCHIVED">ARCHIVED / 보관</option><option value="SEALED">SEALED / 제한</option></select></div>
         <div class="ops-results" id="operationResults" aria-live="polite"></div><div class="empty hidden" id="operationEmpty">검색 조건에 맞는 기록이 없습니다.</div>
       </section>
-      <section class="ops-file hidden" id="operationDetail" aria-live="polite">
-        <div class="ops-file-top"><div><span class="ops-kicker">NEXUS / OPERATION FILE</span><h2 id="opDetailTitle"></h2><p id="opDetailKo"></p></div><button type="button" id="opDetailClose" class="ops-close">✕ &nbsp; CLOSE FILE</button></div>
-        <div class="ops-file-meta" id="opDetailMeta"></div>
-        <div class="ops-report"><span>01 / MISSION SUMMARY</span><h3>Operational Summary</h3><p id="opBriefEn"></p><div class="ops-translation" id="opBriefKo"></div></div>
-        <div class="ops-report"><span>02 / REVIEW &amp; DISPOSITION</span><h3>Review &amp; Outcome</h3><p id="opOutEn"></p><div class="ops-translation" id="opOutKo"></div></div>
-        <p class="ops-file-foot">NEXUS ARCHIVE · FICTITIOUS TRAINING RECORDS / 인물 및 세부 설정은 추후 확정 예정</p>
-      </section>
+
       <p class="nx-internal-footnote">※ 작전 자료는 NEXUS 세계관을 위한 가상 문서다. BLACK VEIL 사건의 상세 경위와 인물은 추후 설정 확정 전까지 미공개 상태로 유지한다.</p>
     </section>
     <section class="section-view" id="view-evaluations">
@@ -587,6 +599,25 @@ body.nx-thumb-locked{overflow:hidden}
     </section>
 
   </main>
+</div>
+
+<!-- Operation record detail viewer: self-contained overlay, no server uploads. -->
+<div class="ops-overlay" id="operationOverlay" hidden>
+  <article class="ops-dialog" role="dialog" aria-modal="true" aria-labelledby="opDetailTitle" tabindex="-1">
+    <div class="ops-dialog-bar"><span><span class="ops-dialog-light" aria-hidden="true"></span>NEXUS / OPERATION FILE VIEWER <em>· 작전 기록 열람</em></span><button type="button" id="opDetailClose" class="ops-close" aria-label="작전 상세 화면 닫기">✕ &nbsp; CLOSE FILE</button></div>
+    <div class="ops-dialog-scroll">
+      <div class="ops-file-top"><div><span class="ops-kicker">DOCUMENT / OPERATION REGISTRY</span><h2 id="opDetailTitle"></h2><p id="opDetailKo"></p></div><span class="ops-doc-stamp">NEXUS<br>ARCHIVE COPY</span></div>
+      <div class="ops-file-meta" id="opDetailMeta"></div>
+      <div class="ops-report"><span>01 / MISSION SUMMARY</span><h3>Operational Summary</h3><p id="opBriefEn"></p><div class="ops-translation" id="opBriefKo"></div></div>
+      <div class="ops-report"><span>02 / REVIEW &amp; DISPOSITION</span><h3>Review &amp; Outcome</h3><p id="opOutEn"></p><div class="ops-translation" id="opOutKo"></div></div>
+      <section class="ops-attachments" aria-labelledby="opAttachmentHeading">
+        <div class="ops-attachment-head"><div><span class="ops-kicker">03 / ASSOCIATED MATERIALS</span><h3 id="opAttachmentHeading">ATTACHED FILES <span>첨부 자료</span></h3></div><span class="ops-attachment-count" id="opAttachmentCount">00 FILES</span></div>
+        <div class="ops-attachment-grid" id="opAttachmentGrid"></div>
+        <section class="ops-preview" id="opAttachmentPreview" hidden aria-live="polite"><div class="ops-preview-head"><div><span>DOCUMENT PREVIEW / 가상 문서 미리보기</span><strong id="opPreviewName"></strong></div><button type="button" id="opPreviewClose" aria-label="첨부 문서 미리보기 닫기">✕ CLOSE PREVIEW</button></div><div id="opPreviewBody" class="ops-preview-body"></div></section>
+      </section>
+      <p class="ops-file-foot">NEXUS ARCHIVE · FICTIONAL FILE SIMULATION / 첨부 목록과 미리보기는 세계관 연출이며 실제 업로드된 파일이 아님</p>
+    </div>
+  </article>
 </div>
 
 <script>
@@ -633,18 +664,65 @@ function renderOperations(){
  document.getElementById('opsReview').textContent=String(operations.filter(r=>r.status==='REVIEW').length).padStart(2,'0');
  document.getElementById('opsSealed').textContent=String(operations.filter(r=>r.status==='SEALED').length).padStart(2,'0');
 }
+let opPreviousFocus=null;
+let opOpenRecord=null;
+function opAttachmentList(op){
+ if(op.status==='SEALED')return [{type:'LOCK',name:op.id+'_INDEX.lock',description:'RESTRICTED / 제한 색인',kind:'sealed'}];
+ return [
+   {type:'PDF',name:op.id+'_REPORT.pdf',description:'Operational report / 작전 보고서',kind:'report'},
+   {type:'TXT',name:op.id+'_REVIEW.txt',description:'Review notes / 검토 기록',kind:'review'},
+   {type:'ZIP',name:op.id+'_ARCHIVE.zip',description:'Supporting materials / 관련 자료',kind:'archive'}
+ ];
+}
+function addOpPreviewText(target,tag,title,en,ko){
+ const label=document.createElement('div');label.className='ops-sim-tag';label.textContent=tag;
+ const heading=document.createElement('h4');heading.textContent=title;
+ const eng=document.createElement('p');eng.textContent=en;
+ const kor=document.createElement('p');kor.className='ko';kor.textContent=ko;
+ target.replaceChildren(label,heading,eng,kor);
+}
+function showOpAttachment(op, attachment, activeButton){
+ const panel=document.getElementById('opAttachmentPreview');const body=document.getElementById('opPreviewBody');
+ document.getElementById('opPreviewName').textContent=attachment.name;
+ document.querySelectorAll('#opAttachmentGrid .ops-attachment').forEach(b=>b.setAttribute('aria-pressed',String(b===activeButton)));
+ if(attachment.kind==='sealed')addOpPreviewText(body,'ACCESS / SEALED','RESTRICTED ARCHIVE',op.briefEn,op.briefKo);
+ if(attachment.kind==='report')addOpPreviewText(body,'ARCHIVED DOCUMENT / SUMMARY','Operational Report',op.briefEn,op.briefKo);
+ if(attachment.kind==='review')addOpPreviewText(body,'ARCHIVED DOCUMENT / REVIEW','Review & Outcome',op.outEn,op.outKo);
+ if(attachment.kind==='archive')addOpPreviewText(body,'ATTACHMENT REGISTER / INDEX','Supporting Material Index','Associated training materials are catalogued under '+op.id+'. Individual source files are not available in this demonstration archive.',''+op.id+'의 관련 훈련 자료가 보관 목록에 등록되어 있다. 이 체험용 아카이브에서는 개별 원본 파일을 제공하지 않는다.');
+ panel.hidden=false;
+}
 function openOperation(id){
  const op=operations.find(r=>r.id===id);if(!op)return;
- const detail=document.getElementById('operationDetail');
+ opPreviousFocus=document.activeElement;
+ opOpenRecord=op;
  const names={opDetailTitle:op.title,opDetailKo:op.titleKo,opBriefEn:op.briefEn,opBriefKo:op.briefKo,opOutEn:op.outEn,opOutKo:op.outKo};
  for(const [key,value] of Object.entries(names))document.getElementById(key).textContent=value;
  const meta=document.getElementById('opDetailMeta');meta.replaceChildren();
- for(const [k,v] of [['FILE ID',op.id],['ISSUED',op.date],['DIVISION',op.division],['STATUS / RISK',op.status+' / '+op.risk]]){
+ for(const [k,v] of [['FILE ID',op.id],['ISSUED',op.date],['DIVISION',op.division],['STATUS / RISK',op.status+' / '+op.risk],['CLASSIFICATION',op.classification]]){
    const cell=document.createElement('div'),label=document.createElement('b'),value=document.createElement('span');label.textContent=k;value.textContent=v;cell.append(label,value);meta.append(cell);
  }
- detail.classList.remove('hidden');detail.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+ const attachments=opAttachmentList(op);document.getElementById('opAttachmentCount').textContent=String(attachments.length).padStart(2,'0')+' FILE'+(attachments.length===1?'':'S');
+ const grid=document.getElementById('opAttachmentGrid');grid.replaceChildren();
+ for(const file of attachments){
+   const b=document.createElement('button');b.type='button';b.className='ops-attachment';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',file.name+' 미리보기');
+   const mark=document.createElement('span');mark.className='ops-attachment-icon';mark.textContent=file.type;
+   const copy=document.createElement('span');copy.className='ops-attachment-copy';
+   const title=document.createElement('strong');title.textContent=file.name;
+   const desc=document.createElement('small');desc.textContent=file.description;
+   const hint=document.createElement('em');hint.textContent=file.kind==='sealed'?'SEALED':'PREVIEW ↗';copy.append(title,desc,hint);b.append(mark,copy);
+   b.addEventListener('click',()=>showOpAttachment(op,file,b));grid.append(b);
+ }
+ document.getElementById('opAttachmentPreview').hidden=true;
+ const overlay=document.getElementById('operationOverlay');overlay.hidden=false;
+ document.body.classList.add('ops-modal-open');
+ document.querySelector('.ops-dialog-scroll').scrollTop=0;
+ overlay.querySelector('.ops-dialog').focus();
 }
-function closeOperation(){document.getElementById('operationDetail').classList.add('hidden')}
+function closeOperation(){
+ const overlay=document.getElementById('operationOverlay');if(overlay.hidden)return;
+ overlay.hidden=true;document.body.classList.remove('ops-modal-open');opOpenRecord=null;
+ if(opPreviousFocus&&opPreviousFocus.isConnected)opPreviousFocus.focus();opPreviousFocus=null;
+}
 function showView(name){if(!views[name])return;if(name!=='operations')closeOperation();document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.getElementById('breadView').textContent=views[name]}
 
 // The second verification stage is a visual interaction only; no biometric data is collected.
@@ -725,6 +803,18 @@ document.getElementById('personType').addEventListener('change',renderPersonnel)
 document.getElementById('operationSearch').addEventListener('input',renderOperations);
 document.getElementById('operationStatus').addEventListener('change',renderOperations);
 document.getElementById('opDetailClose').addEventListener('click',closeOperation);
+document.getElementById('opPreviewClose').addEventListener('click',()=>{document.getElementById('opAttachmentPreview').hidden=true;document.querySelectorAll('#opAttachmentGrid .ops-attachment').forEach(b=>b.setAttribute('aria-pressed','false'))});
+document.getElementById('operationOverlay').addEventListener('click',e=>{if(e.target.id==='operationOverlay')closeOperation()});
+document.addEventListener('keydown',e=>{
+ const overlay=document.getElementById('operationOverlay');if(overlay.hidden)return;
+ if(e.key==='Escape'){e.preventDefault();closeOperation();return;}
+ if(e.key!=='Tab')return;
+ const nodes=[...overlay.querySelectorAll('button:not([disabled]):not([hidden])')].filter(el=>el.offsetParent!==null);
+ if(!nodes.length)return;
+ const first=nodes[0],last=nodes[nodes.length-1];
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+});
 
 document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();
 })();
