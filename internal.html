@@ -569,17 +569,53 @@ body.ops-modal-open{overflow:hidden}
 @media(max-height:610px){.nx-thumb-core{min-height:0}.nx-thumb-strap{margin-bottom:18px}.nx-thumb-sensor{width:min(32vh,155px)}.nx-thumb-icon{width:68px;height:68px}.nx-thumb-status{margin-top:21px}.nx-thumb-welcome{min-height:240px}}
 @media(prefers-reduced-motion:reduce){.nx-thumb-gate[data-state="welcome"] .nx-thumb-welcome{animation:none}}
 
+
+/* v4.71 — desktop simulated facial scan / touch-device thumb sensor.
+   Presentation only: no camera access, capture, or real biometric verification. */
+.nx-thumb-gate[data-mode="face"] .nx-thumb-sensor{display:none!important}
+.nx-thumb-gate[data-mode="thumb"] .nx-face-stage{display:none!important}
+.nx-face-stage{width:min(300px,65vw);margin:0 auto;display:grid;place-items:center}
+.nx-face-frame{width:250px;max-width:100%;aspect-ratio:250/290;position:relative;border:1px solid #5b86a15e;background:radial-gradient(ellipse at 50% 40%,#1a394a66,#07121ec9 68%);overflow:hidden;box-shadow:inset 0 0 36px #0009,0 0 36px #69bfea19}
+.nx-face-art{position:absolute;inset:7% 9%;width:82%;height:86%;color:#99d0ed;filter:drop-shadow(0 0 12px #93cff651)}
+.nx-face-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#a4d7ef0b 1px,transparent 1px),linear-gradient(90deg,#a4d7ef0b 1px,transparent 1px);background-size:24px 24px}
+.nx-face-corner{position:absolute;z-index:3;width:32px;height:32px;border:3px solid #b6e7fc;filter:drop-shadow(0 0 8px #8ddafad5)}
+.nx-face-corner.tl{top:7px;left:7px;border-right:0;border-bottom:0}.nx-face-corner.tr{top:7px;right:7px;border-left:0;border-bottom:0}
+.nx-face-corner.bl{bottom:7px;left:7px;border-right:0;border-top:0}.nx-face-corner.br{bottom:7px;right:7px;border-left:0;border-top:0}
+.nx-face-scanline{position:absolute;z-index:2;left:7px;right:7px;top:-9%;height:6px;opacity:0;background:linear-gradient(180deg,transparent,#b4f0ff 47%,#67bbdf 56%,transparent);box-shadow:0 0 20px #83d9ff}
+.nx-thumb-gate[data-mode="face"][data-state="holding"] .nx-face-scanline{opacity:1;animation:nx-face-sweep 2.6s ease-in-out infinite alternate}
+@keyframes nx-face-sweep{from{top:9%}to{top:89%}}
+.nx-face-verified{position:absolute;z-index:5;inset:0;display:grid;place-items:center;font-size:110px;color:#bcffe4;background:#0a2928df;opacity:0;transform:scale(.92);transition:opacity .32s,transform .32s}
+.nx-thumb-gate[data-mode="face"][data-state="success"] .nx-face-verified{opacity:1;transform:scale(1)}
+.nx-thumb-gate[data-mode="face"] .nx-thumb-status{margin-top:29px}
+.nx-thumb-gate[data-state="welcome"] .nx-face-stage{display:none!important}
+@media(max-height:650px){.nx-face-frame{width:160px}.nx-thumb-gate[data-mode="face"] .nx-thumb-status{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.nx-thumb-gate[data-mode="face"] .nx-face-scanline{animation:none;top:45%}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
 
 <!-- NEXUS v4.42: centered HD emblem and complete orbit beam -->
-<div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 엄지 인증" hidden>
+<div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 생체 인증" hidden>
   <div class="nx-thumb-core">
     <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
     <div class="nx-thumb-mark">NEXUS</div>
     <div class="nx-thumb-strap">AGENT ACCESS · VERIFICATION 02</div>
+
+    <div class="nx-face-stage" id="nxFaceStage" aria-hidden="true">
+      <div class="nx-face-frame">
+        <span class="nx-face-corner tl"></span><span class="nx-face-corner tr"></span><span class="nx-face-corner bl"></span><span class="nx-face-corner br"></span>
+        <svg class="nx-face-art" viewBox="0 0 250 290" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M65 77 Q70 24 125 25 Q182 28 187 82 L184 164 Q180 227 125 249 Q72 230 66 166 Z" />
+          <path d="M70 98 Q73 62 99 53 M180 97 Q178 62 153 52 M91 123 Q105 115 115 124 M135 124 Q151 114 161 124 M125 133 L118 171 Q125 177 133 170 M103 198 Q125 211 148 198" />
+          <path opacity=".38" d="M125 35 V18 M125 256 V275 M56 145 H38 M195 145 H213" />
+        </svg>
+        <div class="nx-face-scanline"></div>
+        <div class="nx-face-grid"></div>
+        <div class="nx-face-verified" aria-hidden="true">✓</div>
+      </div>
+    </div>
     <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 아래 지문 센서를 약 2.2초 동안 길게 눌러 모의 인증 완료">
       <span class="nx-thumb-ring" aria-hidden="true"></span>
       <svg class="nx-thumb-icon" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -943,7 +979,9 @@ const thumbSensor=document.getElementById('nxThumbSensor');
 const thumbStatus=document.getElementById('nxThumbStatus');
 const thumbInstruction=document.getElementById('nxThumbInstruction');
 const thumbPct=document.getElementById('nxThumbPct');
-let thumbState='idle',thumbHolding=false,thumbPointer=null,thumbKeyboard=false,thumbRaf=0,thumbStart=0,thumbTimer=0;
+const faceStage=document.getElementById('nxFaceStage');
+let thumbMode='thumb';
+let thumbState='idle',thumbHolding=false,thumbPointer=null,thumbKeyboard=false,thumbRaf=0,thumbStart=0,thumbTimer=0,faceStartTimer=0;
 const thumbReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const THUMB_HOLD_MS=2200;
 let thumbPendingName='';
@@ -953,17 +991,20 @@ function thumbReset(){
   thumbRaf=0;thumbHolding=false;thumbPointer=null;thumbKeyboard=false;
   if(thumbState==='success'||thumbState==='welcome')return;
   thumbState='idle';thumbGate.dataset.state='idle';thumbSensor.style.setProperty('--thumb-progress','0%');
-  thumbStatus.textContent='THUMB VERIFICATION';
-  thumbInstruction.textContent='아래 지문 센서를 엄지손가락으로 길게 누르세요';
-  thumbPct.textContent='AWAITING INPUT';
+  thumbStatus.textContent=thumbMode==='face'?'FACIAL VERIFICATION':'THUMB VERIFICATION';
+  thumbInstruction.textContent=thumbMode==='face'?'얼굴 인식 장치를 초기화하고 있습니다.':'아래 지문 센서를 엄지손가락으로 길게 누르세요';
+  thumbPct.textContent=thumbMode==='face'?'INITIALIZING SENSOR':'AWAITING INPUT';
 }
 function thumbOpen(name){
   thumbPendingName=name;
-  clearTimeout(thumbTimer);
+  clearTimeout(thumbTimer);clearTimeout(faceStartTimer);
+  thumbMode=window.matchMedia('(max-width:767px), (pointer:coarse)').matches?'thumb':'face';
+  thumbGate.dataset.mode=thumbMode;
+  thumbGate.setAttribute('aria-label',thumbMode==='face'?'NEXUS 얼굴 인식 모의 인증':'NEXUS 엄지 지문 모의 인증');
   thumbState='idle';thumbGate.hidden=false;thumbGate.classList.remove('nx-thumb-exit');
   document.body.classList.add('nx-thumb-locked');thumbReset();
-  // Keep focus in the overlay so holding Enter/Space works on desktop.
-  thumbSensor.focus({preventScroll:true});
+  if(thumbMode==='face'){faceStartTimer=setTimeout(()=>thumbBegin(),650)}
+  else{thumbSensor.focus({preventScroll:true})}
 }
 function thumbComplete(){
   if(thumbState==='success')return;
@@ -993,23 +1034,23 @@ function thumbFrame(t){
   if(!thumbHolding||thumbState!=='holding')return;
   const percent=Math.min(100,Math.max(0,(t-thumbStart)/THUMB_HOLD_MS*100));
   thumbSensor.style.setProperty('--thumb-progress',percent.toFixed(1)+'%');
-  thumbPct.textContent='VERIFYING // '+String(Math.floor(percent)).padStart(3,'0')+'%';
+  thumbPct.textContent=(thumbMode==='face'?'FACE MATCH':'VERIFYING')+' // '+String(Math.floor(percent)).padStart(3,'0')+'%';
   if(percent>=100){thumbComplete();return;}
   thumbRaf=requestAnimationFrame(thumbFrame);
 }
 function thumbBegin(){
   if(thumbState!=='idle'||thumbHolding)return;
   thumbHolding=true;thumbState='holding';thumbGate.dataset.state='holding';
-  thumbStatus.textContent='SCANNING THUMBPRINT';
-  thumbInstruction.textContent='인증이 완료될 때까지 계속 누르세요';
+  thumbStatus.textContent=thumbMode==='face'?'SCANNING FACIAL PROFILE':'SCANNING THUMBPRINT';
+  thumbInstruction.textContent=thumbMode==='face'?'얼굴 특징점을 분석하고 있습니다.':'인증이 완료될 때까지 계속 누르세요';
   thumbStart=performance.now();thumbRaf=requestAnimationFrame(thumbFrame);
 }
-thumbSensor.addEventListener('pointerdown',e=>{if(e.button!==0||!e.isPrimary||thumbState!=='idle')return;e.preventDefault();thumbPointer=e.pointerId;try{thumbSensor.setPointerCapture(e.pointerId)}catch(_){}thumbBegin()});
+thumbSensor.addEventListener('pointerdown',e=>{if(thumbMode!=='thumb'||e.button!==0||!e.isPrimary||thumbState!=='idle')return;e.preventDefault();thumbPointer=e.pointerId;try{thumbSensor.setPointerCapture(e.pointerId)}catch(_){}thumbBegin()});
 for(const event of ['pointerup','pointercancel','lostpointercapture']){
   thumbSensor.addEventListener(event,e=>{if(thumbPointer===e.pointerId&&thumbState!=='success')thumbReset()});
 }
-thumbSensor.addEventListener('keydown',e=>{if(e.code!=='Space'&&e.code!=='Enter')return;e.preventDefault();if(e.repeat||thumbKeyboard)return;thumbKeyboard=true;thumbBegin()});
-thumbSensor.addEventListener('keyup',e=>{if(e.code!=='Space'&&e.code!=='Enter')return;e.preventDefault();if(thumbKeyboard&&thumbState!=='success')thumbReset()});
+thumbSensor.addEventListener('keydown',e=>{if(thumbMode!=='thumb'||(e.code!=='Space'&&e.code!=='Enter'))return;e.preventDefault();if(e.repeat||thumbKeyboard)return;thumbKeyboard=true;thumbBegin()});
+thumbSensor.addEventListener('keyup',e=>{if(thumbMode!=='thumb'||(e.code!=='Space'&&e.code!=='Enter'))return;e.preventDefault();if(thumbKeyboard&&thumbState!=='success')thumbReset()});
 thumbSensor.addEventListener('blur',()=>{if(thumbState==='holding'&&thumbPointer===null)thumbReset()});
 thumbSensor.addEventListener('contextmenu',e=>e.preventDefault());
 
