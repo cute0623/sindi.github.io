@@ -766,7 +766,7 @@ body.ops-modal-open{overflow:hidden}
             <div class="nx-location-top"><span class="nx-location-title">LOCATION CONFIRMED / 위치 확인 완료</span><span class="nx-location-status" id="nxLocationStatus">LOCKED</span></div>
             <div class="nx-location-name" id="nxLocationName">중앙 통제실</div>
             <div class="nx-location-en" id="nxLocationEnglish">CENTRAL CONTROL ROOM · 본관</div>
-            <div class="nx-location-bottom"><span id="nxLocationCode">NX-01 / HQ-06</span><button type="button" class="nx-location-refresh" id="nxLocationRefresh" aria-label="다른 NEXUS 구역 탐지">↻ RESCAN</button></div>
+            <div class="nx-location-bottom"><span id="nxLocationCode">NX-01 / HQ-06</span></div>
           </div>
           <div class="nx-radar-footer"><span>SCAN VECTOR / 360°</span><span>FOUR NODES DETECTED</span></div>
         </div>
@@ -1213,7 +1213,7 @@ thumbSensor.addEventListener('keyup',e=>{if(thumbMode!=='thumb'||(e.code!=='Spac
 thumbSensor.addEventListener('blur',()=>{if(thumbState==='holding'&&thumbPointer===null)thumbReset()});
 thumbSensor.addEventListener('contextmenu',e=>e.preventDefault());
 
-function enter(name){loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
+function enter(name){loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview');nxLocate()}
 document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('agentId').value.trim();const code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return;}document.getElementById('loginMsg').textContent='';thumbOpen(name)});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
 
@@ -1358,28 +1358,19 @@ const nxLocations=[
  {zone:'NX-06',sub:'EV-05',ko:'최종 평가 심의실',en:'FINAL EVALUATION COMMITTEE ROOM',area:'평가 구역'},
  {zone:'NX-07',sub:'OB-01',ko:'격리 관찰실',en:'ISOLATION & OBSERVATION ROOM',area:'격리 관찰 구역'}
 ];
-let nxLastLocation=-1;
 function nxLocate(){
  const panel=document.getElementById('nxLocationPanel');
- if(!panel || document.hidden) return;
- panel.classList.add('is-scanning');
- document.getElementById('nxLocationStatus').textContent='SCANNING';
- let i=Math.floor(Math.random()*nxLocations.length);
- if(i===nxLastLocation)i=(i+1)%nxLocations.length;
- nxLastLocation=i;
- const loc=nxLocations[i];
- window.setTimeout(()=>{
-  document.getElementById('nxLocationName').textContent=loc.ko;
-  document.getElementById('nxLocationEnglish').textContent=loc.en+' · '+loc.area;
-  document.getElementById('nxLocationCode').textContent=loc.zone+' / '+loc.sub;
-  document.getElementById('nxActiveSector').textContent=loc.zone;
-  document.getElementById('nxLocationStatus').textContent='LOCKED';
-  panel.classList.remove('is-scanning');
- },550);
+ if(!panel) return;
+ const loc=nxLocations[Math.floor(Math.random()*nxLocations.length)];
+ document.getElementById('nxLocationName').textContent=loc.ko;
+ document.getElementById('nxLocationEnglish').textContent=loc.en+' · '+loc.area;
+ document.getElementById('nxLocationCode').textContent=loc.zone+' / '+loc.sub;
+ document.getElementById('nxActiveSector').textContent=loc.zone;
+ document.getElementById('nxLocationStatus').textContent='LOCKED';
+ panel.classList.remove('is-scanning');
 }
-document.getElementById('nxLocationRefresh').addEventListener('click',nxLocate);
-window.setInterval(()=>{if(document.getElementById('view-overview').classList.contains('active'))nxLocate()},9500);
-nxLocate();
+// Select a single location only after each completed internal-network login.
+// While connected, the displayed facility and active sector remain unchanged.
 
 document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();renderEvaluations();renderClassified();
 })();
