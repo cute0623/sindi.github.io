@@ -379,6 +379,44 @@ body.nx-thumb-locked{overflow:hidden}
 @media(max-width:380px){#app .nx-work-stats .stat-value{font-size:22px}#app .nx-work-stats .nx-pending{font-size:16px}#app .nx-quick-grid{gap:7px}}
 
 
+
+/* v4.73 — simulated tactical radar dashboard; decorative, no device location collected */
+#app .nx-radar-dashboard{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(270px,.92fr);gap:0;margin:0 0 36px;min-height:346px;border:1px solid #708194;background:linear-gradient(125deg,#252f3b 0%,#111923 26%,#090e15 68%,#151f2a 100%);box-shadow:inset 0 1px 0 #e6f1fb32,0 15px 38px #0006;overflow:hidden;isolation:isolate}
+#app .nx-radar-dashboard:before{content:'';position:absolute;inset:5px;border:1px solid #a4b5c31c;pointer-events:none;z-index:3}
+#app .nx-radar-dashboard:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,#ffffff10,transparent 26%,transparent 76%,#ffffff08);z-index:2}
+#app .nx-radar-left{position:relative;padding:22px 26px 20px;border-right:1px solid #415364;min-width:0;display:flex;flex-direction:column}
+#app .nx-radar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;z-index:1}
+#app .nx-radar-kicker{font:600 10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.21em;color:#c4d7e6}
+#app .nx-radar-live{font:500 9px ui-monospace,monospace;letter-spacing:.13em;color:#b5e1cd;white-space:nowrap}
+#app .nx-radar-live:before{content:'';display:inline-block;width:6px;height:6px;background:#96dbbe;box-shadow:0 0 11px #87e8bb;margin-right:8px;border-radius:50%}
+#app .nx-radar-disc{position:relative;align-self:center;width:min(100%,294px);aspect-ratio:1;margin:-1px auto -3px;overflow:hidden;border-radius:50%;border:1px solid #5f87964d;background:radial-gradient(circle at center,#1b36409e 0%,#11232e91 37%,#0b1c2794 71%,#08141b 100%);box-shadow:inset 0 0 65px #000a,0 0 0 6px #8fb7c30b,0 0 28px #99cfdd0b}
+#app .nx-radar-disc:before{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0,transparent calc(25% - 1px),#81b6ca3b 25%,transparent calc(25% + 1px));pointer-events:none}
+#app .nx-radar-disc:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent calc(50% - .5px),#80b8d038 50%,transparent calc(50% + .5px)),linear-gradient(transparent calc(50% - .5px),#80b8d038 50%,transparent calc(50% + .5px));pointer-events:none}
+#app .nx-radar-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 287deg,#79d6bd0c 310deg,#82dfc33c 342deg,#a8f5db87 359.5deg,transparent 360deg);animation:nx-radar-spin 9s linear infinite;z-index:1;pointer-events:none}
+#app .nx-radar-sweep:after{content:'';position:absolute;top:0;left:50%;height:50%;width:1px;background:#bcffe69c;box-shadow:0 0 13px #9de9d7}
+@keyframes nx-radar-spin{to{transform:rotate(360deg)}}
+#app .nx-radar-center{position:absolute;z-index:3;inset:calc(50% - 4px);background:#d3f1ee;box-shadow:0 0 12px #d0fff9;border-radius:50%}
+#app .nx-radar-marker{position:absolute;z-index:3;width:7px;height:7px;border-radius:50%;background:#b7e6e0;box-shadow:0 0 0 4px #9ce6d322,0 0 17px #9fe9dc;animation:nx-radar-pulse 3.2s ease-in-out infinite}
+#app .nx-radar-marker.a{top:27%;left:68%}#app .nx-radar-marker.b{top:59%;left:23%;animation-delay:1s}#app .nx-radar-marker.c{top:74%;left:61%;animation-delay:2s}#app .nx-radar-marker.d{top:39%;left:35%;animation-delay:1.6s}
+@keyframes nx-radar-pulse{0%,100%{opacity:.35;transform:scale(.75)}50%{opacity:1;transform:scale(1.2)}}
+#app .nx-radar-axis{position:absolute;z-index:3;font:8px ui-monospace,monospace;color:#8bb5c7;letter-spacing:.12em}#app .nx-radar-axis.n{top:9px;left:50%;transform:translateX(-50%)}#app .nx-radar-axis.e{right:10px;top:50%}#app .nx-radar-axis.s{bottom:9px;left:50%;transform:translateX(-50%)}#app .nx-radar-axis.w{left:10px;top:50%}
+#app .nx-radar-footer{display:flex;justify-content:space-between;gap:8px;color:#9cafc1;font:9px ui-monospace,monospace;letter-spacing:.12em;z-index:1}
+#app .nx-radar-right{position:relative;display:flex;flex-direction:column;gap:18px;justify-content:center;padding:28px 30px 24px;min-width:0}
+#app .nx-radar-title{font:400 clamp(22px,2.4vw,30px)/1.15 Georgia,'Times New Roman',serif;letter-spacing:.12em;color:#eff5fa;margin:0}
+#app .nx-radar-subtitle{font-size:11px;color:#a9bccc;margin:-10px 0 2px}
+#app .nx-radar-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#app .nx-radar-metric{position:relative;padding:14px 14px 13px;border:1px solid #4b6071;background:linear-gradient(150deg,#1b2b39,#0b141f);box-shadow:inset 0 1px 0 #dbe7f10c;min-width:0}
+#app .nx-radar-metric small{display:block;color:#8fa9bf;font:9px ui-monospace,monospace;letter-spacing:.12em;margin-bottom:10px}
+#app .nx-radar-metric strong{display:block;font:600 15px ui-monospace,SFMono-Regular,Consolas,monospace;color:#d7e9f3;letter-spacing:.045em;white-space:nowrap}
+#app .nx-radar-metric .nx-radar-accent{color:#a8e1cb}
+#app .nx-radar-bars{display:flex;gap:3px;align-items:end;height:31px;border-bottom:1px solid #4e6f7d;padding:0 1px 1px}
+#app .nx-radar-bars i{width:100%;height:var(--h);background:linear-gradient(180deg,#a7d5da,#3b657e);opacity:.66;animation:nx-radar-bars 2.3s ease-in-out infinite alternate;animation-delay:var(--delay)}
+@keyframes nx-radar-bars{to{height:calc(var(--h) * .5);opacity:1}}
+#app .nx-radar-note{font:9px ui-monospace,monospace;color:#8098ab;letter-spacing:.11em;line-height:1.7;border-top:1px solid #364a5b;padding-top:13px}
+@media(max-width:780px){#app .nx-radar-dashboard{grid-template-columns:1fr;margin-bottom:28px}#app .nx-radar-left{border-right:0;border-bottom:1px solid #415364;padding:20px 22px 17px}#app .nx-radar-disc{width:min(68vw,265px);margin:12px auto}#app .nx-radar-right{padding:24px 22px}#app .nx-radar-title{font-size:25px}}
+@media(max-width:390px){#app .nx-radar-grid{gap:8px}#app .nx-radar-metric{padding:11px}#app .nx-radar-metric strong{font-size:13px}#app .nx-radar-kicker{font-size:9px;letter-spacing:.12em}}
+@media(prefers-reduced-motion:reduce){#app .nx-radar-sweep,#app .nx-radar-marker,#app .nx-radar-bars i{animation:none}}
+
 /* v4.59 — user hub / restrained black metallic theme. Login and thumb verification unchanged. */
 #app.app{display:block;min-height:100vh;background:radial-gradient(ellipse at 50% -22%,rgba(119,131,149,.18),transparent 57%),linear-gradient(145deg,#08090d 0%,#0a0d13 54%,#07080b 100%);color:#e5e8ed}
 #app.app.hidden{display:none!important}
@@ -705,6 +743,27 @@ body.ops-modal-open{overflow:hidden}
         <h1>INTERNAL NETWORK</h1><p>넥서스 내부망에 오신 것을 환영합니다.</p>
         <div class="hub-greeting"><span id="welcomeAgent">요원</span> 님 · <span id="currentDate"></span></div>
       </div>
+
+      <section class="nx-radar-dashboard" aria-label="NEXUS 가상 전술 레이더 및 네트워크 분석 상태">
+        <div class="nx-radar-left">
+          <div class="nx-radar-head"><span class="nx-radar-kicker">REGIONAL SURVEILLANCE GRID</span><span class="nx-radar-live">SWEEP ACTIVE</span></div>
+          <div class="nx-radar-disc" aria-hidden="true"><div class="nx-radar-sweep"></div><span class="nx-radar-marker a"></span><span class="nx-radar-marker b"></span><span class="nx-radar-marker c"></span><span class="nx-radar-marker d"></span><span class="nx-radar-center"></span><span class="nx-radar-axis n">N</span><span class="nx-radar-axis e">E</span><span class="nx-radar-axis s">S</span><span class="nx-radar-axis w">W</span></div>
+          <div class="nx-radar-footer"><span>SCAN VECTOR / 360°</span><span>FOUR NODES DETECTED</span></div>
+        </div>
+        <div class="nx-radar-right">
+          <div class="nx-radar-kicker">NEXUS / TACTICAL MONITOR</div>
+          <h2 class="nx-radar-title">TACTICAL GRID ACTIVE</h2>
+          <p class="nx-radar-subtitle">구역 감시망 및 네트워크 신호 분석</p>
+          <div class="nx-radar-grid">
+            <div class="nx-radar-metric"><small>ACTIVE SECTOR</small><strong>SECTOR 04</strong></div>
+            <div class="nx-radar-metric"><small>SIGNAL STATUS</small><strong class="nx-radar-accent">● LOCKED</strong></div>
+            <div class="nx-radar-metric"><small>TRACKING NODES</small><strong>04 / 04</strong></div>
+            <div class="nx-radar-metric"><small>GRID INTEGRITY</small><strong class="nx-radar-accent">98.7%</strong></div>
+          </div>
+          <div class="nx-radar-bars" aria-hidden="true"><i style="--h:36%;--delay:-.4s"></i><i style="--h:65%;--delay:-1.1s"></i><i style="--h:45%;--delay:-.9s"></i><i style="--h:89%;--delay:-.2s"></i><i style="--h:56%;--delay:-1.8s"></i><i style="--h:74%;--delay:-1.3s"></i><i style="--h:92%;--delay:-.8s"></i><i style="--h:49%;--delay:-1.5s"></i><i style="--h:68%;--delay:-.3s"></i><i style="--h:35%;--delay:-2s"></i><i style="--h:81%;--delay:-1.7s"></i><i style="--h:58%;--delay:-1s"></i><i style="--h:73%;--delay:-.7s"></i><i style="--h:94%;--delay:-.5s"></i><i style="--h:44%;--delay:-1.9s"></i><i style="--h:68%;--delay:-1.2s"></i></div>
+          <div class="nx-radar-note">NX–GRID / SIGNAL TRACE ONLINE / SIMULATED TACTICAL TELEMETRY</div>
+        </div>
+      </section>
       <div class="hub-section-label"><div><strong>MAIN MENU</strong><span>원하는 메뉴를 선택하세요.</span></div><div class="hub-status">● SYSTEM ONLINE</div></div>
       <div class="hub-tiles">
         <button type="button" class="hub-tile" data-go="personnel"><span class="hub-tile-icon">♙</span><span class="hub-tile-copy"><strong>PERSONNEL DATABASE</strong><small>인물 정보 · 소속별 인원 검색</small></span><span class="hub-tile-arrow">↗</span></button>
