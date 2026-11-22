@@ -378,6 +378,60 @@ body.nx-thumb-locked{overflow:hidden}
 @media(max-width:650px){#app .dashboard-header{flex-wrap:wrap}#app .nx-brief{grid-template-columns:1fr auto;gap:7px 9px}#app .nx-brief-code{grid-column:1/-1}#app .nx-brief .pill{font-size:9px}#app .nx-quick{min-height:110px;padding:13px}#app .nx-year-track{grid-template-columns:repeat(3,minmax(0,1fr))}#app .nx-three-grid .panel{min-height:168px}}
 @media(max-width:380px){#app .nx-work-stats .stat-value{font-size:22px}#app .nx-work-stats .nx-pending{font-size:16px}#app .nx-quick-grid{gap:7px}}
 
+
+/* v4.59 — user hub / restrained black metallic theme. Login and thumb verification unchanged. */
+#app.app{display:block;min-height:100vh;background:radial-gradient(ellipse at 50% -22%,rgba(119,131,149,.18),transparent 57%),linear-gradient(145deg,#08090d 0%,#0a0d13 54%,#07080b 100%);color:#e5e8ed}
+#app.app.hidden{display:none!important}
+#app .main{max-width:1280px;margin:0 auto;padding:28px clamp(20px,4vw,56px) 72px;background:transparent}
+#app .topbar{padding:0 0 22px;min-height:57px;border-bottom:1px solid #4b515b;gap:15px}
+#app .hub-topbrand{display:flex;align-items:center;gap:11px;min-width:0}
+#app .hub-topbrand img{width:44px;height:44px;object-fit:contain;flex:none}
+#app .hub-topbrand div{display:flex;flex-direction:column;gap:4px;min-width:0}
+#app .hub-topbrand strong{font:normal 19px Georgia,'Times New Roman',serif;letter-spacing:.28em;color:#e1e5eb}
+#app .hub-topbrand span{font-size:9px;color:#99a7b7;letter-spacing:.12em;white-space:nowrap}
+#app .hub-topbrand b{font-weight:500;color:#d5dfe8}
+#app .online{color:#bbc7d1}
+#app .agent-tag{background:linear-gradient(180deg,#2a303c,#10141d)!important;border:1px solid #667380!important;color:#e3eaf1!important}
+#app .logout{color:#e6eaf0;border:1px solid #65707d;background:linear-gradient(180deg,#282e39,#11161f);min-height:39px;white-space:nowrap}
+#app .logout:hover{background:#353c48}
+#app .hub-welcome{padding:clamp(42px,7vw,88px) 0 42px;text-align:center}
+#app .hub-kicker{font-size:10px;letter-spacing:.26em;color:#adb9c7}
+#app .hub-welcome h1{margin:16px 0 10px;font:normal clamp(38px,5.5vw,68px)/1.05 Georgia,'Times New Roman',serif;letter-spacing:.10em;color:#f0f2f5;text-shadow:0 8px 33px #000}
+#app .hub-welcome p{font-size:14px;color:#aebdca;margin:0}
+#app .hub-greeting{margin-top:23px;color:#b6c4d0;font-size:12px}
+#app .hub-greeting span:first-child{color:#f5f7fa;font-weight:700}
+#app .hub-section-label{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #555e6b;padding-bottom:15px;margin-bottom:18px}
+#app .hub-section-label>div:first-child{display:flex;align-items:baseline;gap:15px}
+#app .hub-section-label strong{font-size:12px;letter-spacing:.22em;color:#dce4ed}
+#app .hub-section-label span{color:#92a2b1;font-size:12px}
+#app .hub-status{font-size:10px;color:#a8c7be;letter-spacing:.15em;white-space:nowrap}
+#app .hub-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#app .hub-tile{min-height:146px;display:flex;align-items:center;gap:19px;text-align:left;padding:27px;position:relative;overflow:hidden;background:linear-gradient(158deg,#292f39 0%,#171c25 24%,#0b0e14 100%);border:1px solid #606b79;color:#e9eef3;box-shadow:inset 0 1px 0 #e1e9f01d,0 12px 33px #0005;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}
+#app .hub-tile:before{content:'';position:absolute;inset:6px;border:1px solid #a2b0c017;pointer-events:none}
+#app .hub-tile:hover,#app .hub-tile:focus-visible{transform:translateY(-2px);background:linear-gradient(155deg,#3b4552,#18212c 37%,#0c121a);border-color:#b7c7d8;box-shadow:0 0 20px #829eae24,0 12px 30px #0006}
+#app .hub-tile-icon{font-size:30px;color:#b6c9dc;width:48px;flex:none;text-align:center}
+#app .hub-tile-copy{display:flex;flex-direction:column;gap:10px;min-width:0}
+#app .hub-tile-copy strong{font-size:clamp(11px,1.15vw,14px);letter-spacing:.11em;line-height:1.5;overflow-wrap:anywhere}
+#app .hub-tile-copy small{font-size:12px;color:#acbcca;line-height:1.55}
+#app .hub-tile-arrow{font-size:21px;margin-left:auto;color:#c6d3df;align-self:flex-start}
+#app .hub-bottom{display:flex;gap:18px;justify-content:space-between;border:1px solid #3a4450;margin-top:23px;padding:18px 22px;background:#0d1119;color:#778d9f;font-size:10px;letter-spacing:.10em}
+#app .hub-bottom b{margin-left:8px;color:#bfccd9;font-weight:500}
+#app .nx-internal-footnote{color:#8798aa}
+#app .hub-back{display:inline-flex;align-items:center;gap:16px;padding:11px 16px;color:#e0e6ec;background:linear-gradient(180deg,#262e3a,#121821);border:1px solid #657180;font-size:11px;letter-spacing:.11em;margin:29px 0 0}
+#app .hub-back span{font-size:11px;letter-spacing:0;color:#a6b8c7}
+#app .hub-back:hover{background:#303a48}
+#app .dashboard-header{padding-top:25px}
+#app .dashboard-header .eyebrow{color:#9eafbf}
+#app .dashboard-header h1{color:#edf0f5}
+#app .panel{background:linear-gradient(150deg,#1b2029,#0e121a);border-color:#4c5563}
+#app .status{background:#202a30;border-color:#5b7479;color:#a8cdc3}
+#app .search,#app .nx-filter-select{background:#0a0f17;border-color:#536070}
+#app .data-table th{color:#afb9c7}
+#app .pill{color:#c7d4df;border-color:#657788}
+@media(min-width:1000px){#app .hub-tile:last-child{grid-column:1/-1;min-height:116px}}
+@media(max-width:780px){#app .main{padding:18px 18px 48px}#app .hub-welcome{padding:47px 0 35px}#app .hub-tiles{grid-template-columns:1fr}#app .hub-tile{min-height:100px;padding:20px 18px}#app .hub-tile-icon{font-size:26px;width:38px}#app .hub-bottom{flex-wrap:wrap;gap:11px}#app .hub-section-label>div:first-child{display:flex;flex-direction:column;gap:5px}}
+@media(max-width:430px){#app .hub-topbrand img{width:32px;height:32px}#app .hub-topbrand strong{font-size:15px}#app .hub-topbrand span{font-size:8px;letter-spacing:.03em}#app .topbar{gap:8px}#app .agent-tag{max-width:75px;overflow:hidden;text-overflow:ellipsis;font-size:10px;padding:6px}#app .logout{font-size:9px;padding:7px}#app .hub-welcome h1{font-size:35px}#app .hub-tile-copy strong{font-size:11px}#app .hub-tile{gap:10px}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -441,55 +495,29 @@ body.nx-thumb-locked{overflow:hidden}
   </div>
 </section>
 <div class="app hidden" id="app">
-  <aside class="sidebar" id="sidebar">
-    <a class="brand brand-image dashboard-brand" href="index.html" aria-label="NEXUS 홈페이지"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a>
-    <div class="side-caption">NEXUS / INTERNAL SYSTEM</div>
-    <nav class="side-nav" aria-label="내부 메뉴">
-      <button class="nav-item active" data-view="overview"><span class="nav-icon">▦</span>COMMAND CENTER</button>
-      <button class="nav-item" data-view="personnel"><span class="nav-icon">♙</span>PERSONNEL DATABASE</button>
-      <button class="nav-item" data-view="operations"><span class="nav-icon">⌖</span>OPERATIONS</button>
-      <button class="nav-item" data-view="evaluations"><span class="nav-icon">▤</span>EVALUATION RECORDS</button>
-      <button class="nav-item" data-view="archives"><span class="nav-icon">◇</span>CLASSIFIED ARCHIVE</button>
-      <button class="nav-item" data-view="communications"><span class="nav-icon">⌁</span>COMMUNICATIONS</button>
-    </nav>
-    <div class="side-bottom">NETWORK STATUS: <span style="color:var(--green)">ONLINE</span><br>SECURITY LEVEL: <span style="color:var(--gold)">DEMO</span><br>© NEXUS SYSTEM</div>
-  </aside>
   <main class="main">
     <header class="topbar">
-      <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuToggle" aria-label="메뉴 열기">☰</button><div class="breadcrumb">NEXUS / <span id="breadView">OVERVIEW</span></div></div>
+      <div class="hub-topbrand"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><div><strong>NEXUS</strong><span>INTERNAL NETWORK / <b id="breadView">HOME</b></span></div></div>
       <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button class="logout" id="logout">LOG OUT</button></div>
     </header>
     <section class="section-view active" id="view-overview">
-      <div class="dashboard-header"><div><div class="eyebrow">NEXUS // INTERNAL COMMAND SYSTEM</div><h1>COMMAND OVERVIEW</h1><div class="overview-korean">승인된 구성원 전용 · 내부 업무 네트워크</div><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 내부망에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK ACTIVE</div></div>
-      <div class="stats nx-work-stats">
-        <div class="stat"><div class="stat-label">ACCESS CLEARANCE</div><div class="stat-value">LV. 04</div><div class="stat-desc">데모 권한 · 추후 계정별 지정</div></div>
-        <div class="stat"><div class="stat-label">ASSIGNED UNIT</div><div class="stat-value nx-pending">PENDING</div><div class="stat-desc">소속 팀 등록 대기</div></div>
-        <div class="stat"><div class="stat-label">ACTIVE DIRECTIVES</div><div class="stat-value">03</div><div class="stat-desc">훈련 및 평가 안내 · 예시</div></div>
-        <div class="stat"><div class="stat-label">UNREAD MESSAGES</div><div class="stat-value">07</div><div class="stat-desc">내부 통신 기록 · 예시</div></div>
+      <div class="hub-welcome"><div class="hub-kicker">NEXUS / AUTHORIZED USER PORTAL</div>
+        <h1>INTERNAL NETWORK</h1><p>넥서스 내부망에 오신 것을 환영합니다.</p>
+        <div class="hub-greeting"><span id="welcomeAgent">요원</span> 님 · <span id="currentDate"></span></div>
       </div>
-      <div class="content-grid">
-        <section class="panel"><div class="panel-header"><div class="panel-title">TODAY'S BRIEFING</div><div class="panel-tag">DIRECTIVES / DEMO</div></div>
-          <div class="nx-brief-list">
-            <div class="nx-brief"><div class="nx-brief-code">07:30 / TRAINING</div><div><strong>Daily readiness briefing</strong><p>일일 훈련 준비 및 출석 점검 · 일정 예시</p></div><span class="pill">SCHEDULED</span></div>
-            <div class="nx-brief"><div class="nx-brief-code">13:00 / ASSESSMENT</div><div><strong>Simulation review session</strong><p>모의 상황 평가 결과 검토 · 일정 예시</p></div><span class="pill">PENDING</span></div>
-            <div class="nx-brief"><div class="nx-brief-code">18:00 / REPORT</div><div><strong>Training log submission</strong><p>훈련 기록 제출 마감 · 일정 예시</p></div><span class="pill">NOTICE</span></div>
-          </div>
-        </section>
-        <section class="panel"><div class="panel-header"><div class="panel-title">NETWORK ACTIVITY</div><div class="panel-tag">SIMULATED LOG</div></div><div class="activity">
-          <div class="activity-item"><span class="act-dot"></span><div><strong>Training records synchronized</strong><p>교육 기록 동기화 완료</p></div><span class="small-time">09:42</span></div>
-          <div class="activity-item"><span class="act-dot warn"></span><div><strong>Evaluation directive issued</strong><p>새 평가 지침 게시</p></div><span class="small-time">08:15</span></div>
-          <div class="activity-item"><span class="act-dot"></span><div><strong>Security archive updated</strong><p>보안 자료실 기록 갱신</p></div><span class="small-time">07:36</span></div>
-        </div></section>
+      <div class="hub-section-label"><div><strong>MAIN MENU</strong><span>원하는 메뉴를 선택하세요.</span></div><div class="hub-status">● SYSTEM ONLINE</div></div>
+      <div class="hub-tiles">
+        <button type="button" class="hub-tile" data-go="personnel"><span class="hub-tile-icon">♙</span><span class="hub-tile-copy"><strong>PERSONNEL DATABASE</strong><small>인물 정보 · 소속별 인원 검색</small></span><span class="hub-tile-arrow">↗</span></button>
+        <button type="button" class="hub-tile" data-go="operations"><span class="hub-tile-icon">⌖</span><span class="hub-tile-copy"><strong>OPERATIONS</strong><small>훈련 및 작전 기록</small></span><span class="hub-tile-arrow">↗</span></button>
+        <button type="button" class="hub-tile" data-go="evaluations"><span class="hub-tile-icon">▤</span><span class="hub-tile-copy"><strong>EVALUATION RECORDS</strong><small>평가 결과 · 승급 심사</small></span><span class="hub-tile-arrow">↗</span></button>
+        <button type="button" class="hub-tile" data-go="archives"><span class="hub-tile-icon">◇</span><span class="hub-tile-copy"><strong>CLASSIFIED ARCHIVE</strong><small>보안 문서 · 기밀 기록</small></span><span class="hub-tile-arrow">↗</span></button>
+        <button type="button" class="hub-tile" data-go="communications"><span class="hub-tile-icon">⌁</span><span class="hub-tile-copy"><strong>COMMUNICATIONS</strong><small>내부 통신 · 메시지 기록</small></span><span class="hub-tile-arrow">↗</span></button>
       </div>
-      <div class="nx-quick-panel panel"><div class="panel-header"><div class="panel-title">QUICK ACCESS</div><div class="panel-tag">INTERNAL WORKSPACE</div></div><div class="nx-quick-grid">
-        <button type="button" class="nx-quick" data-go="personnel"><span>♙</span><strong>PERSONNEL DATABASE</strong><small>인원 명부 열람</small></button>
-        <button type="button" class="nx-quick" data-go="operations"><span>⌖</span><strong>OPERATIONS</strong><small>작전 기록 확인</small></button>
-        <button type="button" class="nx-quick" data-go="evaluations"><span>▤</span><strong>EVALUATION RECORDS</strong><small>평가 기록 확인</small></button>
-        <button type="button" class="nx-quick" data-go="communications"><span>⌁</span><strong>COMMUNICATIONS</strong><small>내부 통신 로그</small></button>
-      </div></div>
-      <div class="nx-internal-footnote">NEXUS // SIMULATED NETWORK · 화면의 통신, 일정, 보안 등급은 세계관 데모 데이터입니다.</div>
+      <div class="hub-bottom"><span>ACCESS STATUS <b>AUTHORIZED</b></span><span>NETWORK MODE <b>DEMO</b></span><span>PERSONNEL DATA <b>PENDING</b></span></div>
+      <div class="nx-internal-footnote">NEXUS // 세계관 체험용 시스템입니다. 표시된 인증 및 접근 권한은 실제 보안 기능이 아닙니다.</div>
     </section>
     <section class="section-view" id="view-personnel">
+      <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
       <div class="dashboard-header"><div><div class="eyebrow">PERSONNEL DATABASE / NEXUS RECORDS</div><h1>PERSONNEL DIRECTORY</h1><div class="view-note">훈련생 및 교직원의 인원 데이터베이스. 캐릭터 프로필 확정 전에는 임시 식별번호만 표시한다.</div></div><div class="status">● REGISTRY ONLINE</div></div>
       <div class="panel"><div class="panel-header"><div class="panel-title">PERSONNEL INDEX</div><div class="panel-tag">PROFILE PLACEHOLDERS</div></div>
         <div class="nx-filter-bar"><input class="search" id="personSearch" type="search" placeholder="식별번호 · 분야 · 소속 검색" aria-label="인원 검색"><select class="nx-filter-select" id="personType" aria-label="직책별 필터"><option value="all">ALL PERSONNEL</option><option value="CADET">CADETS</option><option value="INSTRUCTOR">INSTRUCTORS</option><option value="STAFF">STAFF</option></select></div>
@@ -498,6 +526,7 @@ body.nx-thumb-locked{overflow:hidden}
       </div>
     </section>
     <section class="section-view" id="view-operations">
+      <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
       <div class="dashboard-header"><div><div class="eyebrow">FIELD OPERATIONS / TRAINING RECORDS</div><h1>OPERATIONS</h1><div class="view-note">훈련·작전 기록을 탐색하는 전용 아카이브. 작전명과 담당 인물은 추후 공식 설정을 등록할 수 있도록 비워두었다.</div></div><div class="status">● ARCHIVE AVAILABLE</div></div>
       <div class="panel"><div class="panel-header"><div class="panel-title">OPERATION REGISTRY</div><div class="panel-tag">SIMULATED ENTRIES</div></div>
         <div class="nx-filter-bar"><input class="search" id="operationSearch" type="search" placeholder="기록번호 · 분야 · 상태 검색" aria-label="작전 검색"><select class="nx-filter-select" id="operationStatus" aria-label="작전 상태 필터"><option value="all">ALL STATUS</option><option value="ACTIVE">ACTIVE</option><option value="REVIEW">REVIEW</option><option value="ARCHIVED">ARCHIVED</option></select></div>
@@ -505,6 +534,7 @@ body.nx-thumb-locked{overflow:hidden}
       </div><div class="nx-internal-footnote">OPERATION FILES / 개별 작전 보고서는 캐릭터와 세계관 기록이 확정된 이후 연결 예정</div>
     </section>
     <section class="section-view" id="view-evaluations">
+      <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
       <div class="dashboard-header"><div><div class="eyebrow">ACADEMIC ASSESSMENT / PROMOTION REVIEW</div><h1>EVALUATION RECORDS</h1><div class="view-note">5년제 교육과정의 종합평가, 전문분야별 평가, 승급 심사를 관리하는 기록 화면.</div></div><div class="status">● REVIEW SYSTEM</div></div>
       <div class="nx-three-grid">
         <section class="panel"><div class="nx-module-kicker">ASSESSMENT 01</div><h3 class="nx-module-title">SEMESTER REVIEW</h3><p>학기별 종합평가 · Semester evaluation</p><span class="nx-module-state">RECORDS PENDING</span></section>
@@ -514,6 +544,7 @@ body.nx-thumb-locked{overflow:hidden}
       <section class="panel nx-block-gap"><div class="panel-header"><div class="panel-title">ACADEMIC RECORD FRAMEWORK</div><div class="panel-tag">ACADEMY / 05 YEARS</div></div><div class="nx-year-track"><span>YEAR 01</span><span>YEAR 02</span><span>YEAR 03</span><span>YEAR 04</span><span>YEAR 05</span></div><p class="nx-table-note">실제 성적이나 평가 결과는 저장하지 않는다. 차후 캐릭터별 기록을 연결할 수 있는 기본 구조만 구성했다.</p></section>
     </section>
     <section class="section-view" id="view-archives">
+      <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
       <div class="dashboard-header"><div><div class="eyebrow">CLASSIFIED RECORDS / CONTROLLED FILES</div><h1>CLASSIFIED ARCHIVE</h1><div class="view-note">기밀 사건 및 비공개 보고서를 위한 세계관 자료실. 보안 분류는 시각적 연출이며 실제 접근 통제가 아니다.</div></div><div class="status">● ARCHIVE STANDBY</div></div>
       <div class="nx-three-grid">
         <section class="panel"><div class="nx-module-kicker">FILE CLASS / A</div><h3 class="nx-module-title">INCIDENT REPORTS</h3><p>사건 보고서</p><span class="nx-lock-state">◇ RECORD PENDING</span></section>
@@ -522,6 +553,7 @@ body.nx-thumb-locked{overflow:hidden}
       </div><p class="nx-internal-footnote">공개 GitHub Pages의 HTML에 실제 비밀정보나 개인정보를 저장하지 마세요.</p>
     </section>
     <section class="section-view" id="view-communications">
+      <button type="button" class="hub-back" data-go="overview">← MAIN MENU <span>메인으로 돌아가기</span></button>
       <div class="dashboard-header"><div><div class="eyebrow">PERSONNEL NETWORK / SYSTEM MESSAGES</div><h1>COMMUNICATIONS</h1><div class="view-note">내부 메시지 및 팀별 통신 내역을 확인하는 네트워크. 실제 메시지 전송 기능은 나중에 연결할 수 있다.</div></div><div class="status">● CHANNEL ONLINE</div></div>
       <div class="content-grid"><section class="panel"><div class="panel-header"><div class="panel-title">MESSAGE CHANNELS</div><div class="panel-tag">READ-ONLY DEMO</div></div>
         <div class="nx-channel"><span class="nx-channel-icon">⌁</span><div><strong>ACADEMY NETWORK</strong><p>기관 공통 시스템 채널 · System broadcasts</p></div><span class="nx-channel-counter">03</span></div>
@@ -565,7 +597,7 @@ function renderTable(data,target,empty,query,filter,predicate){
 }
 function renderPersonnel(){renderTable(personnel,'personBody','personEmpty',document.getElementById('personSearch').value,document.getElementById('personType').value,(r,f)=>f==='all'||r[1].startsWith(f))}
 function renderOperations(){renderTable(operations,'operationBody','operationEmpty',document.getElementById('operationSearch').value,document.getElementById('operationStatus').value,(r,f)=>f==='all'||r[3]===f)}
-function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.querySelectorAll('.nav-item').forEach(e=>e.classList.toggle('active',e.dataset.view===name));document.getElementById('breadView').textContent=views[name];document.getElementById('sidebar').classList.remove('open')}
+function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.getElementById('breadView').textContent=views[name]}
 
 // The second verification stage is a visual interaction only; no biometric data is collected.
 const thumbGate=document.getElementById('nxThumbGate');
@@ -636,9 +668,9 @@ thumbSensor.addEventListener('contextmenu',e=>e.preventDefault());
 function enter(name){loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
 document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('agentId').value.trim();const code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return;}document.getElementById('loginMsg').textContent='';thumbOpen(name)});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
-document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+
 document.getElementById('personSearch').addEventListener('input',renderPersonnel);
-document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+
 
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
 document.getElementById('personType').addEventListener('change',renderPersonnel);
