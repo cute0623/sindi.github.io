@@ -652,6 +652,20 @@ body.ops-modal-open{overflow:hidden}
 #app .cl-redactions{font:19px/2.25 ui-monospace,monospace;color:#a87c83;letter-spacing:.02em;overflow-wrap:anywhere;margin-top:25px;opacity:.66}
 @media(max-width:950px){#app .cl-toolbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#app .cl-toolbar .search{grid-column:1/-1}#app .cl-list-heading,#app .cl-row{grid-template-columns:115px minmax(0,1fr) 110px 85px 78px;gap:8px}}
 @media(max-width:700px){#app .cl-stats{gap:7px}#app .cl-stats>div{padding:13px 9px;min-height:96px}#app .cl-stats span{font-size:7px;letter-spacing:.05em}#app .cl-stats strong{font-size:25px}#app .cl-stats small{font-size:9px}#app .cl-toolbar{grid-template-columns:1fr;gap:8px}#app .cl-toolbar .search{grid-column:auto}#app .cl-list-heading{display:none}#app .cl-row{grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;padding:15px 8px}#app .cl-row .cl-id{grid-column:1/-1;font-size:9px}#app .cl-row .cl-date{grid-column:1;grid-row:3}#app .cl-row .cl-class{grid-column:2;grid-row:2}#app .cl-row .cl-state{grid-column:2;grid-row:3;text-align:right}#app .cl-name{font-size:12px}#app .cl-seal-notice{padding:17px}#app .cl-seal-notice>div:first-child{font-size:12px}}
+
+/* v4.74 — rotating in-world facility locator below tactical radar */
+#app .nx-location-panel{position:relative;z-index:4;margin:12px 0 14px;padding:13px 14px;background:linear-gradient(140deg,#1e303d,#0c1923 72%);border:1px solid #547487;box-shadow:inset 0 1px 0 #dbe8f01a;min-height:111px}
+#app .nx-location-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+#app .nx-location-title{font:600 9px ui-monospace,monospace;letter-spacing:.16em;color:#9fbcd1}
+#app .nx-location-status{font:600 9px ui-monospace,monospace;letter-spacing:.12em;color:#a9e7c8}
+#app .nx-location-status:before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#9ee6c5;box-shadow:0 0 8px #8ae2b0;margin-right:6px;vertical-align:middle}
+#app .nx-location-name{font-size:14px;font-weight:650;letter-spacing:.025em;color:#ebf4f8;line-height:1.5;overflow-wrap:anywhere}
+#app .nx-location-en{font:10px ui-monospace,monospace;letter-spacing:.06em;color:#aec3d2;line-height:1.6;margin-top:2px;overflow-wrap:anywhere}
+#app .nx-location-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;color:#8aabbf;font:9px ui-monospace,monospace;letter-spacing:.08em}
+#app .nx-location-refresh{border:1px solid #64839a;background:linear-gradient(180deg,#293e4d,#132635);color:#c9e4f2;font:9px ui-monospace,monospace;letter-spacing:.08em;padding:6px 10px;cursor:pointer;position:relative;z-index:5}
+#app .nx-location-refresh:hover{border-color:#b5d5e7;background:#324e60}
+#app .nx-location-panel.is-scanning .nx-location-name,#app .nx-location-panel.is-scanning .nx-location-en{opacity:.44}
+@media(max-width:390px){#app .nx-location-bottom{flex-wrap:wrap}#app .nx-location-panel{padding:12px}}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -748,6 +762,12 @@ body.ops-modal-open{overflow:hidden}
         <div class="nx-radar-left">
           <div class="nx-radar-head"><span class="nx-radar-kicker">REGIONAL SURVEILLANCE GRID</span><span class="nx-radar-live">SWEEP ACTIVE</span></div>
           <div class="nx-radar-disc" aria-hidden="true"><div class="nx-radar-sweep"></div><span class="nx-radar-marker a"></span><span class="nx-radar-marker b"></span><span class="nx-radar-marker c"></span><span class="nx-radar-marker d"></span><span class="nx-radar-center"></span><span class="nx-radar-axis n">N</span><span class="nx-radar-axis e">E</span><span class="nx-radar-axis s">S</span><span class="nx-radar-axis w">W</span></div>
+          <div class="nx-location-panel" id="nxLocationPanel" aria-live="polite" aria-atomic="true">
+            <div class="nx-location-top"><span class="nx-location-title">LOCATION CONFIRMED / 위치 확인 완료</span><span class="nx-location-status" id="nxLocationStatus">LOCKED</span></div>
+            <div class="nx-location-name" id="nxLocationName">중앙 통제실</div>
+            <div class="nx-location-en" id="nxLocationEnglish">CENTRAL CONTROL ROOM · 본관</div>
+            <div class="nx-location-bottom"><span id="nxLocationCode">NX-01 / HQ-06</span><button type="button" class="nx-location-refresh" id="nxLocationRefresh" aria-label="다른 NEXUS 구역 탐지">↻ RESCAN</button></div>
+          </div>
           <div class="nx-radar-footer"><span>SCAN VECTOR / 360°</span><span>FOUR NODES DETECTED</span></div>
         </div>
         <div class="nx-radar-right">
@@ -755,7 +775,7 @@ body.ops-modal-open{overflow:hidden}
           <h2 class="nx-radar-title">TACTICAL GRID ACTIVE</h2>
           <p class="nx-radar-subtitle">구역 감시망 및 네트워크 신호 분석</p>
           <div class="nx-radar-grid">
-            <div class="nx-radar-metric"><small>ACTIVE SECTOR</small><strong>SECTOR 04</strong></div>
+            <div class="nx-radar-metric"><small>ACTIVE SECTOR</small><strong id="nxActiveSector">NX-01</strong></div>
             <div class="nx-radar-metric"><small>SIGNAL STATUS</small><strong class="nx-radar-accent">● LOCKED</strong></div>
             <div class="nx-radar-metric"><small>TRACKING NODES</small><strong>04 / 04</strong></div>
             <div class="nx-radar-metric"><small>GRID INTEGRITY</small><strong class="nx-radar-accent">98.7%</strong></div>
@@ -1318,6 +1338,48 @@ function openMailDetail(m){
 document.getElementById('mailSearch').addEventListener('input',()=>{mailSelected=null;renderMailbox()});
 document.getElementById('mailCompose').addEventListener('click',()=>{});
 renderMailbox();
+
+
+// v4.74 — in-world simulated locator. Never reads geolocation or device sensors.
+const nxLocations=[
+ {zone:'NX-01',sub:'HQ-06',ko:'중앙 통제실',en:'CENTRAL CONTROL ROOM',area:'본관'},
+ {zone:'NX-01',sub:'HQ-08',ko:'브리핑룸',en:'BRIEFING ROOM',area:'본관'},
+ {zone:'NX-01',sub:'HQ-05',ko:'교관사무실',en:'INSTRUCTORS OFFICE',area:'본관'},
+ {zone:'NX-02',sub:'DR-04',ko:'공용 주방',en:'COMMUNAL KITCHEN',area:'기숙사'},
+ {zone:'NX-02',sub:'DR-05',ko:'공용 라운지',en:'COMMUNAL LOUNGE',area:'기숙사'},
+ {zone:'NX-03',sub:'MD-05',ko:'정밀검사실',en:'DIAGNOSTIC LABORATORY',area:'의료센터'},
+ {zone:'NX-03',sub:'MD-04',ko:'재활치료실',en:'REHABILITATION ROOM',area:'의료센터'},
+ {zone:'NX-04',sub:'TR-03',ko:'전투훈련실',en:'COMBAT TRAINING ROOM',area:'종합 훈련관'},
+ {zone:'NX-04',sub:'TR-04',ko:'사격훈련장',en:'INDOOR SHOOTING RANGE',area:'종합 훈련관'},
+ {zone:'NX-05',sub:'RS-02',ko:'정보 분석실',en:'INTELLIGENCE ANALYSIS ROOM',area:'정보 연구동'},
+ {zone:'NX-05',sub:'RS-03',ko:'기술 연구소',en:'TECHNOLOGY LABORATORY',area:'정보 연구동'},
+ {zone:'NX-05',sub:'RS-05',ko:'심리 분석실',en:'BEHAVIORAL ANALYSIS ROOM',area:'정보 연구동'},
+ {zone:'NX-06',sub:'EV-03',ko:'종합 상황 평가실',en:'SCENARIO ASSESSMENT ROOM',area:'평가 구역'},
+ {zone:'NX-06',sub:'EV-05',ko:'최종 평가 심의실',en:'FINAL EVALUATION COMMITTEE ROOM',area:'평가 구역'},
+ {zone:'NX-07',sub:'OB-01',ko:'격리 관찰실',en:'ISOLATION & OBSERVATION ROOM',area:'격리 관찰 구역'}
+];
+let nxLastLocation=-1;
+function nxLocate(){
+ const panel=document.getElementById('nxLocationPanel');
+ if(!panel || document.hidden) return;
+ panel.classList.add('is-scanning');
+ document.getElementById('nxLocationStatus').textContent='SCANNING';
+ let i=Math.floor(Math.random()*nxLocations.length);
+ if(i===nxLastLocation)i=(i+1)%nxLocations.length;
+ nxLastLocation=i;
+ const loc=nxLocations[i];
+ window.setTimeout(()=>{
+  document.getElementById('nxLocationName').textContent=loc.ko;
+  document.getElementById('nxLocationEnglish').textContent=loc.en+' · '+loc.area;
+  document.getElementById('nxLocationCode').textContent=loc.zone+' / '+loc.sub;
+  document.getElementById('nxActiveSector').textContent=loc.zone;
+  document.getElementById('nxLocationStatus').textContent='LOCKED';
+  panel.classList.remove('is-scanning');
+ },550);
+}
+document.getElementById('nxLocationRefresh').addEventListener('click',nxLocate);
+window.setInterval(()=>{if(document.getElementById('view-overview').classList.contains('active'))nxLocate()},9500);
+nxLocate();
 
 document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();renderEvaluations();renderClassified();
 })();
