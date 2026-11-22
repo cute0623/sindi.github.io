@@ -327,6 +327,57 @@ body.nx-thumb-locked{overflow:hidden}
 .nx-thumb-gate[data-state="success"] .nx-thumb-emblem::after{animation-duration:2.5s;opacity:.85}
 @media(prefers-reduced-motion:reduce){.nx-thumb-emblem::after{animation:none}}
 
+
+/* v4.58 — NEXUS Internal Command framework. Isolated to dashboard. */
+#app .sidebar{gap:24px}
+#app .nav-item{min-height:56px;letter-spacing:.07em;white-space:normal;line-height:1.35}
+#app .nav-item .nav-icon{flex:0 0 19px}
+#app .nx-work-stats .stat-value{font-size:clamp(25px,2.7vw,38px);white-space:nowrap;letter-spacing:.025em}
+#app .nx-work-stats .nx-pending{font-size:clamp(18px,2vw,29px);letter-spacing:.055em}
+#app .nx-brief-list{display:grid;gap:0}
+#app .nx-brief{display:grid;grid-template-columns:132px minmax(0,1fr) auto;align-items:center;gap:13px;border-bottom:1px solid #304359;padding:17px 0}
+#app .nx-brief:last-child{border:0}
+#app .nx-brief-code{color:#96b4ce;font-size:10px;letter-spacing:.08em}
+#app .nx-brief strong{display:block;font-size:12px;font-weight:500;color:#eef4fa;line-height:1.5}
+#app .nx-brief p{margin:5px 0 0;color:#9cb1c5;font-size:11px}
+#app .pill{white-space:nowrap;color:#b9d6e8;border:1px solid #536e85;background:#182b3a}
+#app .pill.muted-pill{color:#a9b9ca;border-color:#45556b}
+#app .nx-quick-panel{margin-top:16px}
+#app .nx-quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#app .nx-quick{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:17px 15px;background:linear-gradient(145deg,#203249,#101e30);color:#eff4fb;border:1px solid #52687d;min-width:0;min-height:118px;transition:background .2s,border-color .2s}
+#app .nx-quick:hover,#app .nx-quick:focus-visible{background:#29415b;border-color:#bdd4e8}
+#app .nx-quick>span{font-size:20px;color:#a5c9e4}
+#app .nx-quick strong{font-size:10px;letter-spacing:.075em;line-height:1.4;overflow-wrap:anywhere}
+#app .nx-quick small{font-size:10px;color:#a0b6c9}
+#app .nx-internal-footnote{margin:17px 0;color:#829bb2;font-size:10px;line-height:1.8;letter-spacing:.04em}
+#app .nx-filter-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 16px}
+#app .nx-filter-bar .search{flex:1 1 260px;margin:0;max-width:none;min-width:0}
+#app .nx-filter-select{background:#101c2b;color:#dbe8f3;border:1px solid #52657d;padding:12px;min-height:43px;max-width:100%;font-size:11px;letter-spacing:.08em}
+#app .nx-table-scroll{overflow-x:auto;max-width:100%}
+#app .data-table{min-width:560px}
+#app .data-table td{line-height:1.55}
+#app .nx-table-note{margin:20px 0 0;color:#8ca4b9;font-size:11px;line-height:1.75}
+#app .nx-three-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#app .nx-module-kicker{font-size:10px;color:#9abfda;letter-spacing:.19em}
+#app .nx-module-title{font:400 clamp(17px,1.7vw,23px)/1.4 Georgia,serif;letter-spacing:.04em;color:#eff4fb;margin:19px 0 9px;overflow-wrap:anywhere}
+#app .nx-three-grid .panel{min-height:213px;display:flex;flex-direction:column}
+#app .nx-three-grid .panel p{font-size:11px;line-height:1.8;color:#a6bccf}
+#app .nx-module-state,#app .nx-lock-state{font-size:10px;letter-spacing:.1em;color:#9fc1dc;margin-top:auto;padding-top:18px}
+#app .nx-lock-state{color:#c0b7a3}
+#app .nx-block-gap{margin-top:16px}
+#app .nx-year-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+#app .nx-year-track span{display:grid;place-items:center;border:1px solid #4c6176;background:#18283a;padding:16px 6px;text-align:center;font-size:10px;color:#b6cbdc;letter-spacing:.09em}
+#app .nx-channel{display:flex;align-items:center;gap:13px;padding:19px 0;border-bottom:1px solid #33465b}
+#app .nx-channel:last-child{border:0}
+#app .nx-channel-icon{font-size:23px;color:#a9c9e0}
+#app .nx-channel>div{flex:1;min-width:0}
+#app .nx-channel strong{color:#ecf4fb;font-size:11px;font-weight:500;letter-spacing:.09em}
+#app .nx-channel p{color:#8ea9c0;font-size:10px;margin:7px 0 0;line-height:1.5}
+#app .nx-channel-counter{border:1px solid #627c93;color:#d6e7f4;min-width:36px;padding:7px;text-align:center;font-size:11px}
+@media(max-width:1120px){#app .nx-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#app .nx-three-grid{grid-template-columns:1fr}}
+@media(max-width:650px){#app .dashboard-header{flex-wrap:wrap}#app .nx-brief{grid-template-columns:1fr auto;gap:7px 9px}#app .nx-brief-code{grid-column:1/-1}#app .nx-brief .pill{font-size:9px}#app .nx-quick{min-height:110px;padding:13px}#app .nx-year-track{grid-template-columns:repeat(3,minmax(0,1fr))}#app .nx-three-grid .panel{min-height:168px}}
+@media(max-width:380px){#app .nx-work-stats .stat-value{font-size:22px}#app .nx-work-stats .nx-pending{font-size:16px}#app .nx-quick-grid{gap:7px}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -397,8 +448,9 @@ body.nx-thumb-locked{overflow:hidden}
       <button class="nav-item active" data-view="overview"><span class="nav-icon">▦</span>COMMAND CENTER</button>
       <button class="nav-item" data-view="personnel"><span class="nav-icon">♙</span>PERSONNEL DATABASE</button>
       <button class="nav-item" data-view="operations"><span class="nav-icon">⌖</span>OPERATIONS</button>
-      <button class="nav-item" data-view="facilities"><span class="nav-icon">▤</span>FACILITY DATABASE</button>
+      <button class="nav-item" data-view="evaluations"><span class="nav-icon">▤</span>EVALUATION RECORDS</button>
       <button class="nav-item" data-view="archives"><span class="nav-icon">◇</span>CLASSIFIED ARCHIVE</button>
+      <button class="nav-item" data-view="communications"><span class="nav-icon">⌁</span>COMMUNICATIONS</button>
     </nav>
     <div class="side-bottom">NETWORK STATUS: <span style="color:var(--green)">ONLINE</span><br>SECURITY LEVEL: <span style="color:var(--gold)">DEMO</span><br>© NEXUS SYSTEM</div>
   </aside>
@@ -408,43 +460,80 @@ body.nx-thumb-locked{overflow:hidden}
       <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button class="logout" id="logout">LOG OUT</button></div>
     </header>
     <section class="section-view active" id="view-overview">
-      <div class="dashboard-header"><div><div class="eyebrow">NEXUS // INTERNAL COMMAND SYSTEM</div><h1>COMMAND OVERVIEW</h1><div class="overview-korean">넥서스 통합 운영 시스템 · 승인된 요원 전용</div><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 네트워크에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK ACTIVE</div></div>
-      <div class="stats">
-        <div class="stat"><div class="stat-label">ACADEMIC PROGRAM</div><div class="stat-value">05</div><div class="stat-desc">5년제 특수작전 교육과정</div></div>
-        <div class="stat"><div class="stat-label">SPECIALIZED DIVISIONS</div><div class="stat-value">06</div><div class="stat-desc">전투 · 정보 · 기술 · 심리 · 전략 · 지원</div></div>
-        <div class="stat"><div class="stat-label">FACILITY ZONES</div><div class="stat-value">07</div><div class="stat-desc">기관 시설 및 보호 관찰 구역</div></div>
-        <div class="stat"><div class="stat-label">ACCESS CLEARANCE</div><div class="stat-value" style="font-size:24px">LV.03</div><div class="stat-desc">세계관 연출용 가상 접근 등급</div></div>
+      <div class="dashboard-header"><div><div class="eyebrow">NEXUS // INTERNAL COMMAND SYSTEM</div><h1>COMMAND OVERVIEW</h1><div class="overview-korean">승인된 구성원 전용 · 내부 업무 네트워크</div><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 내부망에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK ACTIVE</div></div>
+      <div class="stats nx-work-stats">
+        <div class="stat"><div class="stat-label">ACCESS CLEARANCE</div><div class="stat-value">LV. 04</div><div class="stat-desc">데모 권한 · 추후 계정별 지정</div></div>
+        <div class="stat"><div class="stat-label">ASSIGNED UNIT</div><div class="stat-value nx-pending">PENDING</div><div class="stat-desc">소속 팀 등록 대기</div></div>
+        <div class="stat"><div class="stat-label">ACTIVE DIRECTIVES</div><div class="stat-value">03</div><div class="stat-desc">훈련 및 평가 안내 · 예시</div></div>
+        <div class="stat"><div class="stat-label">UNREAD MESSAGES</div><div class="stat-value">07</div><div class="stat-desc">내부 통신 기록 · 예시</div></div>
       </div>
       <div class="content-grid">
-        <section class="panel"><div class="panel-header"><div class="panel-title">ACADEMY SYSTEMS</div><div class="panel-tag">SIMULATED STATUS</div></div><div class="system-list">
-          <div class="sys-row"><span>교육 운영 시스템</span><span class="bar"><i style="width:96%"></i></span><strong>SYNC</strong></div>
-          <div class="sys-row"><span>전술 훈련 기록</span><span class="bar"><i style="width:89%"></i></span><strong>SYNC</strong></div>
-          <div class="sys-row"><span>평가 기록 관리</span><span class="bar"><i style="width:99%"></i></span><strong>SYNC</strong></div>
-          <div class="sys-row"><span>정보 연구 시스템</span><span class="bar"><i style="width:78%"></i></span><strong>SYNC</strong></div>
-          <div class="sys-row"><span>시설 관제 네트워크</span><span class="bar"><i style="width:92%"></i></span><strong>SYNC</strong></div>
-        </div></section>
-        <section class="panel"><div class="panel-header"><div class="panel-title">NETWORK ACTIVITY</div><div class="panel-tag">DEMO LOG</div></div><div class="activity">
-          <div class="activity-item"><span class="act-dot"></span><div><strong>교육 기록 동기화 완료</strong><p>NETWORK / 자동 점검</p></div><span class="small-time">09:42</span></div>
-          <div class="activity-item"><span class="act-dot warn"></span><div><strong>접근 로그 검토 요청</strong><p>SECURITY / 내부 경보</p></div><span class="small-time">08:15</span></div>
-          <div class="activity-item"><span class="act-dot"></span><div><strong>훈련 시뮬레이션 기록 갱신</strong><p>OPERATIONS / 기록 업데이트</p></div><span class="small-time">07:36</span></div>
-          <div class="activity-item"><span class="act-dot"></span><div><strong>연구 부서 점검 완료</strong><p>RESEARCH / 정기 점검</p></div><span class="small-time">06:50</span></div>
+        <section class="panel"><div class="panel-header"><div class="panel-title">TODAY'S BRIEFING</div><div class="panel-tag">DIRECTIVES / DEMO</div></div>
+          <div class="nx-brief-list">
+            <div class="nx-brief"><div class="nx-brief-code">07:30 / TRAINING</div><div><strong>Daily readiness briefing</strong><p>일일 훈련 준비 및 출석 점검 · 일정 예시</p></div><span class="pill">SCHEDULED</span></div>
+            <div class="nx-brief"><div class="nx-brief-code">13:00 / ASSESSMENT</div><div><strong>Simulation review session</strong><p>모의 상황 평가 결과 검토 · 일정 예시</p></div><span class="pill">PENDING</span></div>
+            <div class="nx-brief"><div class="nx-brief-code">18:00 / REPORT</div><div><strong>Training log submission</strong><p>훈련 기록 제출 마감 · 일정 예시</p></div><span class="pill">NOTICE</span></div>
+          </div>
+        </section>
+        <section class="panel"><div class="panel-header"><div class="panel-title">NETWORK ACTIVITY</div><div class="panel-tag">SIMULATED LOG</div></div><div class="activity">
+          <div class="activity-item"><span class="act-dot"></span><div><strong>Training records synchronized</strong><p>교육 기록 동기화 완료</p></div><span class="small-time">09:42</span></div>
+          <div class="activity-item"><span class="act-dot warn"></span><div><strong>Evaluation directive issued</strong><p>새 평가 지침 게시</p></div><span class="small-time">08:15</span></div>
+          <div class="activity-item"><span class="act-dot"></span><div><strong>Security archive updated</strong><p>보안 자료실 기록 갱신</p></div><span class="small-time">07:36</span></div>
         </div></section>
       </div>
-      <div class="announcement"><span class="announce-icon">◇</span><div><h3>ACADEMY NOTICE // 내부 기록 이용 안내</h3><p>NEXUS는 5년 과정의 비공개 특수작전 교육기관으로, 전투·정보·기술·심리·전략·지원의 여섯 전문 분야를 운영한다. 이 네트워크의 운영 로그와 보안 등급은 세계관 시연용 가상 정보다.</p></div></div>
+      <div class="nx-quick-panel panel"><div class="panel-header"><div class="panel-title">QUICK ACCESS</div><div class="panel-tag">INTERNAL WORKSPACE</div></div><div class="nx-quick-grid">
+        <button type="button" class="nx-quick" data-go="personnel"><span>♙</span><strong>PERSONNEL DATABASE</strong><small>인원 명부 열람</small></button>
+        <button type="button" class="nx-quick" data-go="operations"><span>⌖</span><strong>OPERATIONS</strong><small>작전 기록 확인</small></button>
+        <button type="button" class="nx-quick" data-go="evaluations"><span>▤</span><strong>EVALUATION RECORDS</strong><small>평가 기록 확인</small></button>
+        <button type="button" class="nx-quick" data-go="communications"><span>⌁</span><strong>COMMUNICATIONS</strong><small>내부 통신 로그</small></button>
+      </div></div>
+      <div class="nx-internal-footnote">NEXUS // SIMULATED NETWORK · 화면의 통신, 일정, 보안 등급은 세계관 데모 데이터입니다.</div>
     </section>
-    <section class="section-view" id="view-personnel"><div class="dashboard-header"><div><div class="eyebrow">PERSONNEL DIRECTORY</div><h1>요원 명부</h1><div class="view-note">넥서스 소속 요원 목록의 디자인 예시입니다. 실데이터가 아닙니다.</div></div></div><div class="panel"><input class="search" id="personSearch" placeholder="호출명 또는 부서 검색" aria-label="요원 검색"><table class="data-table"><thead><tr><th>호출명</th><th>부서</th><th>등급</th><th>상태</th></tr></thead><tbody id="personBody"></tbody></table><div class="empty hidden" id="personEmpty">검색 결과가 없습니다.</div></div></section>
-    <section class="section-view" id="view-operations"><div class="dashboard-header"><div><div class="eyebrow">FIELD OPERATIONS</div><h1>작전 현황</h1><div class="view-note">진행 중인 작전 보드의 레이아웃 예시입니다.</div></div></div><div class="panel"><table class="data-table"><thead><tr><th>작전 코드</th><th>담당 부서</th><th>우선순위</th><th>상태</th></tr></thead><tbody><tr><td class="mono">NX-OP-042</td><td>전술 작전부</td><td>높음</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-037</td><td>정보 분석부</td><td>보통</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-029</td><td>연구 지원부</td><td>낮음</td><td><span class="pill">검토 중</span></td></tr></tbody></table></div></section>
+    <section class="section-view" id="view-personnel">
+      <div class="dashboard-header"><div><div class="eyebrow">PERSONNEL DATABASE / NEXUS RECORDS</div><h1>PERSONNEL DIRECTORY</h1><div class="view-note">훈련생 및 교직원의 인원 데이터베이스. 캐릭터 프로필 확정 전에는 임시 식별번호만 표시한다.</div></div><div class="status">● REGISTRY ONLINE</div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">PERSONNEL INDEX</div><div class="panel-tag">PROFILE PLACEHOLDERS</div></div>
+        <div class="nx-filter-bar"><input class="search" id="personSearch" type="search" placeholder="식별번호 · 분야 · 소속 검색" aria-label="인원 검색"><select class="nx-filter-select" id="personType" aria-label="직책별 필터"><option value="all">ALL PERSONNEL</option><option value="CADET">CADETS</option><option value="INSTRUCTOR">INSTRUCTORS</option><option value="STAFF">STAFF</option></select></div>
+        <div class="nx-table-scroll"><table class="data-table"><thead><tr><th>PERSONNEL ID</th><th>ROLE</th><th>DIVISION</th><th>PROFILE</th></tr></thead><tbody id="personBody"></tbody></table></div>
+        <div class="empty hidden" id="personEmpty">등록된 정보가 없습니다.</div><p class="nx-table-note">※ 현재 표시되는 식별번호는 실제 캐릭터와 무관한 임시 예시다.</p>
+      </div>
+    </section>
+    <section class="section-view" id="view-operations">
+      <div class="dashboard-header"><div><div class="eyebrow">FIELD OPERATIONS / TRAINING RECORDS</div><h1>OPERATIONS</h1><div class="view-note">훈련·작전 기록을 탐색하는 전용 아카이브. 작전명과 담당 인물은 추후 공식 설정을 등록할 수 있도록 비워두었다.</div></div><div class="status">● ARCHIVE AVAILABLE</div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">OPERATION REGISTRY</div><div class="panel-tag">SIMULATED ENTRIES</div></div>
+        <div class="nx-filter-bar"><input class="search" id="operationSearch" type="search" placeholder="기록번호 · 분야 · 상태 검색" aria-label="작전 검색"><select class="nx-filter-select" id="operationStatus" aria-label="작전 상태 필터"><option value="all">ALL STATUS</option><option value="ACTIVE">ACTIVE</option><option value="REVIEW">REVIEW</option><option value="ARCHIVED">ARCHIVED</option></select></div>
+        <div class="nx-table-scroll"><table class="data-table"><thead><tr><th>RECORD ID</th><th>CLASSIFICATION</th><th>DIVISION</th><th>STATUS</th></tr></thead><tbody id="operationBody"></tbody></table></div><div class="empty hidden" id="operationEmpty">일치하는 작전 기록이 없습니다.</div>
+      </div><div class="nx-internal-footnote">OPERATION FILES / 개별 작전 보고서는 캐릭터와 세계관 기록이 확정된 이후 연결 예정</div>
+    </section>
+    <section class="section-view" id="view-evaluations">
+      <div class="dashboard-header"><div><div class="eyebrow">ACADEMIC ASSESSMENT / PROMOTION REVIEW</div><h1>EVALUATION RECORDS</h1><div class="view-note">5년제 교육과정의 종합평가, 전문분야별 평가, 승급 심사를 관리하는 기록 화면.</div></div><div class="status">● REVIEW SYSTEM</div></div>
+      <div class="nx-three-grid">
+        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 01</div><h3 class="nx-module-title">SEMESTER REVIEW</h3><p>학기별 종합평가 · Semester evaluation</p><span class="nx-module-state">RECORDS PENDING</span></section>
+        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 02</div><h3 class="nx-module-title">SPECIALTY ASSESSMENT</h3><p>전공 분야별 능력 평가 · Division assessment</p><span class="nx-module-state">RECORDS PENDING</span></section>
+        <section class="panel"><div class="nx-module-kicker">ASSESSMENT 03</div><h3 class="nx-module-title">PROMOTION BOARD</h3><p>승급 심사 및 평가위원회 · Advancement review</p><span class="nx-module-state">RECORDS PENDING</span></section>
+      </div>
+      <section class="panel nx-block-gap"><div class="panel-header"><div class="panel-title">ACADEMIC RECORD FRAMEWORK</div><div class="panel-tag">ACADEMY / 05 YEARS</div></div><div class="nx-year-track"><span>YEAR 01</span><span>YEAR 02</span><span>YEAR 03</span><span>YEAR 04</span><span>YEAR 05</span></div><p class="nx-table-note">실제 성적이나 평가 결과는 저장하지 않는다. 차후 캐릭터별 기록을 연결할 수 있는 기본 구조만 구성했다.</p></section>
+    </section>
+    <section class="section-view" id="view-archives">
+      <div class="dashboard-header"><div><div class="eyebrow">CLASSIFIED RECORDS / CONTROLLED FILES</div><h1>CLASSIFIED ARCHIVE</h1><div class="view-note">기밀 사건 및 비공개 보고서를 위한 세계관 자료실. 보안 분류는 시각적 연출이며 실제 접근 통제가 아니다.</div></div><div class="status">● ARCHIVE STANDBY</div></div>
+      <div class="nx-three-grid">
+        <section class="panel"><div class="nx-module-kicker">FILE CLASS / A</div><h3 class="nx-module-title">INCIDENT REPORTS</h3><p>사건 보고서</p><span class="nx-lock-state">◇ RECORD PENDING</span></section>
+        <section class="panel"><div class="nx-module-kicker">FILE CLASS / B</div><h3 class="nx-module-title">SECURITY DIRECTIVES</h3><p>보안 지침 및 변경 기록</p><span class="nx-lock-state">◇ RECORD PENDING</span></section>
+        <section class="panel"><div class="nx-module-kicker">FILE CLASS / C</div><h3 class="nx-module-title">CASE ARCHIVES</h3><p>이전 작전 및 사건 아카이브</p><span class="nx-lock-state">◇ RECORD PENDING</span></section>
+      </div><p class="nx-internal-footnote">공개 GitHub Pages의 HTML에 실제 비밀정보나 개인정보를 저장하지 마세요.</p>
+    </section>
+    <section class="section-view" id="view-communications">
+      <div class="dashboard-header"><div><div class="eyebrow">PERSONNEL NETWORK / SYSTEM MESSAGES</div><h1>COMMUNICATIONS</h1><div class="view-note">내부 메시지 및 팀별 통신 내역을 확인하는 네트워크. 실제 메시지 전송 기능은 나중에 연결할 수 있다.</div></div><div class="status">● CHANNEL ONLINE</div></div>
+      <div class="content-grid"><section class="panel"><div class="panel-header"><div class="panel-title">MESSAGE CHANNELS</div><div class="panel-tag">READ-ONLY DEMO</div></div>
+        <div class="nx-channel"><span class="nx-channel-icon">⌁</span><div><strong>ACADEMY NETWORK</strong><p>기관 공통 시스템 채널 · System broadcasts</p></div><span class="nx-channel-counter">03</span></div>
+        <div class="nx-channel"><span class="nx-channel-icon">⌁</span><div><strong>TRAINING DIRECTIVES</strong><p>훈련 일정·공지 · Training notices</p></div><span class="nx-channel-counter">02</span></div>
+        <div class="nx-channel"><span class="nx-channel-icon">⌁</span><div><strong>UNIT COMMUNICATION</strong><p>팀별 채널 · Assigned teams pending</p></div><span class="nx-channel-counter">02</span></div>
+      </section><section class="panel"><div class="panel-header"><div class="panel-title">LATEST TRANSMISSIONS</div><div class="panel-tag">DEMO MESSAGES</div></div><div class="activity">
+        <div class="activity-item"><span class="act-dot"></span><div><strong>System maintenance completed</strong><p>네트워크 정기 점검 완료</p></div><span class="small-time">09:40</span></div>
+        <div class="activity-item"><span class="act-dot"></span><div><strong>Training schedule synchronized</strong><p>훈련 일정 동기화 완료</p></div><span class="small-time">08:20</span></div>
+        <div class="activity-item"><span class="act-dot warn"></span><div><strong>Evaluation window announced</strong><p>평가 일정 등록 알림</p></div><span class="small-time">07:55</span></div>
+      </div></section></div><div class="nx-internal-footnote">※ 이 메시지는 세계관용 정적 예시다. 실제 대화 내용이나 사용자 메시지는 저장하지 않는다.</div>
+    </section>
 
-    <section class="section-view" id="view-facilities">
-      <div class="dashboard-header"><div><div class="eyebrow">NEXUS CAMPUS / FACILITY DIRECTORY</div><h1>시설 안내</h1><p class="view-note">넥서스 캠퍼스의 주요 시설과 운영 구역을 확인한다. 시설을 선택하면 내부 공간 및 이용 목적을 열람할 수 있다.</p></div><div class="status">● 07 FACILITIES</div></div>
-      <div class="facility-feature"><span style="font-size:25px;color:var(--cyan)">⌑</span><div><strong>NEXUS / CAMPUS INDEX</strong><span>시설 정보는 세계관 설정용 안내 자료다. 위치 도면과 층별 상세 배치는 향후 공식 등록 예정이다.</span></div></div>
-      <div class="facility-toolbar"><input class="search" id="facilitySearch" type="search" placeholder="시설명 또는 공간 검색" aria-label="시설 검색"><button type="button" class="filter-button active" data-facility-filter="all">전체</button><button type="button" class="filter-button" data-facility-filter="core">교육 · 행정</button><button type="button" class="filter-button" data-facility-filter="living">생활 · 의료</button><button type="button" class="filter-button" data-facility-filter="restricted">평가 · 보호</button></div>
-      <div class="facility-count" id="facilityCount" aria-live="polite"></div>
-      <div class="facility-grid" id="facilityGrid"></div>
-      <div class="facility-detail" id="facilityDetail" hidden aria-live="polite"></div>
-      <p class="facility-smallprint">※ 구역 이름과 시설 구성은 NEXUS 세계관 설정에 따른 것이다. 실제 회원 권한 관리나 출입 통제는 적용되어 있지 않다.</p>
-    </section>
-    <section class="section-view" id="view-archives"><div class="dashboard-header"><div><div class="eyebrow">CLASSIFIED ARCHIVES</div><h1>기밀 기록 보관소</h1><div class="view-note">실제 기밀 파일이나 개인정보를 이 HTML 파일에 직접 넣지 마세요. GitHub Pages에서는 HTML과 JavaScript 원본을 누구나 볼 수 있습니다.</div></div></div><div class="panel"><div class="panel-title">◇ RECORD ACCESS</div><p class="sub" style="margin:18px 0 0">서버 기반 회원 인증 및 접근 권한 검증이 구성되면 이곳에 승인된 회원만 조회할 수 있는 문서를 연동할 수 있습니다.</p><div class="notice">현재 버전: 데모 화면만 제공 · 비공개 데이터 조회 기능 없음</div></div></section>
   </main>
 </div>
 
@@ -452,13 +541,30 @@ body.nx-thumb-locked{overflow:hidden}
 (()=>{
 'use strict';
 const loginPage=document.getElementById('loginPage'),app=document.getElementById('app');
-const views={overview:'OVERVIEW',personnel:'PERSONNEL',operations:'OPERATIONS',facilities:'FACILITIES',archives:'ARCHIVES'};
-const personnel=[['RAVEN','전술 작전부','A-1','활동 중'],['ECHO','정보 분석부','A-2','활동 중'],['NOVA','연구 개발부','B-1','활동 중'],['VEX','보안 통제부','A-2','대기 중'],['LYNX','의료 지원부','B-2','활동 중']];
-const tbody=document.getElementById('personBody');
-function renderPersonnel(q=''){
-const rows=personnel.filter(r=>r.some(v=>v.toLowerCase().includes(q.toLowerCase())));
-tbody.replaceChildren();rows.forEach(r=>{const tr=document.createElement('tr');r.forEach((v,i)=>{const td=document.createElement('td');if(i===0)td.className='mono';if(i===3){const span=document.createElement('span');span.className='pill';span.textContent=v;td.append(span)}else td.textContent=v;tr.append(td)});tbody.append(tr)});
-document.getElementById('personEmpty').classList.toggle('hidden',rows.length>0)}
+const views={overview:'OVERVIEW',personnel:'PERSONNEL',operations:'OPERATIONS',evaluations:'EVALUATIONS',archives:'ARCHIVES',communications:'COMMUNICATIONS'};
+// Neutral placeholders are separate from canon character roster.
+const personnel=[
+ ['CADET-04-017','CADET / YEAR 4','INTELLIGENCE','PENDING'],
+ ['CADET-05-009','CADET / YEAR 5','STRATEGY','PENDING'],
+ ['CADET-04-031','CADET / YEAR 4','COMBAT','PENDING'],
+ ['INSTRUCTOR-STR-02','INSTRUCTOR','STRATEGY','PENDING'],
+ ['INSTRUCTOR-TECH-01','INSTRUCTOR','TECH','PENDING'],
+ ['STAFF-MED-03','STAFF','SUPPORT','PENDING']
+];
+const operations=[
+ ['NX-OP-042','TRAINING SIMULATION','COMBAT','ACTIVE'],
+ ['NX-OP-037','INTELLIGENCE REVIEW','INTELLIGENCE','REVIEW'],
+ ['NX-OP-029','TECHNICAL ASSESSMENT','TECH','ARCHIVED'],
+ ['NX-OP-018','TEAM COORDINATION','STRATEGY','REVIEW']
+];
+function renderTable(data,target,empty,query,filter,predicate){
+  const rows=data.filter(row=>row.join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase())&&predicate(row,filter));
+  const body=document.getElementById(target);body.replaceChildren();
+  for(const row of rows){const tr=document.createElement('tr');for(let i=0;i<row.length;i++){const td=document.createElement('td');if(i===0)td.className='mono';if(i===row.length-1){const badge=document.createElement('span');badge.className='pill'+(row[i]==='PENDING'?' muted-pill':'');badge.textContent=row[i];td.append(badge)}else td.textContent=row[i];tr.append(td)}body.append(tr)}
+  document.getElementById(empty).classList.toggle('hidden',rows.length>0);
+}
+function renderPersonnel(){renderTable(personnel,'personBody','personEmpty',document.getElementById('personSearch').value,document.getElementById('personType').value,(r,f)=>f==='all'||r[1].startsWith(f))}
+function renderOperations(){renderTable(operations,'operationBody','operationEmpty',document.getElementById('operationSearch').value,document.getElementById('operationStatus').value,(r,f)=>f==='all'||r[3]===f)}
 function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.querySelectorAll('.nav-item').forEach(e=>e.classList.toggle('active',e.dataset.view===name));document.getElementById('breadView').textContent=views[name];document.getElementById('sidebar').classList.remove('open')}
 
 // The second verification stage is a visual interaction only; no biometric data is collected.
@@ -531,82 +637,17 @@ function enter(name){loginPage.classList.add('hidden');app.classList.remove('hid
 document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('agentId').value.trim();const code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return;}document.getElementById('loginMsg').textContent='';thumbOpen(name)});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
 document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
-document.getElementById('personSearch').addEventListener('input',e=>renderPersonnel(e.target.value));
+document.getElementById('personSearch').addEventListener('input',renderPersonnel);
 document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
 
-const facilities=[
- {code:'NX-01',name:'본관',en:'HEADQUARTERS',cat:'core',icon:'▥',zone:'COMMAND & ADMIN',desc:'기관 행정과 교육 운영, 중앙 통제를 담당하는 핵심 시설.',rooms:["본관 로비","본관 복도","강의실","행정실","교관사무실","중앙 통제실","회의실","브리핑룸","식당","카페"]},
- {code:'NX-02',name:'기숙사',en:'CADET RESIDENCE',cat:'living',icon:'▤',zone:'LIVING QUARTERS',desc:'교육생 전용 거주 구역. 남녀 구분 없는 1인실과 2인실을 혼합 운영한다.',rooms:["2인 기숙사 (1·2·3 CADET)","1인 기숙사 (4 CADET)","1인 기숙사 (5 CADET)","공용 주방","공용 라운지"],note:'학년과 평가 등급에 따라 연 1회 숙소를 재배정한다.'},
- {code:'NX-03',name:'의료센터',en:'MEDICAL CENTER',cat:'living',icon:'✚',zone:'HEALTH & RECOVERY',desc:'일반 진료부터 심리 상담, 재활 및 정밀 검진까지 지원하는 의료 시설.',rooms:["로비","진료실","회복실","재활치료실","정밀검사실","심리상담실"]},
- {code:'NX-04',name:'종합 훈련관',en:'TRAINING COMPLEX',cat:'core',icon:'⌖',zone:'FIELD READINESS',desc:'체력·전투·상황 대응·협동 훈련을 수행하는 종합 교육 공간.',rooms:["로비","피트니스룸","전투훈련실","사격훈련장","훈련장 관제실"]},
- {code:'NX-05',name:'정보 연구동',en:'INTELLIGENCE & RESEARCH',cat:'core',icon:'◇',zone:'ANALYSIS & TECH',desc:'정보 분석, 외국어, 심리학 및 기술 교육을 위한 전문 연구 시설.',rooms:["로비 겸 중앙 연구 구역","정보 분석실","기술 연구소","언어 훈련실","심리 분석실","자료 보관실"]},
- {code:'NX-06',name:'평가 구역',en:'ASSESSMENT SECTOR',cat:'restricted',icon:'▣',zone:'EXAMINATION',desc:'학기별 종합시험과 모의 상황 평가를 진행하는 독립 시설.',rooms:["종합평가센터 로비","개별 평가실","종합 상황 평가실","실전 상황 평가장","최종 평가 심의실"]},
- {code:'NX-07',name:'격리 관찰실',en:'PROTECTIVE OBSERVATION',cat:'restricted',icon:'◎',zone:'CARE & ASSESSMENT',desc:'중대한 규정 위반 또는 심리적 위기 상황에 놓인 교육생을 보호하고 평가하는 공간.',rooms:["격리 관찰실"],note:'보호와 평가를 목적으로 하는 설정이며 징벌 시설로 묘사하지 않는다.'}
-];
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
+document.getElementById('personType').addEventListener('change',renderPersonnel);
+document.getElementById('operationSearch').addEventListener('input',renderOperations);
+document.getElementById('operationStatus').addEventListener('change',renderOperations);
 
-const facilityPhotoData={"NX-01":[{"name":"본관 로비","en":"Main Lobby","description":"넥서스 방문자와 교육생이 처음 진입하는 중앙 로비다.","src":"images/headquarters/lobby.webp"},{"name":"본관 복도","en":"Main Corridor","description":"본관의 강의실과 행정 구역을 연결하는 주요 통로다.","src":"images/headquarters/corridor.webp"},{"name":"강의실","en":"Lecture Room","description":"전문 이론 교육과 정기 강의를 진행하는 교육 공간이다.","src":"images/headquarters/classroom.webp"},{"name":"행정실","en":"Administrative Office","description":"교육생 기록과 기관 운영 행정을 담당한다.","src":"images/headquarters/administration.webp"},{"name":"교관사무실","en":"Instructors’ Office","description":"교관들이 교육 계획과 훈련 기록을 관리하는 업무 공간이다.","src":"images/headquarters/instructors.webp"},{"name":"중앙 통제실","en":"Central Control Room","description":"기관 내 주요 시스템과 운영 현황을 통합 감시한다.","src":"images/headquarters/control.webp"},{"name":"회의실","en":"Conference Room","description":"평가 및 운영 관련 내부 회의를 진행한다.","src":"images/headquarters/meeting.webp"},{"name":"브리핑룸","en":"Briefing Room","description":"작전·훈련 진행 전 상황을 공유하고 계획을 검토한다.","src":"images/headquarters/briefing.webp"},{"name":"식당","en":"Main Dining Hall","description":"교육생과 교직원의 정규 식사를 제공하는 공용 식당이다.","src":"images/headquarters/dining.webp"},{"name":"카페","en":"Cafeteria","description":"음료와 간단한 간식을 제공하는 휴게 공간이다.","src":"images/headquarters/cafe.webp"}],"NX-02":[{"name":"2인 기숙사 (1·2·3 CADET)","en":"Junior Cadet Double Room","description":"1~3학년 교육생을 위한 2인실이다.","src":"images/dormitory/double.webp"},{"name":"1인 기숙사 (4 CADET)","en":"Fourth-Year Single Room","description":"4학년 교육생을 위한 독립 생활 공간이다.","src":"images/dormitory/year4.webp"},{"name":"1인 기숙사 (5 CADET)","en":"Senior Cadet Suite","description":"5학년 상급 교육생을 위한 독립 생활 공간이다.","src":"images/dormitory/year5.webp"},{"name":"공용 주방","en":"Communal Kitchen","description":"교육생들이 공동으로 이용하는 조리 공간이다.","src":"images/dormitory/kitchen.webp"},{"name":"공용 라운지","en":"Communal Lounge","description":"휴식과 교류 및 여가 활동을 위한 공용 공간이다.","src":"images/dormitory/lounge.webp"}],"NX-03":[{"name":"로비","en":"Medical Lobby","description":"의료센터의 접수와 안내가 이루어지는 공간이다.","src":"images/medical/lobby.webp"},{"name":"진료실","en":"Examination Room","description":"기본 진료와 신체 상태 확인을 진행한다.","src":"images/medical/exam.webp"},{"name":"회복실","en":"Recovery Room","description":"치료 이후 안정과 경과 관찰을 지원한다.","src":"images/medical/recovery.webp"},{"name":"재활치료실","en":"Rehabilitation Room","description":"회복 훈련과 재활 치료를 진행하는 공간이다.","src":"images/medical/rehab.webp"},{"name":"정밀검사실","en":"Diagnostic Laboratory","description":"정밀 영상 검사와 심화 신체 검진을 지원한다.","src":"images/medical/diagnostics.webp"},{"name":"심리상담실","en":"Psychological Counseling Room","description":"심리 상담과 안정 회복을 위한 독립 상담 공간이다.","src":"images/medical/counseling.webp"}],"NX-04":[{"name":"로비","en":"Training Center Lobby","description":"훈련관의 주요 구역을 연결하는 안내 및 집결 공간이다.","src":"images/training/lobby.webp"},{"name":"피트니스룸","en":"Physical Training Room","description":"체력과 근력·지구력 강화를 위한 전문 공간이다.","src":"images/training/fitness.webp"},{"name":"전투훈련실","en":"Combat Training Room","description":"근접 전투 및 방어 기술을 훈련하는 공간이다.","src":"images/training/combat.webp"},{"name":"사격훈련장","en":"Indoor Shooting Range","description":"실내 사격 훈련과 정밀도 평가를 진행한다.","src":"images/training/shooting.webp"},{"name":"훈련장 관제실","en":"Training Control Room","description":"훈련 진행과 기록, 안전 상태를 관찰·관리한다.","src":"images/training/control.webp"}],"NX-05":[{"name":"로비 겸 중앙 연구 구역","en":"Central Research Area","description":"정보 연구동의 공용 연구·교류 공간이다.","src":"images/research/central.webp"},{"name":"정보 분석실","en":"Intelligence Analysis Room","description":"수집한 정보를 종합 분석하는 공간이다.","src":"images/research/intelligence.webp"},{"name":"기술 연구소","en":"Technology Laboratory","description":"첨단 장비와 전술 기술을 연구·개발한다.","src":"images/research/technology.webp"},{"name":"언어 훈련실","en":"Language Training Room","description":"외국어 및 상황별 의사소통을 훈련한다.","src":"images/research/language.webp"},{"name":"심리 분석실","en":"Behavioral Analysis Room","description":"행동 패턴과 심리 상태를 분석한다.","src":"images/research/behavior.webp"},{"name":"자료 보관실","en":"Classified Archives","description":"중요 기록과 연구 자료를 보관하는 제한 접근 구역이다.","src":"images/research/archive.webp"}],"NX-06":[{"name":"종합평가센터 로비","en":"Evaluation Center Lobby","description":"평가 대상자 접수와 안내를 위한 공용 구역이다.","src":"images/evaluation/lobby.webp"},{"name":"개별 평가실","en":"Individual Assessment Room","description":"개인 면담과 판단 능력을 점검한다.","src":"images/evaluation/individual.webp"},{"name":"종합 상황 평가실","en":"Scenario Assessment Room","description":"가상 시나리오를 이용한 판단·협업 평가를 진행한다.","src":"images/evaluation/scenario.webp"},{"name":"실전 상황 평가장","en":"Practical Assessment Arena","description":"실전형 종합 대응 능력을 평가하는 공간이다.","src":"images/evaluation/practical.webp"},{"name":"최종 평가 심의실","en":"Final Evaluation Committee Room","description":"최종 등급 및 진급에 관한 평가 결과를 심의한다.","src":"images/evaluation/final.webp"}],"NX-07":[{"name":"격리 관찰실","en":"Isolation & Observation Room","description":"교육생의 상태를 보호 관찰하고 안전과 심리 안정을 평가하는 공간이다.","src":"images/observation/unit.webp"}]};
-function addFacilityGallery(panel,facilityCode){
- const photos=facilityPhotoData[facilityCode]||[]; if(!photos.length)return;
- let active=0;
- const box=document.createElement('section');box.className='nx-gallery';box.setAttribute('aria-label','시설 사진 갤러리');
- const bar=document.createElement('div');bar.className='nx-gallery-top';
- const title=document.createElement('strong');title.textContent='SPACE PHOTO ARCHIVE / 공간 사진';
- const counter=document.createElement('span');bar.append(title,counter);box.append(bar);
- const stage=document.createElement('div');stage.className='nx-gallery-stage';
- const photo=document.createElement('img');photo.alt='';photo.loading='lazy';
- const prev=document.createElement('button');prev.className='nx-gallery-arrow prev';prev.textContent='❮';prev.type='button';prev.setAttribute('aria-label','이전 사진');
- const next=document.createElement('button');next.className='nx-gallery-arrow next';next.textContent='❯';next.type='button';next.setAttribute('aria-label','다음 사진');
- stage.append(photo,prev,next);box.append(stage);
- const caption=document.createElement('div');caption.className='nx-gallery-caption';
- const name=document.createElement('strong'),en=document.createElement('small'),description=document.createElement('p');caption.append(name,en,description);box.append(caption);
- const thumbs=document.createElement('div');thumbs.className='nx-gallery-thumbs';box.append(thumbs);
- const thumbButtons=photos.map((p,i)=>{const b=document.createElement('button');b.type='button';b.className='nx-thumb';b.setAttribute('aria-label',p.name+' 사진 선택');const im=document.createElement('img');im.src=p.src;im.alt='';im.loading='lazy';const s=document.createElement('span');s.textContent=p.name;b.append(im,s);b.addEventListener('click',()=>setPhoto(i));thumbs.append(b);return b});
- function setPhoto(i){active=(i+photos.length)%photos.length;const p=photos[active];photo.src=p.src;photo.alt=p.name;name.textContent=p.name;en.textContent=p.en;description.textContent=p.description;counter.textContent=String(active+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0');thumbButtons.forEach((b,j)=>b.classList.toggle('active',j===active));thumbButtons[active].scrollIntoView({block:'nearest',inline:'nearest'});}
- prev.addEventListener('click',()=>setPhoto(active-1));next.addEventListener('click',()=>setPhoto(active+1));
- const lightbox=document.getElementById('nxLightbox');const full=lightbox.querySelector('img');const info=lightbox.querySelector('span');
- photo.addEventListener('click',()=>{full.src=photos[active].src;full.alt=photos[active].name;info.textContent=photos[active].name;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false')});
- panel.append(box);setPhoto(0);
-}
-
-let facilityFilter='all';
-function renderFacilities(){
- const term=document.getElementById('facilitySearch').value.trim().toLocaleLowerCase();
- const items=facilities.filter(f=>(facilityFilter==='all'||f.cat===facilityFilter)&&[f.name,f.en,f.desc,...f.rooms].join(' ').toLocaleLowerCase().includes(term));
- const grid=document.getElementById('facilityGrid');grid.replaceChildren();
- document.getElementById('facilityCount').textContent='DISPLAYING '+items.length+' / '+facilities.length+' FACILITIES';
- if(!items.length){const empty=document.createElement('div');empty.className='facility-empty';empty.textContent='검색 조건에 해당하는 시설이 없습니다.';grid.append(empty);return}
- items.forEach(f=>{
-  const card=document.createElement('article');card.className='facility-card';
-  card.innerHTML=`<div class="facility-art"><span class="facility-code"></span><span class="building-symbol" aria-hidden="true"></span><span class="facility-zone"></span></div><div class="facility-content"><div class="en"></div><h3></h3><p class="facility-desc"></p><div class="facility-meta"></div><button class="facility-open" type="button">시설 상세 보기 <span aria-hidden="true">↗</span></button></div>`;
-  card.querySelector('.facility-code').textContent=f.code;card.querySelector('.building-symbol').textContent=f.icon;card.querySelector('.facility-zone').textContent=f.zone;
-  card.querySelector('.en').textContent=f.en;card.querySelector('h3').textContent=f.name;card.querySelector('.facility-desc').textContent=f.desc;
-  f.rooms.slice(0,3).forEach(r=>{const chip=document.createElement('span');chip.className='facility-chip';chip.textContent=r;card.querySelector('.facility-meta').append(chip)});
-  card.querySelector('.facility-open').addEventListener('click',()=>openFacility(f.code));grid.append(card)
- });
-}
-function openFacility(code){
- const f=facilities.find(x=>x.code===code);if(!f)return;
- const panel=document.getElementById('facilityDetail');panel.replaceChildren();
- const close=document.createElement('button');close.type='button';close.className='close-detail';close.textContent='✕ 닫기';close.addEventListener('click',()=>{panel.hidden=true});panel.append(close);
- const eye=document.createElement('div');eye.className='eyebrow';eye.textContent=f.code+' / '+f.en;panel.append(eye);
- const heading=document.createElement('h2');heading.textContent=f.name;panel.append(heading);
- const desc=document.createElement('p');desc.textContent=f.desc;panel.append(desc);
- addFacilityGallery(panel,code);
- const roomTitle=document.createElement('div');roomTitle.className='panel-title';roomTitle.style.marginTop='23px';roomTitle.textContent='내부 구역 / AREA DIRECTORY';panel.append(roomTitle);
- const rooms=document.createElement('div');rooms.className='facility-rooms';f.rooms.forEach((r,i)=>{const cell=document.createElement('div');cell.className='facility-room';const code=document.createElement('span');code.textContent='AREA '+String(i+1).padStart(2,'0');cell.append(code,document.createTextNode(r));rooms.append(cell)});panel.append(rooms);
- if(f.note){const note=document.createElement('p');note.textContent='운영 안내 · '+f.note;note.style.marginTop='16px';panel.append(note)}
- const disclaimer=document.createElement('div');disclaimer.className='facility-smallprint';disclaimer.textContent='세부 층수 및 실제 동선은 아직 지정되지 않았습니다. 목록의 AREA 번호는 층수가 아닌 화면 표시 순서입니다.';panel.append(disclaimer);
- panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'start'});
-}
-document.getElementById('facilitySearch').addEventListener('input',renderFacilities);
-document.querySelectorAll('[data-facility-filter]').forEach(button=>button.addEventListener('click',()=>{facilityFilter=button.dataset.facilityFilter;document.querySelectorAll('[data-facility-filter]').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('facilityDetail').hidden=true;renderFacilities()}));
-renderFacilities();
-
-document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();
+document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();
 })();
 </script>
-<div id="nxLightbox" class="nx-lightbox" aria-hidden="true" role="dialog" aria-label="확대된 시설 사진"><button type="button" id="nxLightboxClose">✕ 닫기 / ESC</button><img alt=""><span></span></div>
-<script>document.getElementById('nxLightboxClose').addEventListener('click',()=>{const el=document.getElementById('nxLightbox');el.classList.remove('open');el.setAttribute('aria-hidden','true')});document.getElementById('nxLightbox').addEventListener('click',e=>{if(e.target.id==='nxLightbox')document.getElementById('nxLightboxClose').click()});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('nxLightboxClose').click()});</script>
 <script src="image-protection.js" defer></script>
 </body>
 </html>
