@@ -684,6 +684,9 @@ body.ops-modal-open{overflow:hidden}
 .nx-dm-contact+.nx-dm-contact{border-top:1px solid #283646}
 .nx-dm-contact:hover,.nx-dm-contact.active{background:linear-gradient(95deg,#33485b 0%,#182636 64%,#101822);border-color:#6c869c}
 .nx-dm-avatar{display:grid;place-items:center;width:55px;height:55px;flex:none;border:1px solid #7892ab;background:radial-gradient(circle at 32% 10%,#394b5c,#111b28 67%);box-shadow:inset 0 0 0 3px #111d2b,inset 0 0 0 4px #5a738a5e;color:#d7eafa;font:19px Georgia,serif;letter-spacing:.05em}
+.nx-dm-avatar.photo{position:relative;color:transparent;text-indent:-9999px;overflow:hidden;background-color:#111b28;background-repeat:no-repeat;background-size:cover;background-position:center 18%;box-shadow:inset 0 0 0 1px #a3bfd11c,0 0 14px #00000030}
+.nx-dm-avatar.photo::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 3px #111d2b,inset 0 0 0 4px #5a738a5e;pointer-events:none}
+.nx-dm-contact.active .nx-dm-avatar.photo,.nx-dm-contact:hover .nx-dm-avatar.photo{box-shadow:0 0 18px #8cc8ff20,inset 0 0 0 1px #d1e5f220}
 .nx-dm-contactinfo{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
 .nx-dm-contactinfo strong{font-size:11px;font-weight:650;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nx-dm-contactinfo small{font-size:10px;color:#9bb4c6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1050,7 +1053,7 @@ body.ops-modal-open{overflow:hidden}
         </aside>
         <section class="nx-dm-window" aria-label="개인 대화 내용">
           <header class="nx-dm-chathead">
-            <div class="nx-dm-avatar" id="nxDmAvatar" aria-hidden="true">NB</div>
+            <div class="nx-dm-avatar" id="nxDmAvatar" aria-hidden="true"></div>
             <div class="nx-dm-id-copy"><div class="nx-dm-mini">NEXUS / SECURE PERSONAL CHANNEL</div><strong id="nxDmContactName">NOAH BENNETT</strong><small id="nxDmContactInfo">ATLAS · CADET 4 · STRATEGY</small></div>
             <span class="nx-dm-chatstatus">● CHANNEL ACTIVE</span>
           </header>
@@ -1325,6 +1328,33 @@ const nxDmSeed={"NOAH BENNETT":[{"date":"2026-11-18","time":"18:42","side":"them
 let nxDmCurrent='MALCOLM PRICE', nxDmFilter='all';
 const nxDmEl=id=>document.getElementById(id);
 const nxDmPerson=name=>personnel.find(p=>p.name===name);
+const nxDmProfileImages={
+  'NOAH BENNETT':'assets/message_profiles/noah-bennett.png',
+  'MALCOLM PRICE':'assets/message_profiles/malcolm-price.png',
+  'MASON RYDER':'assets/message_profiles/mason-ryder.png',
+  'SEBASTIAN MILLER':'assets/message_profiles/sebastian-miller.png',
+  'OLIVER GLANT':'assets/message_profiles/oliver-glant.png',
+  'LUCIAN VANCE':'assets/message_profiles/lucian-vance.png',
+  'LIAM COOPER':'assets/message_profiles/liam-cooper.png',
+  'ETHAN WALKER':'assets/message_profiles/ethan-walker.png',
+  'CAL BLACKWOOD':'assets/message_profiles/cal-blackwood.png',
+  'THEO CALLAHAN':'assets/message_profiles/theo-callahan.png'
+};
+function nxDmApplyAvatar(node,name){
+  if(!node)return;
+  const src=nxDmProfileImages[name];
+  const fallback=(name||'').split(' ').map(s=>s[0]).slice(0,2).join('');
+  node.textContent=fallback;
+  if(src){
+    node.classList.add('photo');
+    node.style.backgroundImage=`linear-gradient(180deg, rgba(7,12,19,.08), rgba(7,12,19,.18)), url('${src}')`;
+    node.setAttribute('aria-label',name+' profile image');
+  }else{
+    node.classList.remove('photo');
+    node.style.backgroundImage='';
+    node.removeAttribute('aria-label');
+  }
+}
 function nxDmAll(name){return nxDmSeed[name]||[]}
 function nxDmStamp(m){return m.date+' '+m.time}
 function nxDmNode(tag,className,textValue){const n=document.createElement(tag);if(className)n.className=className;if(textValue!==undefined)n.textContent=textValue;return n}
@@ -1334,12 +1364,12 @@ function nxDmPaintContacts(){
  const names=Object.keys(nxDmSeed).filter(name=>{const p=nxDmPerson(name);return p&&(nxDmFilter==='all'||p.team===nxDmFilter)&&[name,p.nameKo,p.callsign,p.division].join(' ').toLocaleLowerCase().includes(q)}).sort((a,b)=>nxDmStamp(nxDmAll(b).at(-1)).localeCompare(nxDmStamp(nxDmAll(a).at(-1))));
  nxDmEl('nxDmTotal').textContent=String(names.length).padStart(2,'0')+' THREADS';
  for(const name of names){const p=nxDmPerson(name),m=nxDmAll(name).at(-1);const b=nxDmNode('button','nx-dm-contact'+(name===nxDmCurrent?' active':''));b.type='button';b.setAttribute('aria-pressed',String(name===nxDmCurrent));
- const avatar=nxDmNode('span','nx-dm-avatar',p.name.split(' ').map(s=>s[0]).slice(0,2).join(''));avatar.setAttribute('aria-hidden','true');
+ const avatar=nxDmNode('span','nx-dm-avatar');avatar.setAttribute('aria-hidden','true');nxDmApplyAvatar(avatar,name);
  const info=nxDmNode('span','nx-dm-contactinfo');info.append(nxDmNode('strong','',name),nxDmNode('small','['+p.callsign+'] '+(p.team==='senior'?'SENIOR CADET':'CADET 4')),nxDmNode('span','nx-dm-last',nxDmShort(m)));
  b.append(avatar,info,nxDmNode('span','nx-dm-contacttime',m.time));b.addEventListener('click',()=>nxDmSelect(name));host.append(b)}
  if(!names.length)host.append(nxDmNode('div','nx-dm-empty','일치하는 대화가 없습니다.'));
 }
-function nxDmSelect(name){if(!nxDmSeed[name])return;nxDmCurrent=name;const p=nxDmPerson(name);nxDmEl('nxDmAvatar').textContent=name.split(' ').map(s=>s[0]).slice(0,2).join('');nxDmEl('nxDmContactName').textContent=name;nxDmEl('nxDmContactInfo').textContent=p.nameKo+' · '+p.callsign+' · '+(p.team==='senior'?'SENIOR CADET':'CADET 4')+' · '+p.division;
+function nxDmSelect(name){if(!nxDmSeed[name])return;nxDmCurrent=name;const p=nxDmPerson(name);nxDmApplyAvatar(nxDmEl('nxDmAvatar'),name);nxDmEl('nxDmContactName').textContent=name;nxDmEl('nxDmContactInfo').textContent=p.nameKo+' · '+p.callsign+' · '+(p.team==='senior'?'SENIOR CADET':'CADET 4')+' · '+p.division;
  const host=nxDmEl('nxDmMessages');host.replaceChildren();let lastDate='';for(const m of nxDmAll(name)){
  if(m.date!==lastDate){host.append(nxDmNode('div','nx-dm-date',m.date));lastDate=m.date}
  const mine=m.side==='me';const row=nxDmNode('div','nx-dm-bubble-row'+(mine?' mine':''));row.append(nxDmNode('div','nx-dm-sender',mine?'YOU':p.nameKo+' / '+p.callsign));const bubble=nxDmNode('div','nx-dm-bubble');bubble.append(nxDmNode('div','',m.en));if(m.ko)bubble.append(nxDmNode('div','nx-dm-translation',m.ko));row.append(bubble,nxDmNode('div','nx-dm-time',m.time));host.append(row)}
