@@ -712,6 +712,10 @@ body.ops-modal-open{overflow:hidden}
 .nx-dm-compose button:disabled{opacity:.5;cursor:default}
 .nx-dm-privacy{padding:11px 20px 15px;color:#8fa6b8;font-size:10px;background:#0e1620;line-height:1.5}
 .nx-dm-empty{padding:24px;color:#91a9bc;font-size:12px}
+/* v4.79 — locked compose UI: visible for continuity, no edit/send capability */
+#app .nx-dm-compose-locked input:disabled{opacity:1;color:#b9c8d4;cursor:not-allowed;background:linear-gradient(180deg,#1d2d3c,#131e2a);border-color:#465c6d}
+#app .nx-dm-compose-locked input:disabled::placeholder{color:#8c9dad;opacity:1}
+#app .nx-dm-compose-locked button:disabled{opacity:.72;cursor:not-allowed;color:#d0dce6;background:linear-gradient(180deg,#354659,#202d3d);border-color:#586f82}
 @media(max-width:950px){.nx-dm-shell{grid-template-columns:minmax(225px,280px) minmax(0,1fr)}.nx-dm-messages{padding:18px 14px}.nx-dm-chatstatus{display:none}}
 @media(max-width:730px){.nx-dm-shell{grid-template-columns:minmax(0,1fr)}.nx-dm-sidebar{min-height:0}.nx-dm-list{max-height:240px}.nx-dm-window{min-height:510px}.nx-dm-messages{min-height:330px;max-height:460px}.nx-dm-chathead{padding:15px}.nx-dm-bubble-row{max-width:93%}}
 @media(max-width:430px){.nx-dm-chathead .nx-dm-avatar{width:50px;height:50px;font-size:18px}.nx-dm-id-copy strong{font-size:15px;letter-spacing:.05em}.nx-dm-compose{padding:12px}.nx-dm-compose button{padding:12px}}
@@ -956,8 +960,11 @@ body.ops-modal-open{overflow:hidden}
             <span class="nx-dm-chatstatus">● CHANNEL ACTIVE</span>
           </header>
           <div class="nx-dm-messages" id="nxDmMessages" aria-live="polite"></div>
-          <div class="nx-dm-readonly" role="note"><span aria-hidden="true">▣</span><span>CONVERSATION ARCHIVE <small>이전 대화 기록 · 열람 전용</small></span></div>
-          <div class="nx-dm-privacy">NEXUS / PRIVATE CORRESPONDENCE · 기록 조회 전용 · 메시지 작성 및 전송 비활성화</div>
+          <div class="nx-dm-compose nx-dm-compose-locked" aria-label="개인 통신 메시지 작성 영역 (전송 잠금)">
+            <input type="text" id="nxDmComposeDisplay" placeholder="Type a secure message…" aria-label="보안 메시지 입력 (전송 제한)" disabled autocomplete="off">
+            <button type="button" disabled aria-label="SEND (전송 제한)">SEND ↗</button>
+          </div>
+          <div class="nx-dm-privacy">NEXUS / PRIVATE CORRESPONDENCE · <span aria-hidden="true">▣</span> SECURE CHANNEL · TRANSMISSION LOCKED</div>
         </section>
       </div>
     </section>
