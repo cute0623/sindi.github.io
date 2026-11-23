@@ -790,6 +790,31 @@ body.ops-modal-open{overflow:hidden}
 @media(max-width:480px){#app .nx80-telemetry{grid-template-columns:1fr 1fr}#app .nx80-cell:first-child{grid-column:1/-1}#app .nx80-cell{padding:13px 11px}#app .nx80-system-ribbon{font-size:8px}#app .hub-tiles{gap:12px}}
 @media(prefers-reduced-motion:reduce){#app .nx80-telemetry::after,#app .nx80-code,#app .nx80-blink,#app .section-view.active:not(#view-overview){animation:none!important}}
 
+
+/* v4.81 — mobile mailbox sizing containment and readable correspondence */
+#app #view-mailbox{min-width:0;max-width:100%}
+#app #view-mailbox .mail-layout{width:100%;max-width:100%;min-width:0;overflow:hidden}
+#app #view-mailbox .mail-folders,#app #view-mailbox .mail-main,#app #view-mailbox .mail-toolbar,#app #view-mailbox .mail-detail,#app #view-mailbox .mail-rows{min-width:0;max-width:100%}
+#app #view-mailbox .mail-folder-list{min-width:0;max-width:100%}
+#app #view-mailbox .mail-detail h2,#app #view-mailbox .mail-body-en,#app #view-mailbox .mail-body-ko,#app #view-mailbox .mail-title-ko{overflow-wrap:anywhere;word-break:normal;max-width:100%}
+#app #view-mailbox .mail-meta{min-width:0;max-width:100%}
+#app #view-mailbox .mail-item{min-width:0;max-width:100%}
+#app #view-mailbox .mail-item .mail-subject,#app #view-mailbox .mail-item .mail-from{overflow-wrap:anywhere}
+@media(max-width:780px){
+ #app #view-mailbox .mail-layout{display:grid;grid-template-columns:minmax(0,1fr);min-height:0}
+ #app #view-mailbox .mail-folders{overflow:hidden;width:100%}
+ #app #view-mailbox .mail-folder-list{display:flex;width:100%;overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+ #app #view-mailbox .mail-folder{flex:0 0 auto;width:auto}
+ #app #view-mailbox .mail-main{width:100%;overflow:hidden}
+ #app #view-mailbox .mail-toolbar{width:100%;align-items:stretch}
+ #app #view-mailbox .mail-search{min-width:0;width:100%;max-width:100%}
+ #app #view-mailbox .mail-detail{width:100%;min-width:0;max-width:100%;padding:18px 16px 24px}
+ #app #view-mailbox .mail-openbar{flex-wrap:wrap;gap:10px}
+ #app #view-mailbox .mail-back,#app #view-mailbox .mail-star{max-width:100%;white-space:normal}
+ #app #view-mailbox .mail-meta{grid-template-columns:minmax(0,1fr);padding:16px 14px}
+ #app #view-mailbox .mail-body-ko{padding:13px 14px}
+ #app #view-mailbox .mail-detail h2{font-size:clamp(20px,5vw,27px)}
+}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
