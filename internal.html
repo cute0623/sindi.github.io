@@ -665,9 +665,9 @@ body.ops-modal-open{overflow:hidden}
 @media(max-width:390px){#app .nx-location-bottom{flex-wrap:wrap}#app .nx-location-panel{padding:12px}}
 
 /* v4.77 — personal correspondence: dark metallic in-world private chat archive */
-#app .hub-tile.personal-tile{background:linear-gradient(148deg,#374454,#1d2733 26%,#101721 61%,#080c13);border-color:#879db0}
-#app .hub-tile.personal-tile .hub-tile-icon{color:#d0e6f4}
-#app .hub-tiles .hub-tile:last-child{grid-column:1 / -1;min-height:125px}
+
+
+
 .nx-dm-shell{display:grid;grid-template-columns:minmax(265px,340px) minmax(0,1fr);gap:15px;min-height:610px}
 .nx-dm-sidebar,.nx-dm-window{background:linear-gradient(157deg,#202b38 0%,#121923 24%,#0a0f17 100%);border:1px solid #647588;box-shadow:inset 0 1px 0 #ffffff20,0 12px 30px #0007;min-width:0;position:relative}
 .nx-dm-sidebar:before,.nx-dm-window:before{content:"";position:absolute;inset:6px;border:1px solid #a6cce016;pointer-events:none}
@@ -716,6 +716,16 @@ body.ops-modal-open{overflow:hidden}
 @media(max-width:730px){.nx-dm-shell{grid-template-columns:minmax(0,1fr)}.nx-dm-sidebar{min-height:0}.nx-dm-list{max-height:240px}.nx-dm-window{min-height:510px}.nx-dm-messages{min-height:330px;max-height:460px}.nx-dm-chathead{padding:15px}.nx-dm-bubble-row{max-width:93%}}
 @media(max-width:430px){.nx-dm-chathead .nx-dm-avatar{width:50px;height:50px;font-size:18px}.nx-dm-id-copy strong{font-size:15px;letter-spacing:.05em}.nx-dm-compose{padding:12px}.nx-dm-compose button{padding:12px}}
 
+
+/* v4.78 — personal archive shortcut beside signed-in ID; read-only dialogue records */
+#app .nx-dm-toplink{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:38px;padding:8px 12px;border:1px solid #879cac;background:linear-gradient(180deg,#3c4b5b 0%,#1c2c3a 42%,#0b1520 100%);color:#e6eff7;box-shadow:inset 0 1px 0 #ffffff38,0 7px 18px #0004;letter-spacing:.12em;font-size:10px;white-space:nowrap;transition:background .18s,border-color .18s,transform .18s}
+#app .nx-dm-toplink:hover,#app .nx-dm-toplink:focus-visible{background:linear-gradient(180deg,#526879,#2a3f52 45%,#172334);border-color:#c3d9e8;transform:translateY(-1px)}
+#app .nx-dm-toplink svg{flex:none}
+#app .nx-dm-readonly{display:flex;align-items:center;gap:12px;padding:15px 22px;border-top:1px solid #4a5d6f;background:linear-gradient(180deg,#172534,#0d1722);color:#d1e2ee;font:10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.10em}
+#app .nx-dm-readonly>span:first-child{font-size:20px;color:#94b6cf}
+#app .nx-dm-readonly small{display:block;margin-top:5px;letter-spacing:0;font:11px system-ui,sans-serif;color:#a2bacc}
+@media(max-width:600px){#app .nx-dm-toplink{min-width:39px;width:39px;padding:8px}#app .nx-dm-toplabel{display:none}#app .nx-dm-readonly{padding:13px 15px}}
+@media(max-width:380px){#app .top-right{gap:5px}#app .nx-dm-toplink{width:35px;min-width:35px;min-height:35px;padding:7px}}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -800,7 +810,7 @@ body.ops-modal-open{overflow:hidden}
   <main class="main">
     <header class="topbar">
       <div class="hub-topbrand"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><div><strong>NEXUS</strong><span>INTERNAL NETWORK / <b id="breadView">HOME</b></span></div></div>
-      <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button class="logout" id="logout">LOG OUT</button></div>
+      <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button type="button" class="nx-dm-toplink" data-go="directmessages" aria-label="개인 메시지함 열기" title="PERSONAL MESSAGES · 개인 메시지함"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.7" y="4.9" width="18.6" height="14.2" rx="1.4"/><path d="m3.7 6.4 8.3 6.5 8.3-6.5"/></svg><span class="nx-dm-toplabel">MESSAGES</span></button><button class="logout" id="logout">LOG OUT</button></div>
     </header>
     <section class="section-view active" id="view-overview">
       <div class="hub-welcome"><div class="hub-kicker">NEXUS / AUTHORIZED USER PORTAL</div>
@@ -842,7 +852,6 @@ body.ops-modal-open{overflow:hidden}
         <button type="button" class="hub-tile" data-go="archives"><span class="hub-tile-icon">◇</span><span class="hub-tile-copy"><strong>CLASSIFIED ARCHIVE</strong><small>보안 문서 · 기밀 기록</small></span><span class="hub-tile-arrow">↗</span></button>
         <button type="button" class="hub-tile" data-go="communications"><span class="hub-tile-icon">⌁</span><span class="hub-tile-copy"><strong>COMMUNICATIONS</strong><small>내부 통신 · 메시지 기록</small></span><span class="hub-tile-arrow">↗</span></button>
         <button type="button" class="hub-tile" data-go="mailbox"><span class="hub-tile-icon">✉</span><span class="hub-tile-copy"><strong>MAILBOX</strong><small>받은 메일 · 공식 통지 · 보관함</small></span><span class="hub-tile-arrow">↗</span></button>
-        <button type="button" class="hub-tile personal-tile" data-go="directmessages"><span class="hub-tile-icon">☏</span><span class="hub-tile-copy"><strong>PERSONAL MESSAGES</strong><small>개인 대화 · 교육생 간 메시지 기록</small></span><span class="hub-tile-arrow">↗</span></button>
       </div>
       <div class="hub-bottom"><span>ACCESS STATUS <b>AUTHORIZED</b></span><span>NETWORK MODE <b>DEMO</b></span><span>PERSONNEL DATA <b>PENDING</b></span></div>
       <div class="nx-internal-footnote">NEXUS // 세계관 체험용 시스템입니다. 표시된 인증 및 접근 권한은 실제 보안 기능이 아닙니다.</div>
@@ -947,8 +956,8 @@ body.ops-modal-open{overflow:hidden}
             <span class="nx-dm-chatstatus">● CHANNEL ACTIVE</span>
           </header>
           <div class="nx-dm-messages" id="nxDmMessages" aria-live="polite"></div>
-          <form class="nx-dm-compose" id="nxDmForm"><input type="text" id="nxDmInput" maxlength="500" placeholder="메시지 입력..." aria-label="메시지 작성"><button type="submit">SEND ↗</button></form>
-          <div class="nx-dm-privacy">LOCAL PERSONAL ARCHIVE · 작성한 메시지는 이 브라우저에만 저장되며 상대방에게 실제 전송되지 않습니다.</div>
+          <div class="nx-dm-readonly" role="note"><span aria-hidden="true">▣</span><span>CONVERSATION ARCHIVE <small>이전 대화 기록 · 열람 전용</small></span></div>
+          <div class="nx-dm-privacy">NEXUS / PRIVATE CORRESPONDENCE · 기록 조회 전용 · 메시지 작성 및 전송 비활성화</div>
         </section>
       </div>
     </section>
@@ -1211,14 +1220,10 @@ document.addEventListener('keydown',e=>{const overlay=document.getElementById('c
 
 // v4.77 / local personal message history
 const nxDmSeed={"NOAH BENNETT":[{"date":"2026-11-18","time":"18:42","side":"them","en":"You left the route notes in the briefing room. I put them in the shared folder.","ko":"브리핑룸에 경로 메모를 두고 갔더라. 공용 폴더에 넣어뒀어."},{"date":"2026-11-18","time":"18:45","side":"me","en":"Saved me a trip. Thanks.","ko":"덕분에 다시 안 가도 되겠다. 고마워."},{"date":"2026-11-18","time":"18:47","side":"them","en":"Check section three before tomorrow. The meeting time moved up.","ko":"내일 전에 3번 항목 확인해. 회의 시간이 앞당겨졌어."},{"date":"2026-11-22","time":"20:14","side":"me","en":"Briefing is still at eight?","ko":"브리핑 여전히 8시야?"},{"date":"2026-11-22","time":"20:16","side":"them","en":"Eight sharp. Bring the updated map.","ko":"정각 8시. 수정된 지도 챙겨 와."}],"SEBASTIAN MILLER":[{"date":"2026-11-16","time":"21:06","side":"them","en":"Training hall. 06:30 tomorrow. Don’t show up half asleep.","ko":"내일 6시 30분 훈련관. 반쯤 잠든 얼굴로 나타나지 마."},{"date":"2026-11-16","time":"21:10","side":"me","en":"That’s an unreasonable hour.","ko":"그건 너무한 시간이잖아."},{"date":"2026-11-16","time":"21:11","side":"them","en":"Tell the clock. Not me.","ko":"시계한테 따져. 나 말고."},{"date":"2026-11-21","time":"18:12","side":"them","en":"Your gloves are still in locker seven.","ko":"네 장갑 아직 7번 사물함에 있어."},{"date":"2026-11-21","time":"18:15","side":"me","en":"I was looking everywhere for those.","ko":"그거 한참 찾고 있었어."}],"OLIVER GLANT":[{"date":"2026-11-12","time":"19:22","side":"me","en":"Did you take the reference file?","ko":"참고 파일 네가 가져갔어?"},{"date":"2026-11-12","time":"19:25","side":"them","en":"No. Second shelf, left side.","ko":"아니. 왼쪽 두 번째 선반."},{"date":"2026-11-12","time":"19:26","side":"me","en":"Found it.","ko":"찾았다."},{"date":"2026-11-20","time":"20:01","side":"them","en":"The observation room is quiet now if you need it.","ko":"관찰실 지금 조용해. 필요하면 써."},{"date":"2026-11-20","time":"20:05","side":"me","en":"Thanks for the heads-up.","ko":"알려줘서 고마워."}],"MASON RYDER":[{"date":"2026-11-13","time":"17:33","side":"them","en":"Your terminal kept the wrong layout. I fixed the display preset.","ko":"네 단말기에 화면 배치가 잘못 저장됐길래 수정해뒀어."},{"date":"2026-11-13","time":"17:35","side":"me","en":"How did you notice that?","ko":"그걸 어떻게 알았어?"},{"date":"2026-11-13","time":"17:37","side":"them","en":"Because you complained about it for two days.","ko":"이틀 내내 불평했잖아."},{"date":"2026-11-22","time":"16:04","side":"them","en":"Network maintenance at 23:00. Save your work first.","ko":"23시에 네트워크 점검 있어. 작업 먼저 저장해."},{"date":"2026-11-22","time":"16:08","side":"me","en":"Already done. Miracles happen.","ko":"이미 했어. 기적도 일어나네."}],"MALCOLM PRICE":[{"date":"2026-11-15","time":"20:44","side":"them","en":"You disappeared right after debriefing. Everything okay?","ko":"강평 끝나자마자 사라졌네. 괜찮아?"},{"date":"2026-11-15","time":"20:49","side":"me","en":"Just needed a quiet place for a bit.","ko":"잠깐 조용한 데 있고 싶었어."},{"date":"2026-11-15","time":"20:51","side":"them","en":"Fair. I saved you a seat at dinner anyway.","ko":"그럴 수 있지. 그래도 저녁 자리 하나 맡아뒀어."},{"date":"2026-11-22","time":"19:30","side":"me","en":"Are you at the lounge?","ko":"지금 라운지야?"},{"date":"2026-11-22","time":"19:32","side":"them","en":"Corner table. You’ll spot me.","ko":"구석 테이블. 오면 보일 거야."}],"CAL BLACKWOOD":[{"date":"2026-11-13","time":"08:17","side":"them","en":"I reviewed your field notes. The conclusion is clear.","ko":"현장 기록 검토했어. 결론이 명확하더군."},{"date":"2026-11-13","time":"08:19","side":"me","en":"Anything to revise?","ko":"수정할 부분 있어?"},{"date":"2026-11-13","time":"08:24","side":"them","en":"Only the timing references. Keep the rest.","ko":"시간 표기만. 나머지는 그대로 둬."},{"date":"2026-11-21","time":"21:05","side":"them","en":"Tomorrow’s schedule changed. Check the new briefing notice.","ko":"내일 일정이 변경됐어. 새 브리핑 공지 확인해."},{"date":"2026-11-21","time":"21:08","side":"me","en":"Understood. Thank you.","ko":"확인했어. 고마워."}],"ETHAN WALKER":[{"date":"2026-11-14","time":"06:58","side":"them","en":"You left your water bottle in the gym. Again.","ko":"체육관에 물병 두고 갔어. 또."},{"date":"2026-11-14","time":"07:01","side":"me","en":"Please tell me you didn’t throw it away.","ko":"설마 버린 건 아니지?"},{"date":"2026-11-14","time":"07:02","side":"them","en":"Locker bench. Pick it up yourself.","ko":"사물함 벤치. 직접 가져가."},{"date":"2026-11-20","time":"17:14","side":"them","en":"The fitness room is free after seven.","ko":"피트니스룸 7시 이후에 비어."},{"date":"2026-11-20","time":"17:18","side":"me","en":"Perfect. I’ll be there.","ko":"딱 좋네. 갈게."}],"THEO CALLAHAN":[{"date":"2026-11-09","time":"23:04","side":"me","en":"Do you still have the old briefing transcript?","ko":"예전 브리핑 기록 아직 가지고 있어?"},{"date":"2026-11-09","time":"23:08","side":"them","en":"Archived copy, yes. I’ll send the reference code.","ko":"보관본은 있어. 참조 코드를 보내줄게."},{"date":"2026-11-09","time":"23:10","side":"them","en":"NX-REF-204. Try that one.","ko":"NX-REF-204. 이걸로 찾아봐."},{"date":"2026-11-18","time":"22:46","side":"me","en":"The transcript helped. Thank you.","ko":"그 기록 도움 됐어. 고마워."},{"date":"2026-11-18","time":"22:48","side":"them","en":"Good. Return it to the archive when you’re done.","ko":"다행이네. 다 보면 자료실에 돌려놔."}],"LUCIAN VANCE":[{"date":"2026-11-17","time":"01:12","side":"them","en":"The server’s back. You can stop staring at the loading screen.","ko":"서버 돌아왔어. 이제 로딩 화면 그만 봐도 돼."},{"date":"2026-11-17","time":"01:15","side":"me","en":"I wasn’t staring.","ko":"쳐다보고 있었던 건 아니거든."},{"date":"2026-11-17","time":"01:16","side":"them","en":"You sent six status checks.","ko":"상태 확인을 여섯 번 보냈던데."},{"date":"2026-11-22","time":"23:05","side":"them","en":"Your access token expires on Friday. Renew it.","ko":"네 접근 토큰 금요일에 만료돼. 갱신해."},{"date":"2026-11-22","time":"23:07","side":"me","en":"Got it.","ko":"알겠어."}],"LIAM COOPER":[{"date":"2026-11-10","time":"14:20","side":"them","en":"You missed the medical center notice. Check your inbox.","ko":"의료센터 공지 못 봤더라. 메일함 확인해."},{"date":"2026-11-10","time":"14:24","side":"me","en":"Thanks. I almost forgot the checkup.","ko":"고마워. 검진 잊을 뻔했어."},{"date":"2026-11-10","time":"14:26","side":"them","en":"I figured. Your calendar looks like a crime scene.","ko":"그럴 줄 알았어. 네 일정표가 엉망이더라."},{"date":"2026-11-22","time":"12:33","side":"them","en":"Cafeteria’s serving early today. Want me to save a place?","ko":"오늘 식당 일찍 열어. 자리 맡아줄까?"},{"date":"2026-11-22","time":"12:36","side":"me","en":"Yes, please. I’m on my way.","ko":"응 부탁해. 지금 갈게."}]};
-let nxDmCurrent='MALCOLM PRICE', nxDmFilter='all', nxDmViewer='';
-let nxDmMine={};
+let nxDmCurrent='MALCOLM PRICE', nxDmFilter='all';
 const nxDmEl=id=>document.getElementById(id);
 const nxDmPerson=name=>personnel.find(p=>p.name===name);
-function nxDmStorageKey(){return 'nexus_personal_messages_v477_'+encodeURIComponent(nxDmViewer.toLowerCase())}
-function nxDmLoad(){nxDmMine={};try{const raw=JSON.parse(localStorage.getItem(nxDmStorageKey())||'{}');if(raw&&typeof raw==='object'&&!Array.isArray(raw))nxDmMine=raw}catch(e){nxDmMine={}}}
-function nxDmSaved(name){return Array.isArray(nxDmMine[name])?nxDmMine[name]:[]}
-function nxDmAll(name){return [...(nxDmSeed[name]||[]),...nxDmSaved(name)]}
+function nxDmAll(name){return nxDmSeed[name]||[]}
 function nxDmStamp(m){return m.date+' '+m.time}
 function nxDmNode(tag,className,textValue){const n=document.createElement(tag);if(className)n.className=className;if(textValue!==undefined)n.textContent=textValue;return n}
 function nxDmShort(m){return (m.ko||m.en||'').slice(0,38)}
@@ -1238,14 +1243,9 @@ function nxDmSelect(name){if(!nxDmSeed[name])return;nxDmCurrent=name;const p=nxD
  const mine=m.side==='me';const row=nxDmNode('div','nx-dm-bubble-row'+(mine?' mine':''));row.append(nxDmNode('div','nx-dm-sender',mine?'YOU':p.nameKo+' / '+p.callsign));const bubble=nxDmNode('div','nx-dm-bubble');bubble.append(nxDmNode('div','',m.en));if(m.ko)bubble.append(nxDmNode('div','nx-dm-translation',m.ko));row.append(bubble,nxDmNode('div','nx-dm-time',m.time));host.append(row)}
  host.scrollTop=host.scrollHeight;nxDmPaintContacts();
 }
-function nxDmInit(name){nxDmViewer=name||'CADET';nxDmLoad();nxDmSelect(nxDmCurrent)}
+function nxDmInit(){nxDmSelect(nxDmCurrent)}
 nxDmEl('nxDmSearch').addEventListener('input',nxDmPaintContacts);
 document.querySelectorAll('[data-dm-filter]').forEach(b=>b.addEventListener('click',()=>{nxDmFilter=b.dataset.dmFilter;document.querySelectorAll('[data-dm-filter]').forEach(x=>x.classList.toggle('active',x===b));nxDmPaintContacts()}));
-nxDmEl('nxDmForm').addEventListener('submit',e=>{e.preventDefault();const input=nxDmEl('nxDmInput');const content=input.value.trim();if(!content||!nxDmCurrent)return;
- const date=new Date();const localDate=[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');const time=[String(date.getHours()).padStart(2,'0'),String(date.getMinutes()).padStart(2,'0')].join(':');
- const arr=nxDmSaved(nxDmCurrent);arr.push({date:localDate,time,side:'me',en:content,ko:''});nxDmMine[nxDmCurrent]=arr.slice(-60);try{localStorage.setItem(nxDmStorageKey(),JSON.stringify(nxDmMine))}catch(err){}
- input.value='';nxDmSelect(nxDmCurrent);
-});
 
 function showView(name){if(!views[name])return;if(name!=='operations')closeOperation();if(name!=='evaluations')closeEvaluation();if(name!=='archives')closeClassified();document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.getElementById('breadView').textContent=views[name]}
 
@@ -1330,7 +1330,7 @@ thumbSensor.addEventListener('keyup',e=>{if(thumbMode!=='thumb'||(e.code!=='Spac
 thumbSensor.addEventListener('blur',()=>{if(thumbState==='holding'&&thumbPointer===null)thumbReset()});
 thumbSensor.addEventListener('contextmenu',e=>e.preventDefault());
 
-function enter(name){nxDmInit(name);loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview');nxLocate()}
+function enter(name){nxDmInit();loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview');nxLocate()}
 document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('agentId').value.trim();const code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return;}document.getElementById('loginMsg').textContent='';thumbOpen(name)});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
 
