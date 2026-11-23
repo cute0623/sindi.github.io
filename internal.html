@@ -730,6 +730,66 @@ body.ops-modal-open{overflow:hidden}
 #app .nx-dm-readonly small{display:block;margin-top:5px;letter-spacing:0;font:11px system-ui,sans-serif;color:#a2bacc}
 @media(max-width:600px){#app .nx-dm-toplink{min-width:39px;width:39px;padding:8px}#app .nx-dm-toplabel{display:none}#app .nx-dm-readonly{padding:13px 15px}}
 @media(max-width:380px){#app .top-right{gap:5px}#app .nx-dm-toplink{width:35px;min-width:35px;min-height:35px;padding:7px}}
+
+/* v4.80 — NEXUS CYBER TERMINAL / METALLIC HUD. Presentation only; preserve portal and authentication behavior. */
+#app{background:radial-gradient(ellipse at 49% 1%,rgba(43,94,119,.18),transparent 44%),linear-gradient(145deg,#0a1019,#070a11 55%,#070d15);color:#e8f0f6}
+#app .main{position:relative;isolation:isolate}
+#app .main::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(96,155,183,.055) 1px,transparent 1px),linear-gradient(rgba(96,155,183,.055) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#0008,transparent 65%)}
+#app .topbar{position:relative;border-bottom:1px solid #55758d;box-shadow:0 9px 25px -22px #8ad9f4}
+#app .topbar::after{content:"";position:absolute;left:0;bottom:-1px;width:190px;height:1px;background:linear-gradient(90deg,#b2e2f7,transparent);pointer-events:none}
+#app .hub-topbrand strong{color:#eaf3f9;text-shadow:0 0 22px #90c4eb2a}
+#app .hub-topbrand span{color:#a3bfcd}
+#app .hub-topbrand b{color:#d8eaf8}
+#app .agent-tag,#app .nx-dm-toplink,#app .logout{box-shadow:inset 0 1px 0 #e4f4ff32,0 0 16px #54a6d00b;background:linear-gradient(155deg,#374756,#1b2733 28%,#0c1720 80%)!important}
+#app .nx-dm-toplink:hover,#app .logout:hover{border-color:#b6d9f1!important;box-shadow:inset 0 1px 0 #ffffff30,0 0 19px #7bbada2b}
+#app .hub-welcome{position:relative}
+#app .hub-welcome::before{content:"NEXUS // SYSTEM BUS 01";position:absolute;left:0;top:38px;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;color:#6e9ab1;opacity:.75}
+#app .hub-welcome h1{color:#f0f7fa;text-shadow:0 0 32px #86d0ff1f,0 6px 33px #000}
+#app .hub-kicker{color:#8cbcd5}
+#app .hub-section-label{border-bottom-color:#53758a;position:relative}
+#app .hub-section-label::after{content:"";position:absolute;bottom:-1px;left:0;width:92px;height:1px;background:#b4e3f2}
+#app .hub-tiles{gap:17px}
+#app .hub-tile{min-height:154px;border-color:#718b9e;background:linear-gradient(151deg,#374757 0%,#1e2b38 17%,#111a25 54%,#090f17 100%);box-shadow:inset 0 1px 0 #ffffff32,inset 0 -1px 0 #050b12,0 16px 35px #0009;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:background .22s,transform .22s,border-color .22s,box-shadow .22s}
+#app .hub-tile::before{inset:7px;border-color:#b0d6e624;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+#app .hub-tile::after{opacity:.52}
+#app .hub-tile:hover,#app .hub-tile:focus-visible{transform:translateY(-3px);border-color:#b7d9ee;background:linear-gradient(145deg,#3b5669,#1b3142 36%,#101d2a 77%,#080f18);box-shadow:inset 0 1px 0 #ffffff50,0 0 30px #62b9de24,0 16px 40px #000b}
+#app .hub-tile-copy strong{color:#ecf6ff}
+#app .hub-tile-copy small{color:#aec6d7}
+#app .hub-tile-icon{color:#c5e5f6;text-shadow:0 0 18px #81d4ee3b}
+#app .hub-tile-arrow{color:#bcdcf1}
+#app .hub-tile-copy::after{content:"NX://LINK VERIFIED · ENCRYPTED";font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;color:#719aaf;margin-top:2px;opacity:.85}
+#app .hub-bottom{background:linear-gradient(120deg,#162331,#0a1018);border-color:#59788d}
+#app .hub-back{border-color:#678ea5;box-shadow:inset 0 1px 0 #ffffff19}
+#app .hub-back:hover{border-color:#a4d7eb;color:#f2f9ff}
+#app .panel,#app .ops-registry,#app .ops-file,#app .person-toolbar,#app .nx-dm-shell,#app .com-shell,#app .mail-shell,#app .cl-shell{box-shadow:inset 0 1px 0 #e1f2ff19,0 15px 38px #0004}
+#app .panel{background:linear-gradient(140deg,#192837,#0b131e);border-color:#50697a}
+#app .dashboard-header h1{color:#eef6fa;text-shadow:0 0 20px #80c1e61a}
+#app .dashboard-header .eyebrow{color:#8ebad2}
+#app .section-view.active:not(#view-overview){animation:nx80-enter .28s ease-out both}
+@keyframes nx80-enter{from{opacity:.75;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+/* A restrained terminal activity band under the greeting, independent from real site state. */
+#app .nx80-telemetry{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.35fr) repeat(2,minmax(0,.8fr));gap:0;margin:0 0 20px;border:1px solid #5e8296;background:linear-gradient(111deg,#1c2e3c 0%,#0c1825 56%,#08111c 100%);box-shadow:inset 0 1px 0 #c7eaff2b,0 18px 40px #0005;min-height:90px}
+#app .nx80-telemetry::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 13px,#b7edff08 14px);opacity:.55}
+#app .nx80-telemetry::after{content:"";position:absolute;left:-35%;top:0;bottom:0;width:26%;pointer-events:none;background:linear-gradient(90deg,transparent,#84cce312,transparent);transform:skewX(-19deg);animation:nx80-light 12s linear infinite}
+@keyframes nx80-light{to{left:125%}}
+#app .nx80-cell{padding:18px 22px;position:relative;z-index:1;display:flex;flex-direction:column;gap:9px;justify-content:center;min-width:0}
+#app .nx80-cell+.nx80-cell{border-left:1px solid #3c586c}
+#app .nx80-label{font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.19em;color:#91b9d0}
+#app .nx80-value{font:12px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em;color:#d6ebf6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#app .nx80-code{display:inline-block;white-space:nowrap;animation:nx80-code 5s ease-in-out infinite alternate;color:#8dd0e7;font:11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em}
+@keyframes nx80-code{from{opacity:.7;filter:brightness(.75)}to{opacity:1;filter:brightness(1.22)}}
+#app .nx80-verified{color:#a0e2cf}
+#app .nx80-blink{display:inline-block;width:5px;height:12px;background:#8bcfdd;vertical-align:-2px;margin-left:4px;animation:nx80-cursor 1.2s steps(1) infinite}
+@keyframes nx80-cursor{50%{opacity:0}}
+/* Small code-ribbon within every internal subpage, no interference with controls. */
+#app .nx80-system-ribbon{display:flex;align-items:center;gap:14px;justify-content:space-between;margin-top:15px;margin-bottom:4px;padding:8px 12px;border:1px solid #38566b;background:linear-gradient(90deg,#10212f,#09151f 70%);color:#8aaec1;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;min-width:0;overflow:hidden}
+#app .nx80-system-ribbon .nx80-sys-main{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#app .nx80-system-ribbon .nx80-sys-end{flex:none;color:#95d3bc}
+@media(max-width:900px){#app .nx80-telemetry{grid-template-columns:1fr 1fr}#app .nx80-cell:first-child{grid-column:1/-1;border-bottom:1px solid #3c586c}#app .nx80-cell:nth-child(2){border-left:0}}
+@media(max-width:780px){#app .hub-welcome::before{display:none}#app .hub-tile{min-height:112px}#app .hub-tile-copy::after{font-size:8px}#app .nx80-telemetry{margin-bottom:14px}#app .nx80-cell{padding:14px 15px}#app .nx80-label{font-size:8px}#app .nx80-value{font-size:10px}#app .nx80-code{font-size:10px}}
+@media(max-width:480px){#app .nx80-telemetry{grid-template-columns:1fr 1fr}#app .nx80-cell:first-child{grid-column:1/-1}#app .nx80-cell{padding:13px 11px}#app .nx80-system-ribbon{font-size:8px}#app .hub-tiles{gap:12px}}
+@media(prefers-reduced-motion:reduce){#app .nx80-telemetry::after,#app .nx80-code,#app .nx80-blink,#app .section-view.active:not(#view-overview){animation:none!important}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -816,12 +876,22 @@ body.ops-modal-open{overflow:hidden}
       <div class="hub-topbrand"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><div><strong>NEXUS</strong><span>INTERNAL NETWORK / <b id="breadView">HOME</b></span></div></div>
       <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button type="button" class="nx-dm-toplink" data-go="directmessages" aria-label="개인 메시지함 열기" title="PERSONAL MESSAGES · 개인 메시지함"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.7" y="4.9" width="18.6" height="14.2" rx="1.4"/><path d="m3.7 6.4 8.3 6.5 8.3-6.5"/></svg><span class="nx-dm-toplabel">MESSAGES</span></button><button class="logout" id="logout">LOG OUT</button></div>
     </header>
+    <div class="nx80-system-ribbon" aria-label="보안망 상태">
+      <span class="nx80-sys-main">NX://CORE/SYS.08 &nbsp; 7F3A:09C2 &nbsp; KEY EXCHANGE VERIFIED &nbsp; • &nbsp; SECURE SESSION</span>
+      <span class="nx80-sys-end">● LINK ACTIVE</span>
+    </div>
     <section class="section-view active" id="view-overview">
       <div class="hub-welcome"><div class="hub-kicker">NEXUS / AUTHORIZED USER PORTAL</div>
         <h1>INTERNAL NETWORK</h1><p>넥서스 내부망에 오신 것을 환영합니다.</p>
         <div class="hub-greeting"><span id="welcomeAgent">요원</span> 님 · <span id="currentDate"></span></div>
       </div>
 
+
+      <div class="nx80-telemetry" aria-label="네트워크 보안 터미널 상태">
+        <div class="nx80-cell"><span class="nx80-label">NEXUS / TERMINAL ACTIVITY</span><span class="nx80-code" aria-hidden="true">&gt; NX://SECURE_LINK/7F3A-09 <span class="nx80-blink"></span></span></div>
+        <div class="nx80-cell"><span class="nx80-label">ENCRYPTED CHANNEL</span><span class="nx80-value">AES-256 · NX-GRID</span></div>
+        <div class="nx80-cell"><span class="nx80-label">ACCESS STATUS</span><span class="nx80-value nx80-verified">● AUTHORIZED</span></div>
+      </div>
       <section class="nx-radar-dashboard" aria-label="NEXUS 가상 전술 레이더 및 네트워크 분석 상태">
         <div class="nx-radar-left">
           <div class="nx-radar-head"><span class="nx-radar-kicker">REGIONAL SURVEILLANCE GRID</span><span class="nx-radar-live">SWEEP ACTIVE</span></div>
