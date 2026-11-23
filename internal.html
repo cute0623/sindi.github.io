@@ -837,6 +837,45 @@ body.ops-modal-open{overflow:hidden}
  #app #view-mailbox .mail-body-ko{padding:13px 14px}
  #app #view-mailbox .mail-detail h2{font-size:clamp(20px,5vw,27px)}
 }
+
+/* v4.84 — academy daily schedule / current-period monitor */
+#app .nx84-schedule{position:relative;overflow:hidden;margin:0 0 34px;border:1px solid #6b8295;background:linear-gradient(147deg,#242f3e 0%,#111b28 28%,#090f18 85%);box-shadow:inset 0 1px 0 #f4fbff24,0 15px 32px #0006;color:#e7f1f9;min-width:0}
+#app .nx84-schedule::before{content:'';position:absolute;inset:7px;border:1px solid #a8d4ef15;pointer-events:none}
+#app .nx84-schedule::after{content:'';pointer-events:none;position:absolute;top:0;right:0;height:1px;width:34%;background:linear-gradient(90deg,transparent,#9cd7f1 65%,transparent);box-shadow:0 0 16px #7ac5e765}
+#app .nx84-head{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #445a6e;padding:24px 29px 22px;position:relative}
+#app .nx84-eyebrow{font:10px ui-monospace,Consolas,monospace;letter-spacing:.22em;color:#9dbdd2;margin-bottom:9px}
+#app .nx84-head h2{margin:0;font:normal clamp(23px,2.6vw,32px) Georgia,'Times New Roman',serif;letter-spacing:.075em;color:#f0f5fb}
+#app .nx84-head h2 span{display:block;font:12px system-ui,sans-serif;letter-spacing:.06em;color:#9fb6c9;margin-top:7px}
+#app .nx84-daytag{border:1px solid #56788b;background:#152a36;min-width:130px;text-align:center;padding:12px 13px;font:10px ui-monospace,Consolas,monospace;color:#c8e5ee;letter-spacing:.09em;white-space:nowrap}
+#app .nx84-body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(250px,.9fr);min-width:0}
+#app .nx84-periods{padding:22px 24px 23px 29px;min-width:0}
+#app .nx84-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;min-width:0}
+#app .nx84-item{position:relative;display:flex;align-items:flex-start;gap:10px;padding:13px 12px;min-height:73px;min-width:0;border:1px solid #405569;background:linear-gradient(150deg,#1a2939,#0e1823);transition:border-color .2s,background .2s}
+#app .nx84-item:before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:2px;background:#617b90}
+#app .nx84-item.is-current{border-color:#a2d5eb;background:linear-gradient(145deg,#2a4458,#152536);box-shadow:inset 0 1px 0 #d3f0ff2b,0 0 15px #89d0eb19}
+#app .nx84-item.is-current:before{background:#a1eef1;box-shadow:0 0 14px #9ce6fb}
+#app .nx84-item time{display:block;flex:0 0 76px;font:10px ui-monospace,Consolas,monospace;letter-spacing:.02em;line-height:1.5;color:#afd5e7;white-space:nowrap}
+#app .nx84-item .nx84-activity{min-width:0}
+#app .nx84-item strong{display:block;font-size:12px;letter-spacing:.03em;font-weight:650;color:#f0f6fa;line-height:1.5;overflow-wrap:anywhere}
+#app .nx84-item small{display:block;font:9px ui-monospace,Consolas,monospace;color:#95b1c5;line-height:1.5;letter-spacing:.055em;margin-top:4px;overflow-wrap:anywhere}
+#app .nx84-aside{border-left:1px solid #445a6e;padding:27px 27px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-width:0;background:radial-gradient(circle at 95% 10%,#29608014,transparent 59%)}
+#app .nx84-monitor-label{font:10px ui-monospace,Consolas,monospace;letter-spacing:.18em;color:#9bbbd0}
+#app .nx84-clock{font:normal clamp(30px,4vw,47px) ui-monospace,Consolas,monospace;color:#e9f5fa;letter-spacing:.02em;line-height:1.2;margin:11px 0 5px;font-variant-numeric:tabular-nums}
+#app .nx84-current{border-left:2px solid #8bbbd2;padding:12px 0 12px 15px;background:linear-gradient(90deg,#28495c22,transparent)}
+#app .nx84-current strong{display:block;font-size:17px;letter-spacing:.02em;color:#f2f9fd;margin-bottom:6px}
+#app .nx84-current span{font:10px ui-monospace,Consolas,monospace;color:#aac8d9;letter-spacing:.08em;line-height:1.6}
+#app .nx84-notice{border-top:1px solid #385165;padding-top:17px;font-size:11px;color:#9cb5c8;line-height:1.8}
+#app .nx84-notice b{display:block;font:10px ui-monospace,monospace;letter-spacing:.14em;color:#d6e3eb;margin-bottom:7px}
+#app .nx84-weekend{display:none;padding:32px 28px 38px;min-width:0}
+#app .nx84-weekend-title{font:normal 25px Georgia,serif;color:#f0f6fb;letter-spacing:.08em;margin-bottom:11px}
+#app .nx84-weekend p{font-size:13px;color:#b5c8d7;line-height:1.8;margin:0}
+#app .nx84-weekend .nx84-weekend-sub{margin-top:15px;padding:13px 14px;background:#152636;border:1px solid #456276;font-size:11px;color:#a8c6da}
+#app .nx84-schedule.is-weekend .nx84-body{display:none}
+#app .nx84-schedule.is-weekend .nx84-weekend{display:block}
+@media(max-width:970px){#app .nx84-body{grid-template-columns:minmax(0,1fr)}#app .nx84-aside{border-left:0;border-top:1px solid #445a6e;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:17px;align-items:center}#app .nx84-notice{grid-column:1/-1}}
+@media(max-width:620px){#app .nx84-head{padding:19px 17px;align-items:flex-start}#app .nx84-head h2{font-size:24px}#app .nx84-eyebrow{font-size:9px;letter-spacing:.1em}#app .nx84-daytag{min-width:0;padding:9px 7px;font-size:9px}#app .nx84-periods{padding:13px}#app .nx84-grid{grid-template-columns:minmax(0,1fr);gap:7px}#app .nx84-item{min-height:63px;padding:11px 13px}#app .nx84-item time{flex-basis:89px;font-size:10px}#app .nx84-aside{padding:18px 17px;grid-template-columns:1fr 1.2fr}#app .nx84-clock{font-size:25px}#app .nx84-current strong{font-size:13px}#app .nx84-notice{font-size:10px}#app .nx84-weekend{padding:24px 18px}}
+@media(max-width:355px){#app .nx84-aside{grid-template-columns:1fr}#app .nx84-notice{grid-column:1}#app .nx84-item time{flex-basis:77px;font-size:9px}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -963,6 +1002,26 @@ body.ops-modal-open{overflow:hidden}
           </div>
           <div class="nx-radar-bars" aria-hidden="true"><i style="--h:36%;--delay:-.4s"></i><i style="--h:65%;--delay:-1.1s"></i><i style="--h:45%;--delay:-.9s"></i><i style="--h:89%;--delay:-.2s"></i><i style="--h:56%;--delay:-1.8s"></i><i style="--h:74%;--delay:-1.3s"></i><i style="--h:92%;--delay:-.8s"></i><i style="--h:49%;--delay:-1.5s"></i><i style="--h:68%;--delay:-.3s"></i><i style="--h:35%;--delay:-2s"></i><i style="--h:81%;--delay:-1.7s"></i><i style="--h:58%;--delay:-1s"></i><i style="--h:73%;--delay:-.7s"></i><i style="--h:94%;--delay:-.5s"></i><i style="--h:44%;--delay:-1.9s"></i><i style="--h:68%;--delay:-1.2s"></i></div>
           <div class="nx-radar-note">NX–GRID / SIGNAL TRACE ONLINE / SIMULATED TACTICAL TELEMETRY</div>
+        </div>
+      </section>
+
+      <section class="nx84-schedule" id="nx84Schedule" aria-label="NEXUS 평일 일과표">
+        <div class="nx84-head">
+          <div><div class="nx84-eyebrow">NEXUS / ACADEMY OPERATIONS</div><h2>DAILY SCHEDULE <span>교육생 기본 일과표</span></h2></div>
+          <div class="nx84-daytag" id="nx84DayTag">WEEKDAY / 평일</div>
+        </div>
+        <div class="nx84-body">
+          <div class="nx84-periods"><div class="nx84-grid" id="nx84ScheduleGrid"></div></div>
+          <div class="nx84-aside">
+            <div><div class="nx84-monitor-label">LOCAL TERMINAL TIME</div><div class="nx84-clock" id="nx84Clock">--:--</div><div class="nx84-monitor-label">ACADEMY ROUTINE / MON–FRI</div></div>
+            <div class="nx84-current"><strong id="nx84CurrentName">일과 확인 중</strong><span id="nx84CurrentEn">SYNCING SCHEDULE...</span></div>
+            <div class="nx84-notice"><b>OPERATIONAL ADVISORY / 일정 변동 안내</b>고학년 임무, 야간훈련, 연구 및 응급상황에 따라 일과가 변경될 수 있다. 표시 시각은 접속 단말기의 현지 시각을 따른다.</div>
+          </div>
+        </div>
+        <div class="nx84-weekend" id="nx84Weekend">
+          <div class="nx84-weekend-title">WEEKEND · 자율 생활</div>
+          <p>주말은 평일보다 비교적 자유롭게 운영된다. 별도 지정된 훈련·임무·연구 또는 긴급 일정이 있을 경우 해당 지침을 우선 적용한다.</p>
+          <div class="nx84-weekend-sub">REGULAR WEEKDAY ROTATION NOT IN EFFECT / 정규 평일 시간표 미적용</div>
         </div>
       </section>
       <div class="hub-section-label"><div><strong>MAIN MENU</strong><span>원하는 메뉴를 선택하세요.</span></div><div class="hub-status">● SYSTEM ONLINE</div></div>
@@ -1665,6 +1724,49 @@ function nxLocate(){
 }
 // Select a single location only after each completed internal-network login.
 // While connected, the displayed facility and active sector remain unchanged.
+
+
+// v4.84 — Daily routine is an institutional timetable, not a live booking system.
+// Browser local time determines the highlighted routine period; weekends have no invented hourly slots.
+const nx84Periods=[
+ {start:390,time:'06:30',ko:'기상 · 점호',en:'WAKE-UP / ROLL CALL'},
+ {start:420,time:'07:00',ko:'조식',en:'BREAKFAST'},
+ {start:480,end:720,time:'08:00–12:00',ko:'이론 교육',en:'THEORY / CLASSROOM'},
+ {start:720,time:'12:00',ko:'중식',en:'LUNCH'},
+ {start:780,end:1020,time:'13:00–17:00',ko:'실습 교육',en:'PRACTICAL TRAINING'},
+ {start:1050,time:'17:30',ko:'석식',en:'DINNER'},
+ {start:1140,end:1260,time:'19:00–21:00',ko:'자율 과제',en:'INDEPENDENT ASSIGNMENTS'},
+ {start:1260,end:1380,time:'21:00–23:00',ko:'자유시간',en:'PERSONAL TIME'},
+ {start:1380,time:'23:00',ko:'생활구역 복귀 · 정숙',en:'RETURN / QUIET HOURS'}
+];
+const nx84Grid=document.getElementById('nx84ScheduleGrid');
+const nx84Entries=nx84Periods.map((e,i)=>{
+ const item=document.createElement('div');item.className='nx84-item';
+ const time=document.createElement('time');time.textContent=e.time;
+ const copy=document.createElement('div');copy.className='nx84-activity';
+ const title=document.createElement('strong');title.textContent=e.ko;
+ const english=document.createElement('small');english.textContent=e.en;
+ copy.append(title,english);item.append(time,copy);nx84Grid.append(item);return item;
+});
+function nx84RefreshSchedule(){
+ const now=new Date(),day=now.getDay(),weekend=day===0||day===6;
+ const wrapper=document.getElementById('nx84Schedule');
+ wrapper.classList.toggle('is-weekend',weekend);
+ const weekday=['SUN','MON','TUE','WED','THU','FRI','SAT'][day];
+ document.getElementById('nx84DayTag').textContent=weekend?'WEEKEND / 주말':weekday+' / 평일';
+ document.getElementById('nx84Clock').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+ if(weekend)return;
+ const currentMinute=now.getHours()*60+now.getMinutes();
+ let idx=-1;
+ for(let i=0;i<nx84Periods.length;i++){if(currentMinute>=nx84Periods[i].start)idx=i;else break;}
+ const current=idx>=0 && (!nx84Periods[idx].end||currentMinute<nx84Periods[idx].end)?nx84Periods[idx]:null;
+ nx84Entries.forEach((el,i)=>el.classList.toggle('is-current',current!==null&&i===idx));
+ document.getElementById('nx84CurrentName').textContent=current?current.ko:(idx<0?'일과 시작 전':'일정 사이');
+ document.getElementById('nx84CurrentEn').textContent=current?current.en:(idx<0?'BEFORE ROLL CALL':'BETWEEN SCHEDULED BLOCKS');
+}
+nx84RefreshSchedule();
+setInterval(()=>{if(!document.hidden)nx84RefreshSchedule()},30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)nx84RefreshSchedule()});
 
 document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();renderOperations();renderEvaluations();renderClassified();
 })();
