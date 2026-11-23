@@ -663,6 +663,38 @@ body.ops-modal-open{overflow:hidden}
 #app .nx-location-en{font:10px ui-monospace,monospace;letter-spacing:.06em;color:#aec3d2;line-height:1.6;margin-top:2px;overflow-wrap:anywhere}
 #app .nx-location-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;color:#8aabbf;font:9px ui-monospace,monospace;letter-spacing:.08em}
 @media(max-width:390px){#app .nx-location-bottom{flex-wrap:wrap}#app .nx-location-panel{padding:12px}}
+
+/* Mobile overflow safeguards — mailbox and communications */
+@media (max-width:850px){
+ #app,#app .main,#app .section-view,#app .panel,#app .com-shell,#app .mail-layout{min-width:0;max-width:100%}
+ #app .com-shell,#app .mail-layout{width:100%;overflow:hidden}
+ #app .com-thread,#app .com-sidebar,#app .mail-main,#app .mail-folders{min-width:0;max-width:100%}
+ #app .com-thread-head>div,#app .com-thread-toolbar>*,#app .mail-toolbar>*,#app .mail-openbar>*{min-width:0}
+ #app .com-thread-head h2,#app .com-thread-head p,#app .com-msg-en,#app .com-msg-ko,#app .com-msg-attachment,#app .mail-detail h2,#app .mail-title-ko,#app .mail-body-en,#app .mail-body-ko,#app .mail-item .mail-subject,#app .mail-item .mail-subject-ko{overflow-wrap:anywhere;word-break:break-word}
+ #app .com-thread-toolbar{flex-wrap:wrap;row-gap:7px}
+ #app .com-msg,#app .com-msg-attachment,#app .com-compose-sim,#app .mail-attachment{max-width:100%;min-width:0}
+ #app .com-compose-sim{flex-wrap:wrap}
+ #app .mail-folder-list,#app .com-channel-list{max-width:100%;-webkit-overflow-scrolling:touch}
+ #app .mail-item{min-width:0}
+ #app .mail-item>*,#app .mail-item .mail-from{min-width:0;overflow-wrap:anywhere}
+ #app .mail-openbar{flex-wrap:wrap}
+ #app .mail-meta{min-width:0}
+}
+@media(max-width:440px){
+ #app .com-thread-head{padding:15px 12px}
+ #app .com-thread-toolbar{padding:11px 12px}
+ #app .com-message-list{padding:12px 9px 18px}
+ #app .com-msg{padding:12px}
+ #app .com-msg-ko{padding:9px}
+ #app .com-compose-sim{margin:0 9px 12px}
+ #app .mail-toolbar{padding:13px 11px}
+ #app .mail-detail{padding:13px 11px 20px}
+ #app .mail-meta{padding:12px;gap:11px}
+ #app .mail-item{padding:13px 9px}
+ #app .mail-item.unread{padding-left:7px}
+ #app .mail-body-ko{padding:12px}
+ #app .mail-compose-sim{padding:12px;gap:9px}
+}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
