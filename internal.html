@@ -695,6 +695,22 @@ body.ops-modal-open{overflow:hidden}
  #app .mail-body-ko{padding:12px}
  #app .mail-compose-sim{padding:12px;gap:9px}
 }
+
+/* v4.77 — NEXUS character-specific metallic speaker identification */
+.com-msg.character{padding:0;background:linear-gradient(145deg,#141d29,#0b121e);border-color:#526176;overflow:hidden}
+.com-msg.character .com-msg-head{padding:10px 17px;margin:0;border-bottom:1px solid #34475a}
+.com-msg.character .com-msg-en{padding:16px 18px 0}
+.com-msg.character .com-msg-ko{margin:12px 17px 17px}
+.nx-speaker{position:relative;isolation:isolate;display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:15px;min-height:100px;padding:13px 17px;overflow:hidden;background:linear-gradient(155deg,#3b4655 0%,#202c3b 17%,#0b1421 60%,#172434 100%);border-bottom:1px solid #738397;box-shadow:inset 0 1px 0 #d4e2f333}
+.nx-speaker:before{content:'N';position:absolute;left:49%;top:50%;transform:translate(-50%,-50%);font:normal 112px/1 Georgia,serif;color:#d8e3ef;opacity:.055;z-index:-1;pointer-events:none}
+.nx-speaker:after{content:'';position:absolute;inset:5px;border:1px solid #c5d5e21b;pointer-events:none}
+.nx-speaker-photo{width:72px;height:75px;object-fit:cover;object-position:center 20%;border:1px solid #8397a9;background:linear-gradient(135deg,#263a4c,#0b1623);display:grid;place-items:center;color:#9cb2c6;font:29px Georgia,serif;overflow:hidden}
+.nx-speaker-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.nx-speaker-info{min-width:0}.nx-speaker-name{font:normal clamp(18px,2vw,25px)/1.1 'Arial Narrow','Bahnschrift SemiCondensed','Roboto Condensed',Impact,sans-serif;font-stretch:condensed;letter-spacing:.12em;color:#f0f4f8;text-shadow:0 1px 0 #8c9aaa55;overflow-wrap:anywhere}
+.nx-speaker-ko{font:400 11px/1.5 'Pretendard','Noto Sans KR',sans-serif;letter-spacing:.06em;color:#9da9b5;margin-top:5px}
+.nx-speaker-meta{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:11px;color:#a9bacc;font:10px/1.4 'Bahnschrift',ui-monospace,monospace;letter-spacing:.09em}
+.nx-speaker-meta b{font-weight:500;color:#e0e7ee}.nx-speaker-year{align-self:start;white-space:nowrap;color:#b7c9d8;border:1px solid #63798b;padding:6px 8px;font:9px ui-monospace,monospace;letter-spacing:.09em}
+@media(max-width:600px){.nx-speaker{grid-template-columns:54px minmax(0,1fr);gap:10px;min-height:87px;padding:11px}.nx-speaker-photo{width:54px;height:65px}.nx-speaker-name{font-size:clamp(16px,5vw,21px);letter-spacing:.065em}.nx-speaker-ko{font-size:10px}.nx-speaker-meta{font-size:9px;gap:5px 10px;margin-top:7px}.nx-speaker-year{grid-column:2;justify-self:start;padding:3px 6px;font-size:8px}.com-msg.character .com-msg-en{padding:12px 12px 0}.com-msg.character .com-msg-ko{margin:10px 11px 12px}}
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -1302,17 +1318,52 @@ function renderComChannels(){
  if(!hits.length)list.append(comElement('p','empty','검색 결과가 없습니다.'));
  document.getElementById('comChannelTotal').textContent=String(comArchive.length).padStart(2,'0');
 }
+// Character identity cards: profile photo paths can be added to the photo map later.
+const nxSpeakerPhotos={}; // e.g. 'CAL BLACKWOOD':'images/personnel/cal-blackwood.webp'
+function nxFindSpeaker(sender){
+ const normalized=String(sender||'').trim().toUpperCase();
+ return personnel.find(p=>p.name===normalized||p.callsign===normalized||p.nameKo===sender)||null;
+}
+function nxSpeakerId(person){
+ const year=person.team==='senior'?5:Number(person.team.replace('cadet',''));
+ const peers=personnel.filter(p=>p.team===person.team);
+ return 'NX-'+year+'-'+String(1001+peers.indexOf(person));
+}
+function nxSpeakerCard(person){
+ const year=person.team==='senior'?5:Number(person.team.replace('cadet',''));
+ const card=comElement('div','nx-speaker');
+ const photo=comElement('div','nx-speaker-photo');
+ const url=nxSpeakerPhotos[person.name];
+ if(url){const img=document.createElement('img');img.src=url;img.alt=person.name+' portrait';img.onerror=()=>{photo.replaceChildren(comElement('span','',person.callsign.slice(0,1)))};photo.append(img)}
+ else photo.append(comElement('span','',person.callsign.slice(0,1)));
+ const info=comElement('div','nx-speaker-info');
+ info.append(comElement('div','nx-speaker-name',person.name),comElement('div','nx-speaker-ko',person.nameKo));
+ const meta=comElement('div','nx-speaker-meta');
+ const id=comElement('span','');id.append(comElement('b','',nxSpeakerId(person)));
+ const major=comElement('span','');major.append(comElement('b','',person.division));
+ meta.append(id,major);info.append(meta);
+ card.append(photo,info,comElement('span','nx-speaker-year','YEAR '+String(year).padStart(2,'0')));
+ return card;
+}
+// Example cadet transmissions, clearly isolated from institutional archive records.
+const nxDemoTransmissions={
+ senior:{date:'2026-11-22',time:'09:30',sender:'CAL BLACKWOOD',en:'Senior team, confirm your assigned positions before the next briefing. I expect the status report on time.',ko:'시니어 팀 전원, 다음 브리핑 전까지 각자 배정 위치를 확인해. 상황 보고는 정시에 받겠다.'},
+ cadet4:{date:'2026-11-22',time:'09:12',sender:'NOAH BENNETT',en:'Fourth-year team, review the updated rotation schedule and report any conflicts directly to me.',ko:'4학년 팀, 수정된 순환 훈련 일정을 확인하고 충돌 사항이 있으면 내게 직접 보고해.'}
+};
 function renderComThread(){
  const c=comArchive.find(x=>x.id===comCurrent);if(!c)return;
  document.getElementById('comThreadCode').textContent=c.code+' / SECURE CHANNEL';
  document.getElementById('comThreadTitle').textContent=c.title;
  document.getElementById('comThreadDesc').textContent=c.ko;
- document.getElementById('comThreadMeta').textContent=String(c.messages.length).padStart(2,'0')+' MESSAGES / 통신 기록';
+ const displayMessages=nxDemoTransmissions[c.id]?[nxDemoTransmissions[c.id],...c.messages]:c.messages;
+ document.getElementById('comThreadMeta').textContent=String(displayMessages.length).padStart(2,'0')+' MESSAGES / 통신 기록';
  const log=document.getElementById('comMessages');log.replaceChildren();let lastDate='';
- for(const m of c.messages){
+ for(const m of displayMessages){
   if(m.date!==lastDate){log.append(comElement('div','com-date-divider',m.date));lastDate=m.date}
-  const block=comElement('article','com-msg'+(m.sender.includes('CONTROL')||m.sender.includes('ADMINISTRATION')?' system':''));
-  const header=comElement('div','com-msg-head');header.append(comElement('span','com-msg-sender',m.sender),comElement('time','com-msg-time',m.time));
+  const speaker=nxFindSpeaker(m.sender);
+  const block=comElement('article','com-msg'+(speaker?' character':(m.sender.includes('CONTROL')||m.sender.includes('ADMINISTRATION')?' system':'')));
+  if(speaker)block.append(nxSpeakerCard(speaker));
+  const header=comElement('div','com-msg-head');header.append(comElement('span','com-msg-sender',speaker?'SECURE TRANSMISSION':m.sender),comElement('time','com-msg-time',m.time));
   block.append(header,comElement('p','com-msg-en',m.en),comElement('p','com-msg-ko',m.ko));log.append(block);
  }
  log.scrollTop=0;
