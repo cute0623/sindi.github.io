@@ -1,0 +1,229 @@
+/* NEXUS — Unified public navigation v4.85
+   Common header sizing and alignment for index, facilities, notices, community.
+   Internal secure terminal header is intentionally separate. */
+@media (min-width: 1051px) {
+  body .header {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr) !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 76px !important;
+    min-height: 76px !important;
+    padding: 0 clamp(18px, 4vw, 68px) !important;
+    gap: 18px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 75 !important;
+    background: rgba(8, 14, 24, .97) !important;
+    border-bottom: 1px solid rgba(163, 186, 208, .26) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .30) !important;
+    overflow: visible !important;
+  }
+  body .header > .navigation {
+    display: flex !important;
+    position: static !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: clamp(15px, 1.8vw, 30px) !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 12px !important;
+  }
+  body .header > .navigation > a {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 76px !important;
+    padding: 0 0 2px !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: .04em !important;
+  }
+  body .header > .access {
+    justify-self: end !important;
+    box-sizing: border-box !important;
+    flex: none !important;
+    width: 168px !important;
+    max-width: 168px !important;
+    min-width: 168px !important;
+    height: 46px !important;
+    max-height: 46px !important;
+    min-height: 46px !important;
+    padding: 0 14px !important;
+    margin: 0 !important;
+    font-size: 11px !important;
+    letter-spacing: .18em !important;
+    white-space: nowrap !important;
+  }
+  body .header > .menu { display: none !important; }
+  body .header > .navigation > a { color: #b6c5d2 !important; text-decoration: none !important; }
+  body .header > .navigation > a:hover { color: #f1f7fc !important; }
+  body .header > .navigation > a[aria-current="page"] { color: #f1f7fc !important; }
+  body .header > .navigation > a::after { bottom: 10px !important; }
+  body .header > .access { color: #f4f8fc !important; border: 1px solid #95a7b8 !important; border-radius: 0 !important; background: linear-gradient(180deg, #354557 0%, #15202f 48%, #09111e 100%) !important; box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 0 0 5px rgba(4,10,19,.45) !important; text-decoration: none !important; }
+}
+/* Use the same source artwork and exact desktop dimensions on every public page. */
+body .header > .identity {
+  box-sizing: border-box !important;
+  justify-self: start !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 0 1 auto !important;
+  gap: 11px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  text-decoration: none !important;
+}
+body .header > .identity > img:first-child,
+body .header > .identity > img.seal {
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 48px !important;
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+}
+body .header > .identity > img:nth-child(2),
+body .header > .identity > img.wordmark,
+body .header > .identity > img.metal-wordmark-header {
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 175px !important;
+  width: 175px !important;
+  min-width: 175px !important;
+  max-width: 175px !important;
+  height: auto !important;
+  max-height: 55px !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+@media (max-width: 1050px) {
+  body .header {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 112px 38px !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 66px !important;
+    min-height: 66px !important;
+    padding: 0 16px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 75 !important;
+    background: rgba(8, 14, 24, .97) !important;
+    border-bottom: 1px solid rgba(163, 186, 208, .26) !important;
+    overflow: visible !important;
+  }
+  body .header > .identity { gap: 6px !important; max-width: 100% !important; overflow: hidden !important; }
+  body .header > .identity > img:first-child,
+  body .header > .identity > img.seal {
+    flex-basis: 36px !important;
+    width: 36px !important; min-width: 36px !important; max-width: 36px !important;
+    height: 36px !important; max-height: 36px !important;
+  }
+  body .header > .identity > img:nth-child(2),
+  body .header > .identity > img.wordmark,
+  body .header > .identity > img.metal-wordmark-header {
+    flex: 0 1 112px !important;
+    width: 112px !important; min-width: 0 !important; max-width: 112px !important;
+    max-height: 43px !important;
+  }
+  body .header > .access {
+    grid-column: 2 !important;
+    justify-self: stretch !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: none !important;
+    width: 112px !important;
+    max-width: 112px !important;
+    min-width: 112px !important;
+    height: 38px !important;
+    max-height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 5px !important;
+    margin: 0 !important;
+    font-size: 9px !important;
+    letter-spacing: .11em !important;
+    white-space: nowrap !important;
+  }
+  body .header > .menu {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: none !important;
+    width: 38px !important; max-width: 38px !important; min-width: 38px !important;
+    height: 38px !important; max-height: 38px !important; min-height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+  body .header > .navigation:not(.open) { display: none !important; }
+  body .header > .access { color: #f4f8fc !important; border: 1px solid #95a7b8 !important; border-radius: 0 !important; background: linear-gradient(180deg, #354557 0%, #15202f 48%, #09111e 100%) !important; box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 0 0 3px rgba(4,10,19,.45) !important; text-decoration: none !important; }
+  body .header > .menu { color: #eaf3fc !important; background: #172435 !important; border: 1px solid #546b82 !important; border-radius: 0 !important; }
+  body .header > .navigation.open {
+    box-sizing: border-box !important;
+    display: flex !important;
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 8px 16px 16px !important;
+    margin: 0 !important;
+    background: #0b1420 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #526b82 !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .45) !important;
+    font-size: 12px !important;
+    z-index: 100 !important;
+  }
+  body .header > .navigation.open > a {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+}
+@media (max-width: 370px) {
+  body .header { grid-template-columns: minmax(0,1fr) 103px 36px !important; gap: 6px !important; padding: 0 9px !important; }
+  body .header > .identity { gap: 4px !important; }
+  body .header > .identity > img:first-child,
+  body .header > .identity > img.seal {
+    flex-basis: 32px !important; width: 32px !important; min-width: 32px !important; max-width: 32px !important;
+    height: 32px !important; max-height: 32px !important;
+  }
+  body .header > .identity > img:nth-child(2),
+  body .header > .identity > img.wordmark,
+  body .header > .identity > img.metal-wordmark-header { flex: 0 1 100px !important; max-width: 100px !important; }
+  body .header > .access { width: 103px !important; max-width: 103px !important; min-width: 103px !important; font-size: 8px !important; }
+  body .header > .menu { width: 36px !important; max-width: 36px !important; min-width: 36px !important; }
+}
