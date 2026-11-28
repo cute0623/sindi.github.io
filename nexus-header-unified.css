@@ -227,3 +227,76 @@ body .header > .identity > img.metal-wordmark-header {
   body .header > .access { width: 103px !important; max-width: 103px !important; min-width: 103px !important; font-size: 8px !important; }
   body .header > .menu { width: 36px !important; max-width: 36px !important; min-width: 36px !important; }
 }
+
+
+/* v4.86 — homepage-reference header: one geometry, all public pages.
+   This section intentionally overrides older page-specific declarations. */
+@media (min-width:1051px){
+ html body > .header {
+   display:grid!important; grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr)!important;
+   box-sizing:border-box!important; width:100%!important; max-width:none!important;
+   height:88px!important; min-height:88px!important; max-height:88px!important;
+   padding:0 clamp(18px,4.3vw,70px)!important; gap:18px!important;
+   align-items:center!important; justify-items:stretch!important;
+   position:sticky!important; top:0!important; z-index:75!important;
+   background:#090e18f9!important; border-bottom:1px solid #ffffff22!important;
+ }
+ html body > .header > .identity {
+   display:flex!important; width:max-content!important; min-width:0!important;
+   max-width:100%!important; gap:12px!important; align-items:center!important;
+   justify-self:start!important; margin:0!important; padding:0!important;
+   transform:none!important;
+ }
+ html body > .header > .identity > img:first-child {
+   display:block!important; box-sizing:border-box!important; flex:0 0 56px!important;
+   width:56px!important; min-width:56px!important; max-width:56px!important;
+   height:56px!important; min-height:56px!important; max-height:56px!important;
+   padding:0!important; margin:0!important; object-fit:contain!important;
+ }
+ html body > .header > .identity > img:nth-child(2) {
+   display:block!important; box-sizing:border-box!important; flex:0 0 218px!important;
+   width:218px!important; min-width:218px!important; max-width:218px!important;
+   height:auto!important; max-height:66px!important; object-fit:contain!important;
+   object-position:left center!important; padding:0!important; margin:0!important;
+ }
+ html body > .header > .navigation {
+   display:flex!important; flex-direction:row!important; position:static!important;
+   align-items:center!important; justify-content:center!important;
+   justify-self:center!important; width:max-content!important; max-width:none!important;
+   gap:clamp(24px,2.15vw,36px)!important; margin:0!important; padding:0!important;
+   border:0!important; background:none!important; box-shadow:none!important;
+   transform:translateX(clamp(0px,3vw,48px))!important;
+ }
+ html body > .header > .navigation > a {
+   display:inline-flex!important; align-items:center!important; justify-content:center!important;
+   height:88px!important; min-height:88px!important; max-height:88px!important;
+   padding:0!important; margin:0!important; font-size:13px!important;
+   font-weight:400!important; line-height:1!important; letter-spacing:.025em!important;
+   text-decoration:none!important; white-space:nowrap!important; transform:none!important;
+ }
+ html body > .header > .navigation > a::after {bottom:7px!important;}
+ html body > .header > .access {
+   display:inline-flex!important; align-items:center!important; justify-content:center!important;
+   justify-self:end!important; box-sizing:border-box!important;
+   flex:0 0 198px!important; width:198px!important; min-width:198px!important;
+   max-width:198px!important; height:51px!important; min-height:51px!important;
+   max-height:51px!important; margin:0!important; padding:0 12px!important;
+   font-size:12px!important; font-weight:400!important; line-height:1!important;
+   letter-spacing:.16em!important; white-space:nowrap!important;
+ }
+ html body > .header > .menu {display:none!important;}
+}
+@media (min-width:1051px) and (max-width:1250px){
+ html body > .header {padding-left:24px!important;padding-right:24px!important;}
+ html body > .header > .identity > img:first-child {flex-basis:46px!important;width:46px!important;min-width:46px!important;max-width:46px!important;height:46px!important;min-height:46px!important;max-height:46px!important;}
+ html body > .header > .identity > img:nth-child(2) {flex-basis:166px!important;width:166px!important;min-width:166px!important;max-width:166px!important;}
+ html body > .header > .navigation {gap:17px!important;transform:none!important;}
+ html body > .header > .navigation > a {font-size:12px!important;}
+ html body > .header > .access {flex-basis:158px!important;width:158px!important;min-width:158px!important;max-width:158px!important;}
+}
+@media (max-width:1050px){
+ html body > .header {height:66px!important;min-height:66px!important;max-height:66px!important;}
+ html body > .header > .identity {transform:none!important;}
+ html body > .header > .navigation:not(.open) {display:none!important;}
+ html body > .header > .navigation.open {transform:none!important;}
+}
